@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "SansiMate"
+rootProject.name = "SensiMate"
 include ':app'

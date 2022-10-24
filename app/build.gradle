@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.sansimate'
+    namespace 'com.example.sensimate'
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.example.sansimate"
+        applicationId "com.example.sensimate"
         minSdk 21
         targetSdk 32
         versionCode 1
