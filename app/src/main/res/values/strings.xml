@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">SensiMate</string>
+    <string name="Discover">Discover</string>
+    <string name="Discover_detail">Discover_detail</string>
+    <string name="My_Profile">My_Profile</string>
+    <string name="Edit_Profile">Edit_Profile</string>
+    <string name="My_Event_or_Home">My_Event_or_Home</string>
+    <string name="Event_History">Event_History</string>
+    <string name="SurveyScan_1">SurveyScan_1</string>
+    <string name="Survey_Page_Person_info">Survey_Page_Person_info</string>
+    <string name="Survey_Page_singleChoice">Survey_Page_singleChoice</string>
+
+
+
 </resources>
