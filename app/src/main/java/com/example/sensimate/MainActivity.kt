@@ -19,9 +19,31 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background) {
+                    SensiMateApp()
 
                 }
             }
         }
     }
+}
+@Preview
+@Composable
+fun SensiMatePreview() {
+    SensiMateApp()
+
+}
+
+
+
+@Composable
+fun SensiMateApp(){
+
+}
+@Composable
+fun MenuBarApp(){
+
+}
+@Composable
+fun SenSiMateIcon(){
+
 }
