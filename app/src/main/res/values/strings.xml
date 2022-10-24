@@ -9,28 +9,34 @@
     <string name="SurveyScan_1_Page">SurveyScan_1_Page</string>
     <string name="Survey_Page_Person_info_Page">Survey_Page_Person_info_Page</string>
     <string name="Survey_Page_singleChoice_Page">Survey_Page_singleChoice_Page</string>
-    <string name="Save_Button">Save_Button</string>
-    <string name="Back_Button">Back_Button</string>
-    <string name="Exit_Button">Exit_Button</string>
-    <string name="Menu_Bar">Menu_Bar</string>
-    <string name="Previ_Button">Previ_Button</string>
-    <string name="Age_inf_Button">Age_inf_Button</string>
-    <string name="Gender_Button">Gender_Button</string>
-    <string name="PostCode_Button">PostCode_Button</string>
-    <string name="Edit_Profil_Button">Edit_Profil_Button</string>
-    <string name="Change_Picture_Button">Change_Picture_Button</string>
-    <string name="Update_Button">Update_Button</string>
-    <string name="Screen_template">Screen_template</string>
-    <string name="Logo">Logo</string>
-    <string name="Search_Bar_Burron">Search_Bar_Burron</string>
-    <string name="PointReward_Button">PointReward_Button</string>
-    <string name="Book_Aplace">Book_Aplace</string>
-    <string name="My_Points">My_Points</string>
-    <string name="Event_History_Button">My_Points_Button</string>
+
+    <string name="SaveButton">SaveButton</string>
+    <string name="BackButton">BackButton</string>
+    <string name="ExitButton">ExitButton</string>
+    <string name="MenuBar">MenuBar</string>
+    <string name="PreviousButton">PreviousButton</string>
+    <string name="AgeInfo">AgeInfo</string>
+    <string name="Gender">Gender</string>
+    <string name="PostCode">PostCode</string>
+    <string name="EditProfile">EditProfile</string>
+    <string name="ChangePictureBar">ChangePictureBar</string>
+    <string name="UpdateButton">UpdateButton</string>
+    <string name="ScreenTemplate">ScreenTemplate</string>
+    <string name="SearchBar">SearchBar</string>
+    <string name="PointReward">PointReward</string>
+    <string name="BookAplace">BookAPlace</string>
+    <string name="UpdateBar">UpdateBar</string>
 
 
+    <!-- LÆS!!!
+    <string name="SensimateLogo">SensimateLogo</string>
+    <string name="ProfilePictureFrame">ProfilePictureFrame</string>
+    <string name="PointsGained">PointsGained</string>
+    <string name="SearchButton">SearchButton</string>
 
+   Ikke sikker på om det skal være et billede, eller fra tekst, som så kalder på et billede
 
+    -->
 
 
 
