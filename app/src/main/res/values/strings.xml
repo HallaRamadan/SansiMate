@@ -1,14 +1,37 @@
 <resources>
-    <string name="app_name">SensiMate</string>
-    <string name="Discover">Discover</string>
-    <string name="Discover_detail">Discover_detail</string>
-    <string name="My_Profile">My_Profile</string>
-    <string name="Edit_Profile">Edit_Profile</string>
-    <string name="My_Event_or_Home">My_Event_or_Home</string>
-    <string name="Event_History">Event_History</string>
-    <string name="SurveyScan_1">SurveyScan_1</string>
-    <string name="Survey_Page_Person_info">Survey_Page_Person_info</string>
-    <string name="Survey_Page_singleChoice">Survey_Page_singleChoice</string>
+    <string name="app_name">SensiMate_Page</string>
+    <string name="Discover_Page">Discover_Page</string>
+    <string name="Discover_detail_Page">Discover_detail_Page</string>
+    <string name="My_Profile_Page">My_Profile_Page</string>
+    <string name="Edit_Profile_page">Edit_Profile_Page</string>
+    <string name="My_Event_or_Home_Page">My_Event_or_Home_Page</string>
+    <string name="Event_History_Page">Event_History_Page</string>
+    <string name="SurveyScan_1_Page">SurveyScan_1_Page</string>
+    <string name="Survey_Page_Person_info_Page">Survey_Page_Person_info_Page</string>
+    <string name="Survey_Page_singleChoice_Page">Survey_Page_singleChoice_Page</string>
+    <string name="Save_Button">Save_Button</string>
+    <string name="Back_Button">Back_Button</string>
+    <string name="Exit_Button">Exit_Button</string>
+    <string name="Menu_Bar">Menu_Bar</string>
+    <string name="Previ_Button">Previ_Button</string>
+    <string name="Age_inf_Button">Age_inf_Button</string>
+    <string name="Gender_Button">Gender_Button</string>
+    <string name="PostCode_Button">PostCode_Button</string>
+    <string name="Edit_Profil_Button">Edit_Profil_Button</string>
+    <string name="Change_Picture_Button">Change_Picture_Button</string>
+    <string name="Update_Button">Update_Button</string>
+    <string name="Screen_template">Screen_template</string>
+    <string name="Logo">Logo</string>
+    <string name="Search_Bar_Burron">Search_Bar_Burron</string>
+    <string name="PointReward_Button">PointReward_Button</string>
+    <string name="Book_Aplace">Book_Aplace</string>
+    <string name="My_Points">My_Points</string>
+    <string name="Event_History_Button">My_Points_Button</string>
+
+
+
+
+
 
 
 
