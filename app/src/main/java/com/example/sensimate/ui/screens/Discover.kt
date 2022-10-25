@@ -33,7 +33,8 @@ fun ProductList() {
     }
 }
 
-@Composable Testable() {
+@Composable
+fun Testable() {
 
 }
 
