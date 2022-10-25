@@ -1,4 +1,4 @@
-package com.example.sensimate
+package com.example.sensimate.ui.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
