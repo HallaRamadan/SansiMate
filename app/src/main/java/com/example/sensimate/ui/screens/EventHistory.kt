@@ -1,4 +1,4 @@
-package com.example.sensimate
+package com.example.sensimate.ui.screens
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview

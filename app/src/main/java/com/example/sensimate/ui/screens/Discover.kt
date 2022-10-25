@@ -1,4 +1,4 @@
-package com.example.sensimate
+package com.example.sensimate.ui.screens
 
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
@@ -33,6 +33,9 @@ fun ProductList() {
     }
 }
 
+@Composable Testable() {
+
+}
 
 
 @Preview

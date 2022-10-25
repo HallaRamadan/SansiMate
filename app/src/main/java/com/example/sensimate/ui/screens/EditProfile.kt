@@ -1,14 +1,16 @@
-package com.example.sensimate
+package com.example.sensimate.ui.screens
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun Discover_Detail(){
+fun Edit_Profile(){
 
 }
 @Preview
 @Composable
-fun Discover_DetailPreview(){
-    Discover_Detail()
+fun Edit_ProfilePreview(){
+    Edit_Profile()
+
+
 }
