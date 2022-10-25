@@ -17,6 +17,15 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun MyEvent(modifier: Modifier
 ) {
+    @Composable
+    fun BookedEvent(){
+    }
+    @Composable
+    fun SavedEvent(){
+    }
+    @Composable
+    fun EventHistory(){
+    }
     Box {
         Box(modifier = Modifier
             .width(414.dp)
@@ -31,13 +40,9 @@ fun MyEvent(modifier: Modifier
         )
     }
 
-
-
 }
 @Preview
 @Composable
 fun MyEventsPreview(){
     MyEvent(modifier = Modifier)
 }
-
-

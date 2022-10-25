@@ -12,3 +12,13 @@ fun SurveyPage_SingleChoice(){
 fun SurveyPage_SingleChoicePreview(){
     SurveyPage_SingleChoice()
 }
+
+@Composable
+fun NextButton(){
+
+}
+
+@Composable
+fun PreviousButton(){
+
+}
