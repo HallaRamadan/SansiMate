@@ -17,7 +17,7 @@ private val LightColorPalette = lightColors(
     primary = Purple500,
     primaryVariant = Purple700,
     secondary = Teal200,
-    //-------- SensiMate app´s Color--------//
+    //-------- SensiMate app´s Color--- But not sure to use all of them -----//
     background = Color.White,
     surface = Color.White,
     onPrimary = Color.White,
