@@ -14,19 +14,19 @@ fun PointReward(){
 }
 @Composable
 fun MenuBar(){
+}
+@Composable
+fun EditProfile(){
 
 }
-
-
-
-
-
-
 
 @Preview
 @Composable
 fun My_ProfilePreview(){
     My_Profile()
-
+    PointsGained()
+    PointReward()
+    MenuBar()
+    EditProfile()
 }
 
