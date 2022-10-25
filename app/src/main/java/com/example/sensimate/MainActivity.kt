@@ -1,4 +1,4 @@
-package com.example.sensimate.ui.screens
+package com.example.sensimate
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
