@@ -27,7 +27,11 @@ class Datasource() {
         R.drawable.search_icon
         R.drawable.profile_icon
         R.drawable.burger_icon
+<<<<<<< HEAD
         R.drawable.star
+=======
+        R.drawable.mapdiscover
+>>>>>>> 474565fdb9447da66221f2219217122af72cadd7
 
     }
 }
