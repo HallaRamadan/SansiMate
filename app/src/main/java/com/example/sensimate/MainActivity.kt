@@ -9,7 +9,7 @@ import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import com.example.sensimate.ui.screens.Discover_DetailPreview
 import com.example.sensimate.ui.screens.MyEvent
-import com.example.sensimate.ui.screens.SensiMate_Screen
+// import com.example.sensimate.ui.screens.SensiMate_Screen
 import com.example.sensimate.ui.theme.SensiMateTheme
 
 class MainActivity : ComponentActivity() {
@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
                 Surface(modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background) {
                     Discover_DetailPreview()
-                    SensiMate_Screen()
+                    //SensiMate_Screen()
 
 
                 }
