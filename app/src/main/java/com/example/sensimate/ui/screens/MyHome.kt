@@ -1,8 +1,6 @@
-package com.example.sensimate
+package com.example.sensimate.ui.screens
 
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
@@ -16,90 +14,150 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.sensimate.R
 import com.example.sensimate.ui.theme.SensiMateTheme
-import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 
 
 @Composable
 fun MyEvent(
 ) {
     SensiMateTheme {
-        Box(
-            modifier = Modifier
-                .background(Color.LightGray)
-                .fillMaxSize().padding(20.dp),
-            contentAlignment = Alignment.TopCenter
-        ) {
-
-            Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                SearchField(
-                    modifier = Modifier
-                        .width(370.dp)
-                        .height(60.dp).clip(RoundedCornerShape(120.dp))
-                        .background(Color.White)
-                        .alpha(0.8500000238418579f).padding(top = 0.dp),
-
-
-                    )
-                Box(
-                    modifier = Modifier
-                        .width(370.dp)
-                        .height(250.dp)
-                        .alpha(0.8500000238418579f).padding(top = 2.dp),
-                    contentAlignment = Alignment.TopCenter
-
-
-                ) {
-                    Column(verticalArrangement = Arrangement.spacedBy(1.dp)){
-                        Box(modifier = Modifier
-                            .width(370.dp)
-                            .fillMaxHeight(0.15F)
-                            .border(BorderStroke(1.dp, Color.Gray), RoundedCornerShape(20.dp))
-                            .background(Color.White, RoundedCornerShape(20.dp)),
-                            contentAlignment = Alignment.Center) {
-                            Text(text = "Booked Events")
-                        }
-                        Box(modifier = Modifier
-                            .width(370.dp)
-                            .fillMaxHeight(0.85F)
-                            .border(BorderStroke(1.dp, Color.Black), RoundedCornerShape(20.dp))
-                            .background(Color.White, RoundedCornerShape(20.dp)),
-                            contentAlignment = Alignment.TopCenter) {
-                            Row(horizontalArrangement = Arrangement.spacedBy(2.dp), modifier = Modifier.padding(5.dp)){
-                                Box(modifier = Modifier.fillMaxHeight().fillMaxWidth(0.33333333333F).background(Color.Red, RoundedCornerShape(20.dp)).border(BorderStroke(1.dp, Color.Gray), RoundedCornerShape(20.dp))){
-
-                                }
-                                Box(modifier = Modifier.fillMaxHeight().fillMaxWidth(0.50F).background(Color.Green, RoundedCornerShape(20.dp)).border(BorderStroke(1.dp, Color.Gray), RoundedCornerShape(20.dp))){
-
-                                }
-                                Box(modifier = Modifier.fillMaxHeight().fillMaxWidth(1F).background(Color.Blue, RoundedCornerShape(20.dp)).border(BorderStroke(1.dp, Color.Gray), RoundedCornerShape(20.dp))){
-
-                                }
-                            }
-                        }
-                    }
-                }
+        Background{
+            SearchField()
+            Card {
+                BookedEvent()
             }
+            Card {
+                SavedEvent()
+            }
+            Card {
+                EventHistory()
+            }
+        }
+    }
+}
 
-
+@Composable
+fun Background(content: @Composable () -> Unit){
+    Box(
+        modifier = Modifier.verticalScroll(rememberScrollState())
+            .fillMaxSize().padding(20.dp),
+        contentAlignment = Alignment.TopCenter
+    ){
+        Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+            content()
         }
     }
 }
 @Composable
-fun SearchField(modifier: Modifier = Modifier){
-    TextField(value = "", onValueChange = {}, leadingIcon = {Icon(Icons.Default.Search, contentDescription = "")}, modifier = modifier.heightIn(min = 56.dp))
+fun SearchField(){
+    TextField(value = "Search", onValueChange = {}, leadingIcon = {Icon(Icons.Default.Search, contentDescription = "")}, modifier = Modifier
+        .width(370.dp)
+        .heightIn(min = 36.dp).clip(RoundedCornerShape(120.dp))
+        .background(Color.White)
+        .alpha(0.85f).padding(top = 0.dp))
 }
 
 @Composable
 fun BookedEvent(){
+    Column(verticalArrangement = Arrangement.spacedBy(1.dp)){
+        CardTitle("Booked Events")
+        Box(modifier = Modifier
+            .width(370.dp)
+            .fillMaxHeight(1F)
+            .border(BorderStroke(1.dp, Color.Gray), RoundedCornerShape(20.dp))
+            .background(Color.White, RoundedCornerShape(20.dp)),
+            contentAlignment = Alignment.TopCenter) {
+            Row(horizontalArrangement = Arrangement.spacedBy(2.dp), modifier = Modifier.padding(3.dp)){
+                Box(modifier = Modifier.fillMaxHeight().fillMaxWidth(0.33F).border(BorderStroke(1.dp, Color.Gray), RoundedCornerShape(20.dp)), contentAlignment = Alignment.Center){
+                    Image(painterResource(R.drawable.hand_beer),"content description")
+                }
+                Box(modifier = Modifier.fillMaxHeight().fillMaxWidth(0.50F).border(BorderStroke(1.dp, Color.Gray), RoundedCornerShape(20.dp))){
+                    Image(painterResource(R.drawable.cider),"content description", modifier = Modifier.size(1500.dp))
+                }
+                Box(modifier = Modifier.fillMaxHeight().fillMaxWidth(1F).border(BorderStroke(1.dp, Color.Gray), RoundedCornerShape(20.dp))){
+                    Image(painterResource(R.drawable.coke),"content description", modifier = Modifier.size(1500.dp))
+                }
+            }
+        }
+    }
 }
 @Composable
 fun SavedEvent(){
+    Column(verticalArrangement = Arrangement.spacedBy(1.dp)){
+        CardTitle("Saved Events")
+        Box(modifier = Modifier
+            .width(370.dp)
+            .fillMaxHeight(1F)
+            .border(BorderStroke(1.dp, Color.Gray), RoundedCornerShape(20.dp))
+            .background(Color.White, RoundedCornerShape(20.dp)),
+            contentAlignment = Alignment.TopCenter) {
+            Row(horizontalArrangement = Arrangement.spacedBy(2.dp), modifier = Modifier.padding(3.dp)){
+                Box(modifier = Modifier.fillMaxHeight().fillMaxWidth(0.33F).border(BorderStroke(1.dp, Color.Gray), RoundedCornerShape(20.dp)), contentAlignment = Alignment.Center){
+                    Image(painterResource(R.drawable.hand_beer),"content description", modifier = Modifier.size(150.dp))
+                }
+                Box(modifier = Modifier.fillMaxHeight().fillMaxWidth(0.50F).border(BorderStroke(1.dp, Color.Gray), RoundedCornerShape(20.dp))){
+                    Image(painterResource(R.drawable.cider),"content description", modifier = Modifier.size(1500.dp))
+                }
+                Box(modifier = Modifier.fillMaxHeight().fillMaxWidth(1F).border(BorderStroke(1.dp, Color.Gray), RoundedCornerShape(20.dp))){
+                    Image(painterResource(R.drawable.coke),"content description", modifier = Modifier.size(1500.dp))
+                }
+            }
+        }
+    }
 }
 @Composable
 fun EventHistory(){
+    Column(verticalArrangement = Arrangement.spacedBy(1.dp)){
+        CardTitle("Event History")
+        Box(modifier = Modifier
+            .width(370.dp)
+            .fillMaxHeight(1F)
+            .border(BorderStroke(1.dp, Color.Gray), RoundedCornerShape(20.dp))
+            .background(Color.White, RoundedCornerShape(20.dp)),
+            contentAlignment = Alignment.TopCenter) {
+            Row(horizontalArrangement = Arrangement.spacedBy(2.dp), modifier = Modifier.padding(3.dp)){
+                Box(modifier = Modifier.fillMaxHeight().fillMaxWidth(0.33F).border(BorderStroke(1.dp, Color.Gray), RoundedCornerShape(20.dp)), contentAlignment = Alignment.Center){
+                    Image(painterResource(R.drawable.hand_beer),"content description", modifier = Modifier.size(150.dp))
+                }
+                Box(modifier = Modifier.fillMaxHeight().fillMaxWidth(0.50F).border(BorderStroke(1.dp, Color.Gray), RoundedCornerShape(20.dp))){
+                    Image(painterResource(R.drawable.cider),"content description", modifier = Modifier.size(1500.dp))
+                }
+                Box(modifier = Modifier.fillMaxHeight().fillMaxWidth(1F).border(BorderStroke(1.dp, Color.Gray), RoundedCornerShape(20.dp))){
+                    Image(painterResource(R.drawable.coke),"content description", modifier = Modifier.size(1500.dp))
+                }
+            }
+        }
+    }
+}
+@Composable
+fun Card(content: @Composable () -> Unit){
+    Box(
+        modifier = Modifier
+            .width(370.dp)
+            .height(220.dp).padding()
+            .alpha(0.85f),
+
+        contentAlignment = Alignment.TopCenter
+
+
+    ) {
+        content()
+    }
+}
+@Composable
+fun CardTitle(title: String){
+    Box(modifier = Modifier
+        .width(370.dp)
+        .fillMaxHeight(0.15F)
+        .border(BorderStroke(1.dp, Color.Gray), RoundedCornerShape(20.dp))
+        .background(Color.White, RoundedCornerShape(20.dp)),
+        contentAlignment = Alignment.Center) {
+        Text(text = title)
+    }
 }
 @Preview
 @Composable
