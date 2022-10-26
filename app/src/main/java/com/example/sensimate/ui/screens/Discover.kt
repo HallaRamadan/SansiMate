@@ -25,10 +25,13 @@ import java.time.format.TextStyle
 import com.example.sensimate.R
 
 
-/* -------- Composable that to display Disover screen  -------*/
+/* -------- Composable that to display Discover screen  -------*/
 
 @Composable
 fun Discover(){
+    DiscoverA()
+    MenuBar()
+    SearchBar()
 
 
 }
@@ -76,9 +79,7 @@ fun DiscoverA() {
                 .width(width = 414.dp)
                 .height(height = 896.dp)
                 .background(color = Color(0xfff9fafb)))
-        // MenuBar()
 
-        //SearchBar()
         Box(
             modifier = Modifier
                 .width(width = 395.dp)
@@ -250,7 +251,7 @@ fun DiscoverA() {
 }
 
 @Composable
-<<<<<<< HEAD
+
 fun MenuBar() {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -407,26 +408,10 @@ fun wa () {
 }
 
 
-
-@Composable
-fun Testable() {
-
-    DiscoverA()
-    MenuBar()
-    SearchBar()
-    wa()
-
-=======
-fun Testable() {
->>>>>>> 43b0c418cfd5a1d2e5b2a3c0387682bae796d6e2
-
-}
-
-
 @Preview
 @Composable
 fun DiscoverPreview(){
-    Testable()
+    Discover()
 
 
 }
