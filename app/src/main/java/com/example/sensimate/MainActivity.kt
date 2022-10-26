@@ -8,6 +8,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import com.example.sensimate.ui.screens.MyEvent
+import com.example.sensimate.ui.screens.SensiMate_Screen
 import com.example.sensimate.ui.theme.SensiMateTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,6 +20,9 @@ class MainActivity : ComponentActivity() {
                 Surface(modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background) {
                     MyEvent()
+                    SensiMate_Screen()
+
+
                 }
             }
         }
