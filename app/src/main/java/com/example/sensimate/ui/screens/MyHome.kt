@@ -73,13 +73,13 @@ fun BookedEvent(){
             contentAlignment = Alignment.TopCenter) {
             Row(horizontalArrangement = Arrangement.spacedBy(2.dp), modifier = Modifier.padding(3.dp)){
                 Box(modifier = Modifier.fillMaxHeight().fillMaxWidth(0.33F).border(BorderStroke(1.dp, Color.Gray), RoundedCornerShape(20.dp)), contentAlignment = Alignment.Center){
-                    Image(painterResource(R.drawable.hand_beer),"content description", modifier = Modifier.size(150.dp))
+                    Image(painterResource(R.drawable.hand_beer),"content description")
                 }
                 Box(modifier = Modifier.fillMaxHeight().fillMaxWidth(0.50F).border(BorderStroke(1.dp, Color.Gray), RoundedCornerShape(20.dp))){
-                    Image(painterResource(R.drawable.hand_beer),"content description", modifier = Modifier.size(1500.dp))
+                    Image(painterResource(R.drawable.cider),"content description", modifier = Modifier.size(1500.dp))
                 }
-                Box(modifier = Modifier.fillMaxHeight().fillMaxWidth(1F).background(Color.Blue, RoundedCornerShape(20.dp)).border(BorderStroke(1.dp, Color.Gray), RoundedCornerShape(20.dp))){
-
+                Box(modifier = Modifier.fillMaxHeight().fillMaxWidth(1F).border(BorderStroke(1.dp, Color.Gray), RoundedCornerShape(20.dp))){
+                    Image(painterResource(R.drawable.coke),"content description", modifier = Modifier.size(1500.dp))
                 }
             }
         }
@@ -96,14 +96,14 @@ fun SavedEvent(){
             .background(Color.White, RoundedCornerShape(20.dp)),
             contentAlignment = Alignment.TopCenter) {
             Row(horizontalArrangement = Arrangement.spacedBy(2.dp), modifier = Modifier.padding(3.dp)){
-                Box(modifier = Modifier.fillMaxHeight().fillMaxWidth(0.33F).background(Color.Red, RoundedCornerShape(20.dp)).border(BorderStroke(1.dp, Color.Gray), RoundedCornerShape(20.dp))){
-
+                Box(modifier = Modifier.fillMaxHeight().fillMaxWidth(0.33F).border(BorderStroke(1.dp, Color.Gray), RoundedCornerShape(20.dp)), contentAlignment = Alignment.Center){
+                    Image(painterResource(R.drawable.hand_beer),"content description", modifier = Modifier.size(150.dp))
                 }
-                Box(modifier = Modifier.fillMaxHeight().fillMaxWidth(0.50F).background(Color.Green, RoundedCornerShape(20.dp)).border(BorderStroke(1.dp, Color.Gray), RoundedCornerShape(20.dp))){
-
+                Box(modifier = Modifier.fillMaxHeight().fillMaxWidth(0.50F).border(BorderStroke(1.dp, Color.Gray), RoundedCornerShape(20.dp))){
+                    Image(painterResource(R.drawable.cider),"content description", modifier = Modifier.size(1500.dp))
                 }
-                Box(modifier = Modifier.fillMaxHeight().fillMaxWidth(1F).background(Color.Blue, RoundedCornerShape(20.dp)).border(BorderStroke(1.dp, Color.Gray), RoundedCornerShape(20.dp))){
-
+                Box(modifier = Modifier.fillMaxHeight().fillMaxWidth(1F).border(BorderStroke(1.dp, Color.Gray), RoundedCornerShape(20.dp))){
+                    Image(painterResource(R.drawable.coke),"content description", modifier = Modifier.size(1500.dp))
                 }
             }
         }
@@ -120,14 +120,14 @@ fun EventHistory(){
             .background(Color.White, RoundedCornerShape(20.dp)),
             contentAlignment = Alignment.TopCenter) {
             Row(horizontalArrangement = Arrangement.spacedBy(2.dp), modifier = Modifier.padding(3.dp)){
-                Box(modifier = Modifier.fillMaxHeight().fillMaxWidth(0.33F).background(Color.Red, RoundedCornerShape(20.dp)).border(BorderStroke(1.dp, Color.Gray), RoundedCornerShape(20.dp))){
-
+                Box(modifier = Modifier.fillMaxHeight().fillMaxWidth(0.33F).border(BorderStroke(1.dp, Color.Gray), RoundedCornerShape(20.dp)), contentAlignment = Alignment.Center){
+                    Image(painterResource(R.drawable.hand_beer),"content description", modifier = Modifier.size(150.dp))
                 }
-                Box(modifier = Modifier.fillMaxHeight().fillMaxWidth(0.50F).background(Color.Green, RoundedCornerShape(20.dp)).border(BorderStroke(1.dp, Color.Gray), RoundedCornerShape(20.dp))){
-
+                Box(modifier = Modifier.fillMaxHeight().fillMaxWidth(0.50F).border(BorderStroke(1.dp, Color.Gray), RoundedCornerShape(20.dp))){
+                    Image(painterResource(R.drawable.cider),"content description", modifier = Modifier.size(1500.dp))
                 }
-                Box(modifier = Modifier.fillMaxHeight().fillMaxWidth(1F).background(Color.Blue, RoundedCornerShape(20.dp)).border(BorderStroke(1.dp, Color.Gray), RoundedCornerShape(20.dp))){
-
+                Box(modifier = Modifier.fillMaxHeight().fillMaxWidth(1F).border(BorderStroke(1.dp, Color.Gray), RoundedCornerShape(20.dp))){
+                    Image(painterResource(R.drawable.coke),"content description", modifier = Modifier.size(1500.dp))
                 }
             }
         }
