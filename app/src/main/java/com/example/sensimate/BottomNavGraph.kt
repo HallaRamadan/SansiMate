@@ -2,6 +2,7 @@ package com.example.sensimate
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHost
+import com.example.sensimate.ui.screens.BottomBarScreen
 
 @Composable
 fun BottomNavGraph(navController: Unit) {
