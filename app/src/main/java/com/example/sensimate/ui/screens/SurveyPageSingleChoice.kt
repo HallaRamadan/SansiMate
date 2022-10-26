@@ -1,6 +1,5 @@
 package com.example.sensimate.ui.screens
 
-import android.graphics.Color
 import android.graphics.Color.GRAY
 import android.widget.GridLayout
 import androidx.compose.foundation.BorderStroke
@@ -22,11 +21,19 @@ import androidx.compose.ui.unit.sp
 import com.example.sensimate.R
 import java.time.format.TextStyle
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 
 @Composable
 fun SurveyPage_SingleChoice(){
+val shape = RoundedCornerShape(12.dp)
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color(0xFFFFFAF0))
+            .padding(16.dp)
 
+            {
         Column(modifier = Modifier.padding(0.dp)) {
             Box(
                 modifier = Modifier
