@@ -26,7 +26,13 @@ fun MyEvent(
 ) {
     SensiMateTheme {
         Background{
-            SearchField()
+            SearchField(
+                Modifier
+                    .width(370.dp)
+                    .height(60.dp).clip(RoundedCornerShape(120.dp))
+                    .background(Color.White)
+                    .alpha(0.8500000238418579f).padding(top = 0.dp)
+            )
             Card {
                 BookedEvent()
             }
@@ -53,7 +59,7 @@ fun Background(content: @Composable () -> Unit){
     }
 }
 @Composable
-fun SearchField(){
+fun SearchField(modifier: Modifier) {
     TextField(value = "Search", onValueChange = {}, leadingIcon = {Icon(Icons.Default.Search, contentDescription = "")}, modifier = Modifier
         .width(370.dp)
         .heightIn(min = 36.dp).clip(RoundedCornerShape(120.dp))
@@ -134,7 +140,7 @@ fun EventHistory(){
     }
 }
 @Composable
-fun Card(content: @Composable () -> Unit){
+fun Card (content: @Composable () -> Unit){
     Box(
         modifier = Modifier
             .width(370.dp)

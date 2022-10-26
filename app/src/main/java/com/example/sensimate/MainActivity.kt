@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
+import com.example.sensimate.ui.screens.Discover_DetailPreview
 import com.example.sensimate.ui.screens.MyEvent
 import com.example.sensimate.ui.screens.SensiMate_Screen
 import com.example.sensimate.ui.theme.SensiMateTheme
@@ -19,7 +20,7 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background) {
-                    MyEvent()
+                    Discover_DetailPreview()
                     SensiMate_Screen()
 
 

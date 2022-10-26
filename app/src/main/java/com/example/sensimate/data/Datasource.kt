@@ -27,6 +27,7 @@ class Datasource() {
         R.drawable.search_icon
         R.drawable.profile_icon
         R.drawable.burger_icon
+        R.drawable.mapdiscover
 
     }
 }
