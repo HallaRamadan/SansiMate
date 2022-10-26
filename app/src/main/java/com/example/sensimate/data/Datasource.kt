@@ -18,7 +18,7 @@ package com.example.sensimate.data
 import com.example.sensimate.R
 
 class Datasource() {
-    fun loadAffirmations() {
+    fun loadIcons() {
         R.drawable.hand_beer
         R.drawable.cider
         R.drawable.cola_beverage
@@ -27,6 +27,7 @@ class Datasource() {
         R.drawable.search_icon
         R.drawable.profile_icon
         R.drawable.burger_icon
+        R.drawable.star
 
     }
 }
