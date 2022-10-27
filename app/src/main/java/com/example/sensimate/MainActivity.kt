@@ -6,7 +6,10 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import com.example.sensimate.ui.screens.Discover
 import com.example.sensimate.ui.screens.Discover_DetailPreview
 import com.example.sensimate.ui.screens.MyEvent
 // import com.example.sensimate.ui.screens.SensiMate_Screen
@@ -16,19 +19,28 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            SensiMateTheme {
-                // A surface container using the 'background' color from the theme
+       /*     SensiMateTheme {
+                 A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background) {
                     Discover_DetailPreview()
-                    //SensiMate_Screen()
-
-
-                }
+                    SensiMate_Screen()
+                }*/
+            MainScreen()
             }
+
         }
+
+
+
     }
+
+@Preview
+@Composable
+fun MainActivityPreview() {
+    MainScreen()
 }
+
 
 
 
