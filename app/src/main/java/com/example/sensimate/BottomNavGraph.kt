@@ -1,7 +1,8 @@
 
 package com.example.sensimate
 
-import androidx.compose.runtime.Composable
+/*import androidx.compose.runtime.Composable
+ 
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -14,6 +15,7 @@ import com.example.sensimate.ui.screens.MyEvent
 @Composable
 
 fun BottomNavGraph(navController: NavHostController) {
+    /*
     NavHost(
         navController = navController,
         startDestination = BottomBarScreen.Home.route
@@ -29,13 +31,11 @@ fun BottomNavGraph(navController: NavHostController) {
             Discover()
         }
 
-    }
+   */
 
 
+ */
 
 
-
-
-        }
 
 

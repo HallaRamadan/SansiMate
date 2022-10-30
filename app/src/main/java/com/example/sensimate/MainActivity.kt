@@ -26,7 +26,9 @@ class MainActivity : ComponentActivity() {
                     Discover_DetailPreview()
                     SensiMate_Screen()
                 }*/
-            MainScreen()
+          /*  MainScreen()
+
+           */
             }
 
         }
@@ -38,7 +40,7 @@ class MainActivity : ComponentActivity() {
 @Preview
 @Composable
 fun MainActivityPreview() {
-    MainScreen()
+   //  MainScreen()
 }
 
 

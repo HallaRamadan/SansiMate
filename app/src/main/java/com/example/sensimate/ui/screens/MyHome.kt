@@ -22,8 +22,7 @@ import com.example.sensimate.ui.theme.SensiMateTheme
 
 
 @Composable
-fun MyEvent(
-) {
+fun MyEvent() {
     SensiMateTheme {
         Background{
             SearchField(

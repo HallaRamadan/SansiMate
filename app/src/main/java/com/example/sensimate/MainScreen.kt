@@ -1,6 +1,6 @@
 package com.example.sensimate
 
-import android.annotation.SuppressLint
+/*import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -18,6 +18,7 @@ import androidx.navigation.compose.rememberNavController
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun MainScreen() {
+    /*
     val navController = rememberNavController()
     Scaffold(
         bottomBar = { BottomBar(navController = navController)}
@@ -81,7 +82,5 @@ fun BottomBar(navController: NavHostController) {
 @Composable
 fun MainScreenPreview() {
     MainScreen()
-
-}
-
-
+       */
+ */

@@ -1,13 +1,11 @@
 package com.example.sensimate.ui.screens
 
-import androidx.compose.foundation.layout.RowScope
+/*import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavHostController
-/*
-import com.example.sensimate.BottomBarScreen
 import com.example.sensimate.BottomNavGraph
 
 //class SensiMate_Screen {
@@ -16,7 +14,7 @@ import com.example.sensimate.BottomNavGraph
 
 @Composable
 fun SensiMate_Screen(){
-    val navController =remeberNavController()
+   /* val navController =remeberNavController()
     Scaffold(
         bottomBar= {BottomBar(navController = navController)}) {
         BottomNavGraph(
@@ -29,8 +27,8 @@ fun SensiMate_Screen(){
 @Composable
 fun BottomBar(navController: Unit){
     val screen = listOf(
-        BottomBarScreen.MyHome,
-        BottomBarScreen.MyProfile,
+        BottomBarScreen.My_Home,
+        BottomBarScreen.My_Profile,
         BottomBarScreen.Search,
     )
     val navBackStackEntry by navController.currentBackStackEntryAsState()
@@ -76,7 +74,8 @@ fun RowScope.AddItem(
 
 
 
-fun remeberNavController() {
+fun remeberNavController() {*/
 
 }
 */
+
