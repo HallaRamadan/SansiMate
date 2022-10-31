@@ -4,6 +4,7 @@ import android.graphics.Color.GRAY
 import android.widget.GridLayout
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -23,7 +24,7 @@ import java.time.format.TextStyle
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
-
+@Preview
 @Composable
 fun SurveyPage_SingleChoice(){
 val shape = RoundedCornerShape(12.dp)
@@ -32,6 +33,7 @@ val shape = RoundedCornerShape(12.dp)
             .fillMaxSize()
             .background(Color(0xFFFFFAF0))
             .padding(16.dp)
+    )
 
             {
         Column(modifier = Modifier.padding(0.dp)) {
@@ -76,7 +78,7 @@ Text(
 )
 }*/
 
-@Preview (showBackground = true)
+
 @Composable
 fun SurveyPage_SingleChoicePreview(){
     SurveyPage_SingleChoice()
