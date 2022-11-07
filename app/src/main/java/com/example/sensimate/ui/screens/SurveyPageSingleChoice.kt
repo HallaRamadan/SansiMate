@@ -115,7 +115,7 @@ fun question(){
 
                 .clip(RoundedCornerShape(20.dp))
                 .background(Color(0xFFFFFFFF))
-                .border(BorderStroke(1.dp, Gray), RoundedCornerShape(20.dp)),
+                .border(BorderStroke(2.dp, Color(0xFF000000)), RoundedCornerShape(20.dp)),
                 contentAlignment = Alignment.BottomCenter
 
                 ) {
