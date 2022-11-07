@@ -4,8 +4,10 @@ import android.graphics.Color.*
 import android.icu.text.CaseMap.Title
 import android.view.RoundedCorner
 import android.widget.GridLayout
+import androidx.compose.animation.core.TwoWayConverter
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
+
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.AbsoluteRoundedCornerShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -14,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.Bottom
 import androidx.compose.ui.Alignment.Companion.TopCenter
 import androidx.compose.ui.graphics.Color.Companion.Gray
 import androidx.compose.ui.res.painterResource
@@ -40,6 +43,7 @@ frame {
     question()
 }
     Answers()
+    NextButton()
 
 }
 
@@ -205,11 +209,49 @@ Row(modifier = Modifier.padding(24.dp)) {
 }*/
 
 
-
+@Preview
 @Composable
 fun NextButton(){
+    val mainButtonColor = ButtonDefaults.buttonColors(
+        backgroundColor = Color.Black,
+        contentColor = MaterialTheme.colors.surface)
+Column(modifier = Modifier
+    .fillMaxWidth()
+    .fillMaxHeight(),
+verticalArrangement = Arrangement.Bottom,
+    horizontalAlignment = Alignment.CenterHorizontally
 
-}
+    ) {
+
+    Row(modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceEvenly,
+        verticalAlignment = Bottom
+
+    ) {
+
+    Button( colors = mainButtonColor,
+        onClick = { /*TODO*/ },
+        modifier = Modifier
+            .padding(8.dp),
+
+        shape = RoundedCornerShape(20.dp),
+
+    ) {
+        Text(text = "<- Previous")
+    }
+        Button(colors = mainButtonColor,
+            onClick = { /*TODO*/ },
+            modifier = Modifier
+                .padding(8.dp),
+
+            shape = RoundedCornerShape(20.dp),
+
+            ) {
+            Text(text = "Next ->")
+
+        }
+        
+    }}}
 
 @Composable
 fun PreviousButton(){
