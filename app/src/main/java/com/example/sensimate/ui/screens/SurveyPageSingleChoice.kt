@@ -1,15 +1,9 @@
 package com.example.sensimate.ui.screens
 
-import android.graphics.Color.*
-import android.icu.text.CaseMap.Title
-import android.view.RoundedCorner
-import android.widget.GridLayout
-import androidx.compose.animation.core.TwoWayConverter
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 
 import androidx.compose.foundation.selection.selectable
-import androidx.compose.foundation.shape.AbsoluteRoundedCornerShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -17,34 +11,30 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.Bottom
-import androidx.compose.ui.Alignment.Companion.TopCenter
 import androidx.compose.ui.graphics.Color.Companion.Gray
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import com.example.sensimate.R
-import java.time.format.TextStyle
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Black
-import androidx.compose.ui.layout.LastBaseline
-import androidx.compose.ui.layout.VerticalAlignmentLine
-import androidx.compose.ui.unit.Dp
-import java.util.concurrent.ConcurrentLinkedDeque
 
 
 @Composable
 fun SurveyPageSingleChoice(){
 frame {
-    progress_indicator()
-    question()
+    progress_indicator(0.6f, prog = "6/7")
+    question("This is a question, dont question\n" +
+            "it, just answer it*")
 }
     Answers()
     NextButton()
 
+}
+@Preview
+@Composable
+fun SurveyPageSingleChoicePreview(){
+    SurveyPageSingleChoice()
 }
 
 @Composable
@@ -65,15 +55,14 @@ fun frame(content: @Composable () -> Unit){
 
 
 @Composable
-fun progress_indicator() {
+fun progress_indicator(text: Float, prog: String) {
 
-val prog = 0.6f
 //var max = 7
 Row(verticalAlignment = Alignment.CenterVertically,
 modifier = Modifier.width(500.dp)) {
 
         LinearProgressIndicator(
-            progress = prog,
+            progress = text,
             modifier = Modifier
                 .weight(1f)
                 .padding(
@@ -87,7 +76,7 @@ modifier = Modifier.width(500.dp)) {
             color = Black,
         )
        // Text(text = prog,"/",max)
-        Text(text = "6/7"
+        Text(text = prog
 
         
             )
@@ -97,7 +86,7 @@ modifier = Modifier.width(500.dp)) {
 
 
 @Composable
-fun question(){
+fun question(text: String){
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -127,7 +116,7 @@ fun question(){
                 ) {
                     Column(verticalArrangement = Arrangement.spacedBy(5.dp)) {
                         Text(
-                            text = "This is a question, dont question\nit, just answer it*",
+                            text = text,
                             modifier = Modifier.padding(
                                 top = 30.dp,
                                 start = 20.dp))
@@ -256,10 +245,4 @@ verticalArrangement = Arrangement.Bottom,
 @Composable
 fun PreviousButton(){
 
-}
-
-@Preview
-@Composable
-fun SurveyPageSingleChoicePreview(){
-    SurveyPageSingleChoice()
 }
