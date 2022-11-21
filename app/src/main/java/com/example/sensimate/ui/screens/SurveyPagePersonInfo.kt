@@ -28,15 +28,21 @@ import androidx.compose.ui.unit.toSize
 @Composable
 fun Survey_PageToPersonInfo(){
     frame {
+        Column(modifier = Modifier
+            .fillMaxSize(),
+        verticalArrangement = Arrangement.SpaceEvenly) {
+
+
 
 
     progress_indicator(0.1f, prog = "1/7")
     question("Before we start, we would like to\n" +
-            "know a little about you")}
-    Info()
-    NextButton()
+            "know a little about you")}}
 
-}
+
+    Info()
+    NextButton()}
+
 
 @Preview
 @Composable
@@ -47,25 +53,30 @@ fun Survey_PageToPersonInfoPreview(){
 @Preview
 @Composable
 fun Info() {
-    Column(modifier = Modifier.padding(16.dp)) {
+    Column(modifier = Modifier
+        .fillMaxWidth()
+        .fillMaxHeight(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally) {
         Box(modifier = Modifier
             .size(
-                width = 400.dp,
+                width = 350.dp,
                 height = 300.dp
             )
+
 
 
             .clip(RoundedCornerShape(20.dp))
             .background(Color(0xFFFFFFFF))
             .border(BorderStroke(2.dp, Color(0xFF000000)), RoundedCornerShape(20.dp)),
-            contentAlignment = Alignment.BottomCenter
+            contentAlignment = Alignment.Center
+
+
+
 
         ) {
 
-            Column(modifier = Modifier
-                .align((Alignment.TopCenter)),
-            verticalArrangement = Arrangement.spacedBy(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally) {
+            Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                 AgeInfo()
                 Gender()
                 Postcode()
@@ -96,16 +107,15 @@ fun Info() {
 @Preview
 @Composable
 fun AgeInfo(){
-        Row ( modifier = Modifier
-            .fillMaxHeight()
-            .fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceEvenly
+        Row ( modifier = Modifier,
+            horizontalArrangement = Arrangement.spacedBy(39.dp),
+
 
 
         ){
             Text(text = "Age",
                 modifier = Modifier.padding(
-                    top = 25.dp
+                    bottom = 25.dp
 
                 )
 
@@ -120,10 +130,15 @@ fun TextField(visualTransformation:VisualTransformation = VisualTransformation.N
     val (text, setText) = remember {
         mutableStateOf("")
     }
-    OutlinedTextField(value = text,
+    OutlinedTextField(modifier = Modifier
+        .width(200.dp)
+        .height(10.dp),
+        value = text,
         onValueChange ={setText(it)},
         visualTransformation = visualTransformation,
-        keyboardOptions = keyboardOptions
+        keyboardOptions = keyboardOptions,
+        shape = RoundedCornerShape(20.dp)
+
     )
 
 }
@@ -145,26 +160,27 @@ fun Gender() {
 
 
 
-        Row ( modifier = Modifier
-            .fillMaxHeight()
-            .fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceEvenly
+        Row ( modifier = Modifier,
 
+                horizontalArrangement = Arrangement.spacedBy(20.dp),
 
                 ){
             Text(text = "Gender",
                 modifier = Modifier.padding(
-                    top = 25.dp
+                    bottom = 25.dp
 
                 )
 
             )
 
             OutlinedTextField(
+                shape = RoundedCornerShape(15.dp),
                 value = selectedText,
                 onValueChange = { selectedText = it },
                 modifier = Modifier
+
                     .width(200.dp)
+                    .height(10.dp)
                     .onGloballyPositioned { coordinates ->
                         //This value is used to assign to the DropDown the same width
                         textfieldSize = coordinates.size.toSize()
@@ -197,18 +213,15 @@ fun Gender() {
 @Composable
 fun Postcode(){
 
-        Row ( modifier = Modifier
-            .fillMaxHeight()
-            .fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceEvenly
+        Row ( modifier = Modifier,
+
+            horizontalArrangement = Arrangement.spacedBy(6.dp),
 
 
         ){
             Text(text = "Postcode",
                 modifier = Modifier.padding(
-                    top = 25.dp
-
-                )
+                    bottom = 25.dp)
 
             )
             TextField()
