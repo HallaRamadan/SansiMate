@@ -21,17 +21,6 @@ fun My_Profile() {
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
     /*Box(
             modifier = Modifier
                 .background(Color.LightGray)
