@@ -8,7 +8,7 @@ val Purple700 = Color(0xFF3700B3)
 val Teal200 = Color(0xFF03DAC5)
 
 val NaplesYellow = Color(0xFFF4CA5B)
-val Gunmetal = Color(0xFF2E3047)
+val Gunmetal = Color(0xFF323232)
 val White = Color(0xFFFFFF)
 val Violets_Are_Blue = Color(0xFF9B6BFE)
 val Light_Carmine_Pink = Color(0xFFEE7068)

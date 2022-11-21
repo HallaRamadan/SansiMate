@@ -17,10 +17,10 @@ import androidx.compose.ui.unit.sp
 import com.example.sensimate.R
 import com.example.sensimate.data.Event
 import com.example.sensimate.ui.components.Card
-import com.example.sensimate.ui.screens.Background
+import com.example.sensimate.ui.components.Background
 import com.example.sensimate.ui.screens.Foodstuff
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun Discover_emPreview(){
     val eventList = listOf(
@@ -61,22 +61,20 @@ fun Discover_emPreview(){
 @Composable
 fun Discover_em(eventList:List<Event>){
   Background {
-      SensiMateImage()
+      //SensiMateImage()
       for (event: Event in eventList){
           Foodstuff_toAll(event)
       }
   }
 }
 @Composable
-fun Background ( content:@Composable ()->Unit){
+fun BackgroundD ( content:@Composable ()->Unit){
     Box(
         modifier = Modifier
 
             .width(350.dp)
             .fillMaxHeight(300.4F)
             .border(BorderStroke(1.dp, Color.Black), RoundedCornerShape(20.dp))
-            .background(color=MaterialTheme.colors.onSecondary,
-                 RoundedCornerShape(20.dp)),
     ){
         Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
             content()

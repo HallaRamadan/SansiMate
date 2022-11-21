@@ -1,5 +1,7 @@
 package com.example.sensimate.data
 
+
+
 class Event(
     id: Int,
     title:String,
@@ -7,7 +9,7 @@ class Event(
     image: Int, street:String,
     town:String,
     postcode: Int,
-    country:String) {
+    country:String){
     var id = id;
     var title = title;
     var date = date;

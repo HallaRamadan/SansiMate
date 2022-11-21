@@ -21,7 +21,7 @@ sealed class BottomBarScreen (
    )
 
     object Profile: BottomBarScreen(
-        route = "profile",
+        route = "discover_em",
         title = "Profile",
         icon = Icons.Default.Person
     )

@@ -12,7 +12,7 @@ private val DarkColorPalette = darkColors(
     surface = Color.White,
     primary = Purple200,
     primaryVariant = Purple700,
-    secondary = Teal200
+    secondary = Teal200,
 )
 
 private val LightColorPalette = lightColors(
@@ -20,8 +20,8 @@ private val LightColorPalette = lightColors(
     primaryVariant = Purple700,
     secondary = Teal200,
     //-------- SensiMate app´s Color--- But not sure to use all of them -----//
-    background = Color.White,
-    surface = Color.White,
+    background = Color.Black,
+    surface = Color.Black,
     onPrimary = Color.Green,
     onSecondary = Color.Black,
     onBackground = Color.Black,
@@ -31,7 +31,7 @@ private val LightColorPalette = lightColors(
 
 @Composable
 fun SensiMateTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
-    val colors = if (darkTheme) {
+    val colors = if (!darkTheme) {
         DarkColorPalette
     } else {
         LightColorPalette

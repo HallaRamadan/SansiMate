@@ -1,34 +1,84 @@
 package com.example.sensimate.ui.screens
 
 //import java.lang.reflect.Modifier
-import androidx.compose.foundation.Image
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.sensimate.R
+import com.example.sensimate.Screen
 import com.example.sensimate.data.Event
 import com.example.sensimate.ui.components.Card
+import com.example.sensimate.ui.components.Background
+import com.example.sensimate.ui.components.SearchField
+import com.example.sensimate.ui.components.SensimateLogo
 
 
 /* -------- Composable that to display Discover screen  -------*/
 
 @Composable
-fun Discover(eventList:List<Event>){
+fun Discover(navController: NavController){
+    val eventList = listOf(
+        Event(id = 1,
+            title = "Beer from GoldStar",
+            date = "12/01/2023",
+            image = R.drawable.hand_beer, street = "FakeStreet 123",
+            town = "Fake",
+            postcode = 123,
+            country = "Denmark"),
+        Event(id = 2,
+            title = "Cider from Goldstar",
+            date = "24/02/2023",
+            image = R.drawable.coke, street = "FakeStreet 123",
+            town = "Fake",
+            postcode = 123,
+            country = "Denmark"),
+        Event(id = 3,
+            title = "Soda from Hejsommer",
+            date = "29/03/2022",
+            image = R.drawable.cider, street = "FakeStreet 123",
+            town = "Fake",
+            postcode = 123,
+            country = "Denmark"),
+        Event(id = 3,
+            title = "Soda from Hejsommer",
+            date = "29/03/2022",
+            image = R.drawable.cider, street = "FakeStreet 123",
+            town = "Fake",
+            postcode = 123,
+            country = "Denmark"),
+        Event(id = 3,
+            title = "Soda from Hejsommer",
+            date = "29/03/2022",
+            image = R.drawable.cider, street = "FakeStreet 123",
+            town = "Fake",
+            postcode = 123,
+            country = "Denmark"),        Event(id = 3,
+            title = "Soda from Hejsommer",
+            date = "29/03/2022",
+            image = R.drawable.cider, street = "FakeStreet 123",
+            town = "Fake",
+            postcode = 123,
+            country = "Denmark"),
 
-    BackgroundD {
-        for (event: Event in eventList){
-            Foodstuff(event)
-        }
+    )
+    Background {
+                for (event: Event in eventList) {
+                    Foodstuff(event, navController)
+                }
+
 /*        SearchFieldD()
         Foodstuff("Beer from GoldStar")
         Foodstuff2("Cider from Goldstar")
@@ -46,28 +96,15 @@ fun Discover(eventList:List<Event>){
 
 
 
-@Composable
-fun BackgroundD(content: @Composable () -> Unit){
-    Box(
-        modifier = Modifier
-            .verticalScroll(rememberScrollState())
-            .fillMaxSize()
-            .padding(20.dp),
-        contentAlignment = Alignment.TopCenter
-    ){
-        Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-            content()
-        }
-    }
-}
-
 
 @Composable
 
-fun Foodstuff(event:Event) {
+fun Foodstuff(event:Event, navController: NavController) {
     Card(modifier = Modifier
         .padding(0.dp)
-        .height(150.dp), alignment = Alignment.CenterStart) {
+        .height(150.dp)
+        .clickable(onClick = { navController.navigate(Screen.EventDetails.route) }),
+        alignment = Alignment.CenterStart) {
 
             
             Row(
@@ -96,7 +133,8 @@ fun Foodstuff(event:Event) {
                             Text(text = "12/12/22", color = Color.White)
                         }
                         Column(modifier = Modifier
-                            .fillMaxWidth(1F).padding(1.dp), horizontalAlignment = Alignment.End) {
+                            .fillMaxWidth(1F)
+                            .padding(1.dp), horizontalAlignment = Alignment.End) {
                             Text(text = "1km", color = Color.White)
                         }
 
@@ -120,29 +158,7 @@ fun Foodstuff(event:Event) {
 @Preview
 @Composable
 fun DiscoverPreview() {
-    val eventList = listOf(
-        Event(id = 1,
-            title = "Beer from GoldStar",
-            date = "12/12/2022",
-            image = R.drawable.hand_beer, street = "FakeStreet 123",
-            town = "Fake",
-            postcode = 123,
-            country = "Denmark"),
-        Event(id = 2,
-            title = "Cider from Goldstar",
-            date = "12/12/2022",
-            image = R.drawable.coke, street = "FakeStreet 123",
-            town = "Fake",
-            postcode = 123,
-            country = "Denmark"),
-        Event(id = 3,
-            title = "Soda from Hejsommer",
-            date = "12/12/2022",
-            image = R.drawable.cider, street = "FakeStreet 123",
-            town = "Fake",
-            postcode = 123,
-            country = "Denmark"),
-    )
-    Discover(eventList)
+
+    //Discover()
 
 }
