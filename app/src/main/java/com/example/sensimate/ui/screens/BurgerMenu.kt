@@ -14,16 +14,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.sensimate.R
-
+/*
 @Preview
 @Composable
 fun BurgerMenuScreenPreview(){
     BurgerMenuScreen()
 
 }
-
-
-
 @Composable
 fun BurgerMenuScreen(){
     Box(modifier = Modifier.width(350.dp).fillMaxHeight(10.4F).border(BorderStroke(1.dp,Color.White),
@@ -55,6 +52,7 @@ fun BurgerMenuScreen(){
 
     }
 }
+ */
 
 
 

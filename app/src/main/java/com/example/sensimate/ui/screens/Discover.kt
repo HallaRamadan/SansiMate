@@ -73,9 +73,7 @@ fun Foodstuff(event:Event) {
             Row(
                 modifier = Modifier
                     .fillMaxHeight(1F)
-                    .fillMaxWidth(1F)
-
-                ,
+                    .fillMaxWidth(1F),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Column(modifier = Modifier
