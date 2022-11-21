@@ -36,7 +36,9 @@ fun BurgerMenuScreen(){
         contentAlignment = Alignment.Center)
     {
 
-        Row(horizontalArrangement = Arrangement.spacedBy(2.dp), modifier = Modifier.padding(3.dp)) {
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(2.dp),
+            modifier = Modifier.padding(3.dp)) {
                 Spacer(modifier = Modifier.height(16.dp))
                 Image(
                     painter = painterResource(R.drawable.star),
