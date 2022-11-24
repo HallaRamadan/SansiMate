@@ -136,7 +136,7 @@ Text(
 @Composable
 fun Answers() {
     val radioOptions = listOf("A", "Not me", "Me neither", "Choose A")
-    val (selectedOption, onOptionSelected) = remember { mutableStateOf(radioOptions[1] ) }
+    val (selectedOption, onOptionSelected) = remember { mutableStateOf("") }
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -162,7 +162,7 @@ fun Answers() {
                 Text(
                     text = text,
                     style = MaterialTheme.typography.body1.merge(),
-                    modifier = Modifier.padding(start = 16.dp)
+                    modifier = Modifier.padding(start = 20.dp)
                 )
             }
         }
