@@ -1,5 +1,6 @@
 package com.example.sensimate.ui.screens
 
+import android.annotation.SuppressLint
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.foundation.BorderStroke
@@ -143,6 +144,7 @@ fun TextField(visualTransformation:VisualTransformation = VisualTransformation.N
 
 }
 
+@SuppressLint("SuspiciousIndentation")
 @Preview
 @Composable
 fun Gender() {
