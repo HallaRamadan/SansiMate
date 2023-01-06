@@ -32,7 +32,6 @@ fun MainScreen() {
         bottomBar = { BottomBar(navController = navController)}
     ) { innerPadding ->
         Box(modifier = Modifier.padding(innerPadding)) {
-            //Discover_emPreview()
             BottomNavGraph(navController = navController)
         }
     }
