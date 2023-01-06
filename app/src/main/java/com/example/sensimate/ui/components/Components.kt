@@ -3,6 +3,7 @@ package com.example.sensimate.ui.components
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -44,7 +45,7 @@ fun Card (modifier: Modifier = Modifier, alignment: Alignment = Alignment.TopCen
                 brush = Brush.horizontalGradient(listOf(Color(0xFFED7069), Color(0xFF9F6CF1))),
                 width = 3.dp,
                 shape = RoundedCornerShape(18.dp)
-            ).background(Color(0xFF222222), RoundedCornerShape(20.dp))
+            ).background(MaterialTheme.colors.surface, RoundedCornerShape(20.dp))
             .alpha(0.85f),
 
         contentAlignment = alignment
@@ -59,7 +60,7 @@ fun Card (modifier: Modifier = Modifier, alignment: Alignment = Alignment.TopCen
 fun SensimateLogo(){
     Box(
         modifier =
-        Modifier.background(Color(0xFF323232)).fillMaxHeight(0.1f).fillMaxWidth()
+        Modifier.background(MaterialTheme.colors.background).fillMaxHeight(0.1f).fillMaxWidth()
             .padding(horizontal = 12.dp), contentAlignment = Alignment.TopCenter
     ) {
         Image(
