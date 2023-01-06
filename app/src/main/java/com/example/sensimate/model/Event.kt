@@ -1,4 +1,4 @@
-package com.example.sensimate.data
+package com.example.sensimate.model
 
 
 
