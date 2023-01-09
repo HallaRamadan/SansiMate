@@ -25,3 +25,10 @@ fun fetchQuestions(SurvayId: String):String {
     //      Returns an Array of JSON Strings
     return JsonString
 }
+
+fun constructSurvay(SurvayId: String):Survay {
+    //TODO: Makes use of the functions above, and constructs a survayObject.
+    //      This will be the "Main" function for retriving and creating a survayObject
+    //      That can be used for rendering the Survay in the SurvayView
+    return SurvayObject
+}
