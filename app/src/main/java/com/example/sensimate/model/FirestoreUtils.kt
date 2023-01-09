@@ -1,7 +1,7 @@
 package com.example.sensimate.model
 
 fun RetriveSurvey(surveyID: String):String {
-    //TODO: Connects to the firestore, and retrives a survay based on ID
+    //TODO: Connects to the firestore, and retrives a survey based on ID
     //      Returns a JSON Strings
     return JsonString
 }

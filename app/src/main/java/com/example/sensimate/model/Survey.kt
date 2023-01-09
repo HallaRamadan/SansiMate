@@ -13,5 +13,5 @@ a uniq ID, This ID should be stored in the Survey Object aswell, under the attri
  */
 
 class Survey {
-    //TODO: Create Survay Class
+    //TODO: Create Survey Class
 }

@@ -18,6 +18,7 @@ private val DarkColorPalette = darkColors(
     onPrimary = White,
     onBackground = BlackDark,
     onSecondary = WhiteDark,
+    onError = Gunmetal,
 
 
 
