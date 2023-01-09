@@ -25,23 +25,26 @@ import com.example.sensimate.ui.screens.Foodstuff
 fun Discover_emPreview(){
     val eventList = listOf(
         Event(id = 1,
-            title = "Beer from GoldStar",
+          title = "Beer from GoldStar",
             date = "12/12/2022",
-            image = R.drawable.hand_beer, street = "FakeStreet 123",
+            image = R.drawable.hand_beer,
+            street = "FakeStreet 123",
             town = "Fake",
             postcode = 123,
             country = "Denmark"),
         Event(id = 2,
             title = "Cider from Goldstar",
             date = "12/12/2022",
-            image = R.drawable.coke, street = "FakeStreet 123",
+            image = R.drawable.coke,
+            street = "FakeStreet 123",
             town = "Fake",
             postcode = 123,
             country = "Denmark"),
         Event(id = 3,
             title = "Soda from Hejsommer",
             date = "12/12/2022",
-            image = R.drawable.cider, street = "FakeStreet 123",
+            image = R.drawable.cider,
+            street = "FakeStreet 123",
             town = "Fake",
             postcode = 123,
             country = "Denmark"),
@@ -156,6 +159,8 @@ fun Foodstuff_toAll(event:Event) {
         }
     }
 }
+
+
 
 
 

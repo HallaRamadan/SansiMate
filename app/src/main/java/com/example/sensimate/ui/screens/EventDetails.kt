@@ -25,7 +25,8 @@ fun EventDetails() {
     Background {
         Card(
             modifier = Modifier
-                .padding(0.dp).height(500.dp)
+                .padding(0.dp)
+                .height(500.dp)
                 .fillMaxHeight(), alignment = Alignment.TopCenter
         ) {
             Column(
@@ -52,11 +53,13 @@ fun EventDetails() {
                                 .fillMaxWidth(1F)
                                 .fillMaxHeight(0.65F)
                         )
+                        Spacer(modifier = Modifier.height(30.dp))
                         Text(
                             text = "                       Check Results",
                             color = Color.Magenta,
                             fontSize = 20.sp
                         )
+                        Spacer(modifier = Modifier.height(20.dp))
                         Text(
                             text = "                       Edit Survey",
                             color = Color.Magenta,

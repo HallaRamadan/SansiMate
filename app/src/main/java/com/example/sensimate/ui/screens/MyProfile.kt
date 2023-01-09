@@ -17,14 +17,18 @@ import androidx.compose.ui.unit.dp
 
 @Preview
 @Composable
-fun My_Profile() {
-
+fun My_ProfilePreview(){
+    My_Profile()
 }
 
-    /*Box(
+@Composable
+fun My_Profile() {
+
+    Box(
             modifier = Modifier
-                .background(Color.LightGray)
-                .fillMaxSize().padding(20.dp),
+                .background(Color.White)
+                .fillMaxSize()
+                .padding(20.dp),
             contentAlignment = Alignment.TopCenter
         ) {
 
@@ -32,15 +36,18 @@ fun My_Profile() {
                 SearchField(
                     modifier = Modifier
                         .width(370.dp)
-                        .height(60.dp).clip(RoundedCornerShape(120.dp))
+                        .height(60.dp)
+                        .clip(RoundedCornerShape(120.dp))
                         .background(Color.White)
-                        .alpha(0.8500000238418579f).padding(top = 0.dp),
+                        .alpha(0.8500000238418579f)
+                        .padding(top = 0.dp),
                     )
                 Box(
                     modifier = Modifier
                         .width(370.dp)
                         .height(250.dp)
-                        .alpha(0.8500000238418579f).padding(top = 2.dp),
+                        .alpha(0.8500000238418579f)
+                        .padding(top = 2.dp),
                     contentAlignment = Alignment.TopCenter
 
 
@@ -70,25 +77,15 @@ fun My_Profile() {
                             contentAlignment = Alignment.TopCenter) {
                             Text(text = "Cider from Goldstar")
                         }
-                        }
                     }
                 }
             }
+    }
 
 
-        }
-
-
-     */
-/*
-@Composable
-fun PointsGained(){
-}
-@Composable
-fun PointReward(){
-}
-@Composable
-fun EditProfile(){
 }
 
- */
+
+
+
+
