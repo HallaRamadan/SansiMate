@@ -1,12 +1,10 @@
 package com.example.sensimate
 
 import android.annotation.SuppressLint
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.magnifier
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -14,15 +12,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.sensimate.navigation.BottomBarScreen
 import com.example.sensimate.ui.components.SensimateLogo
-import com.example.sensimate.ui.screens_employee.Discover_emPreview
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -35,7 +32,6 @@ fun MainScreen() {
         bottomBar = { BottomBar(navController = navController)}
     ) { innerPadding ->
         Box(modifier = Modifier.padding(innerPadding)) {
-            //Discover_emPreview()
             BottomNavGraph(navController = navController)
         }
     }
@@ -52,7 +48,7 @@ fun BottomBar(navController: NavHostController) {
     val currentDestination = navBackStackEntry?.destination
 
 
-    BottomNavigation(backgroundColor = Color(0xFF323235), elevation = 10.dp, contentColor = Color.White) {
+    BottomNavigation(backgroundColor = MaterialTheme.colors.background, elevation = 10.dp, contentColor = Color.White) {
         screens.forEach { screen ->
             AddItem(screen = screen, currentDestination = currentDestination, navController = navController)
 

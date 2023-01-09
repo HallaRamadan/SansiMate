@@ -1,5 +1,6 @@
 package com.example.sensimate.ui.screens
 
+import android.annotation.SuppressLint
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.foundation.BorderStroke
@@ -67,8 +68,8 @@ fun Info() {
 
 
             .clip(RoundedCornerShape(20.dp))
-            .background(Color(0xFFFFFFFF))
-            .border(BorderStroke(2.dp, Color(0xFF000000)), RoundedCornerShape(20.dp)),
+            .background(MaterialTheme.colors.onPrimary)
+            .border(BorderStroke(2.dp, MaterialTheme.colors.onBackground), RoundedCornerShape(20.dp)),
             contentAlignment = Alignment.Center
 
 
@@ -143,6 +144,7 @@ fun TextField(visualTransformation:VisualTransformation = VisualTransformation.N
 
 }
 
+@SuppressLint("SuspiciousIndentation")
 @Preview
 @Composable
 fun Gender() {

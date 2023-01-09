@@ -3,7 +3,6 @@ package com.example.sensimate.ui.screens_employee
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -15,11 +14,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.sensimate.R
-import com.example.sensimate.data.Event
+import com.example.sensimate.model.Event
 import com.example.sensimate.ui.components.Card
 import com.example.sensimate.ui.components.Background
-import com.example.sensimate.ui.screens.Foodstuff
 
+/*
 @Preview(showBackground = true)
 @Composable
 fun Discover_emPreview(){
@@ -156,4 +155,4 @@ fun Foodstuff_toAll(event:Event) {
 }
 
 
-
+ */

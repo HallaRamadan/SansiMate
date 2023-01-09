@@ -3,13 +3,10 @@ package com.example.sensimate.ui.screens
 //import java.lang.reflect.Modifier
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -18,12 +15,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.sensimate.R
-import com.example.sensimate.Screen
-import com.example.sensimate.data.Event
+import com.example.sensimate.navigation.Screen
+import com.example.sensimate.model.Event
 import com.example.sensimate.ui.components.Card
 import com.example.sensimate.ui.components.Background
-import com.example.sensimate.ui.components.SearchField
-import com.example.sensimate.ui.components.SensimateLogo
 
 
 /* -------- Composable that to display Discover screen  -------*/
@@ -75,23 +70,10 @@ fun Discover(navController: NavController){
 
     )
     Background {
-                for (event: Event in eventList) {
-                    Foodstuff(event, navController)
-                }
-
-/*        SearchFieldD()
-        Foodstuff("Beer from GoldStar")
-        Foodstuff2("Cider from Goldstar")
-        Foodstuff3("Soda from Hejsommer")
-        Foodstuff4("Cola from Popi")
-        Foodstuff("Beer from GoldStar")
-        Foodstuff2("Cider from Goldstar")
-        Foodstuff3("Soda from Hejsommer")
-        Foodstuff4("Cola from Popi")*/
-
-
+        for (event: Event in eventList) {
+            Foodstuff(event, navController)
+        }
     }
-
 }
 
 
@@ -158,7 +140,6 @@ fun Foodstuff(event:Event, navController: NavController) {
 @Preview
 @Composable
 fun DiscoverPreview() {
-
     //Discover()
 
 }
