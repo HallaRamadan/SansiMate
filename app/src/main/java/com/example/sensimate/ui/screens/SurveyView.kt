@@ -2,10 +2,10 @@ package com.example.sensimate.ui.screens
 
 import androidx.compose.runtime.Composable
 import com.example.sensimate.data.Question
-import com.example.sensimate.data.Survay
+import com.example.sensimate.data.Survey
 
 @Composable
-fun RenderSurvay(Survay: Survay){
+fun RenderSurvay(Survey: Survey){
     //TODO: This function Should take in a Survay Object, and render the question based on the question Type
     //      Use forEach on Survay Objects question array, and then use a switch cases that uses the question
     //      type to render the appropriat composable

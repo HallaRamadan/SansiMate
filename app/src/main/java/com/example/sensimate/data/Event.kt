@@ -1,7 +1,7 @@
 package com.example.sensimate.data
 
 
-
+//TODO: create Attribute, that contains the SurvayID
 class Event(
     id: Int,
     title:String,

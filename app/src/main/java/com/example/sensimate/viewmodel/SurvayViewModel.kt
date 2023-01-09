@@ -1,13 +1,13 @@
 package com.example.sensimate.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.example.sensimate.data.Survay
+import com.example.sensimate.data.Survey
 
 class SurvayViewModel : ViewModel() {
     val _SurvayID:String =TODO()
-    val Survay:Survay = getEventSurvay(_SurvayID)
+    val Survey:Survey = getEventSurvay(_SurvayID)
 
-    fun getEventSurvay(survayID: String): Survay {
+    fun getEventSurvay(survayID: String): Survey {
         //TODO: Call function in datalayer, that retrives a survay json from firestore
         //      Takes a String as Parameter
         //      Returns a Survay Object

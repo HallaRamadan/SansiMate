@@ -1,5 +1,5 @@
 package com.example.sensimate.data
 
-class Survay {
+class Survey {
     //TODO: Create Survay Class
 }
