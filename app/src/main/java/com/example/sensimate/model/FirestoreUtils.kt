@@ -1,4 +1,4 @@
-package com.example.sensimate.data
+package com.example.sensimate.model
 
 fun RetriveSurvey(surveyID: String):String {
     //TODO: Connects to the firestore, and retrives a survay based on ID

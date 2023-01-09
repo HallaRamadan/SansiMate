@@ -1,8 +1,8 @@
 package com.example.sensimate.ui.screens
 
 import androidx.compose.runtime.Composable
-import com.example.sensimate.data.Question
-import com.example.sensimate.data.Survey
+import com.example.sensimate.model.Question
+import com.example.sensimate.model.Survey
 
 @Composable
 fun RenderSurvay(Survey: Survey){

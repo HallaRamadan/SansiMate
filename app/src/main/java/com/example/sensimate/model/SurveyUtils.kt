@@ -1,7 +1,7 @@
-package com.example.sensimate.data
+package com.example.sensimate.model
 
 
-fun parseSurveyJson(JsonString: String):Survey {
+fun parseSurveyJson(JsonString: String): Survey {
     //TODO: Takes in the Json string from firestore, and parses it to survayClass
     //      This function might also call parseQuestiJson
     //      Returns a Survay object
@@ -26,7 +26,7 @@ fun fetchQuestions(SurveyId: String):String {
     return JsonString
 }
 
-fun constructSurvay(SurveyId: String):Survey {
+fun constructSurvay(SurveyId: String): Survey {
     //TODO: Makes use of the functions above, and constructs a survayObject.
     //      This will be the "Main" function for retriving and creating a survayObject
     //      That can be used for rendering the Survay in the SurvayView

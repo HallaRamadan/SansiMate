@@ -1,4 +1,4 @@
-package com.example.sensimate.data
+package com.example.sensimate.model
 
 class Question {
     //TODO: Create Questions class
