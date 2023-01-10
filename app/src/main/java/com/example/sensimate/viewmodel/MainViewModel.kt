@@ -1,8 +1,5 @@
 package com.example.sensimate.viewmodel
 
-import androidx.lifecycle.ViewModel
-import com.example.sensimate.model.Survey
-
 // class SurvayViewModel : ViewModel() {
     // val _SurvayID:String =TODO()
    // val Survey: Survey = getEventSurvay(_SurvayID)
