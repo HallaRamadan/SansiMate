@@ -3,18 +3,18 @@ package com.example.sensimate.model
 //TODO: Create Survey Class
 
 class Survey (
-    eventid: String?=null,
-    title:String,
+    id: String?= null,
+    eventId: String?=null,
+    title: String,
     subtitle: String,
+) {
+    var id = id
+    var title = title
+    var subtitle = subtitle
+    var question: MutableList<Question> ?= null
+    var eventId = eventId
 
-    var Id: String,
-    var Title: String,
-    var SubTitle: String,
-    var Questions: Array<Question>
-
-
-
-    )
+}
 
 
 
