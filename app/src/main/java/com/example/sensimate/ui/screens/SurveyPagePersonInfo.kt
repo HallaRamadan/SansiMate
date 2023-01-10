@@ -68,8 +68,13 @@ fun Info() {
 
 
             .clip(RoundedCornerShape(20.dp))
+<<<<<<< HEAD
             .background(MaterialTheme.colors.onPrimary)
             .border(BorderStroke(2.dp, MaterialTheme.colors.onBackground), RoundedCornerShape(20.dp)),
+=======
+            .background(Color(0xFFFFFFFF))
+            .border(BorderStroke(1.dp, Color(0xFF000000)), RoundedCornerShape(20.dp)),
+>>>>>>> 73e9a3c46a3b2b5bddcff469d69891c40bbaece7
             contentAlignment = Alignment.Center
 
 
