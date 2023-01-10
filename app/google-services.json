@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "705762431907",
+    "project_id": "sensimate-e08c6",
+    "storage_bucket": "sensimate-e08c6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:705762431907:android:b8ecc4f44683beeff0c016",
+        "android_client_info": {
+          "package_name": "com.example.sensimate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "705762431907-bpfbndr30pk7rblr7hn3q734t38ek9p6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD73ho8fVjXv59WXD_OXwcysd6jeq8O9So"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "705762431907-bpfbndr30pk7rblr7hn3q734t38ek9p6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:705762431907:android:c08ed4c8c2b347eef0c016",
+        "android_client_info": {
+          "package_name": "com.example.sensimate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "705762431907-bpfbndr30pk7rblr7hn3q734t38ek9p6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD73ho8fVjXv59WXD_OXwcysd6jeq8O9So"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "705762431907-bpfbndr30pk7rblr7hn3q734t38ek9p6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
