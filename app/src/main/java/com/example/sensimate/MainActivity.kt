@@ -30,7 +30,7 @@ class MainActivity : ComponentActivity() {
 @Preview
 @Composable
 fun MainActivityPreview() {
-     MainScreen()
+     MainScreen()     // put it for bottom bar
 }
 
 

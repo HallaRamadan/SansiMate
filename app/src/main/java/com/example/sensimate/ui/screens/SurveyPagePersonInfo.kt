@@ -1,5 +1,6 @@
 package com.example.sensimate.ui.screens
 
+import android.annotation.SuppressLint
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.foundation.BorderStroke
@@ -26,7 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.toSize
 
 @Composable
-fun Survey_PageToPersonInfo(){
+fun Survey_PageToPersonInfo(){    // for information that person can do or read
     frame {
         Column(modifier = Modifier
             .fillMaxSize(),
@@ -41,7 +42,17 @@ fun Survey_PageToPersonInfo(){
 
 
     Info()
-    NextButton()}
+    NextButton()}    // button for next page
+
+
+
+
+
+
+
+
+
+
 
 
 @Preview
@@ -67,8 +78,8 @@ fun Info() {
 
 
             .clip(RoundedCornerShape(20.dp))
-            .background(Color(0xFFFFFFFF))
-            .border(BorderStroke(1.dp, Color(0xFF000000)), RoundedCornerShape(20.dp)),
+            .background(MaterialTheme.colors.onPrimary)
+            .border(BorderStroke(2.dp, MaterialTheme.colors.onBackground), RoundedCornerShape(20.dp)),
             contentAlignment = Alignment.Center
 
 
@@ -143,6 +154,7 @@ fun TextField(visualTransformation:VisualTransformation = VisualTransformation.N
 
 }
 
+@SuppressLint("SuspiciousIndentation")
 @Preview
 @Composable
 fun Gender() {

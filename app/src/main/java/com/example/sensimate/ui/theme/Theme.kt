@@ -8,18 +8,26 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
 private val DarkColorPalette = darkColors(
-    background = Gunmetal,
-    surface = White,
+    background = Dark,
+    surface = Black2,
     primary = Purple200,
     primaryVariant = Purple700,
     secondary = Teal200,
+    secondaryVariant = OrangeLight,
+    error = PurpleLight,
+    onPrimary = White,
+    onBackground = BlackDark,
+    onSecondary = WhiteDark,
+
+
+
+
 )
 
 private val LightColorPalette = lightColors(
     primary = Purple500,
     primaryVariant = Purple700,
     secondary = Teal200,
-
     //-------- SensiMate app´s Color--- But not sure to use all of them -----//
     background = Color.Black,
     surface = Color.Black,

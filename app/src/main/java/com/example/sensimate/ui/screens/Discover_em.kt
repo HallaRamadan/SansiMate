@@ -3,7 +3,6 @@ package com.example.sensimate.ui.screens_employee
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -15,36 +14,33 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.sensimate.R
-import com.example.sensimate.data.Event
+import com.example.sensimate.model.Event
 import com.example.sensimate.ui.components.Card
-import com.example.sensimate.ui.screens.Background
-import com.example.sensimate.ui.screens.Foodstuff
+import com.example.sensimate.ui.components.Background
 
-@Preview
+/*
+@Preview(showBackground = true)
 @Composable
 fun Discover_emPreview(){
     val eventList = listOf(
         Event(id = 1,
-          title = "Beer from GoldStar",
+            title = "Beer from GoldStar",
             date = "12/12/2022",
-            image = R.drawable.hand_beer,
-            street = "FakeStreet 123",
+            image = R.drawable.hand_beer, street = "FakeStreet 123",
             town = "Fake",
             postcode = 123,
             country = "Denmark"),
         Event(id = 2,
             title = "Cider from Goldstar",
             date = "12/12/2022",
-            image = R.drawable.coke,
-            street = "FakeStreet 123",
+            image = R.drawable.coke, street = "FakeStreet 123",
             town = "Fake",
             postcode = 123,
             country = "Denmark"),
         Event(id = 3,
             title = "Soda from Hejsommer",
             date = "12/12/2022",
-            image = R.drawable.cider,
-            street = "FakeStreet 123",
+            image = R.drawable.cider, street = "FakeStreet 123",
             town = "Fake",
             postcode = 123,
             country = "Denmark"),
@@ -64,22 +60,20 @@ fun Discover_emPreview(){
 @Composable
 fun Discover_em(eventList:List<Event>){
   Background {
-      SensiMateImage()
+      //SensiMateImage()
       for (event: Event in eventList){
           Foodstuff_toAll(event)
       }
   }
 }
 @Composable
-fun Background ( content:@Composable ()->Unit){
+fun BackgroundD ( content:@Composable ()->Unit){
     Box(
         modifier = Modifier
 
             .width(350.dp)
             .fillMaxHeight(300.4F)
             .border(BorderStroke(1.dp, Color.Black), RoundedCornerShape(20.dp))
-            .background(color=MaterialTheme.colors.onSecondary,
-                 RoundedCornerShape(20.dp)),
     ){
         Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
             content()
@@ -161,6 +155,4 @@ fun Foodstuff_toAll(event:Event) {
 }
 
 
-
-
-
+ */

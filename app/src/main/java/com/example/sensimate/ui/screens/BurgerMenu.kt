@@ -14,7 +14,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.sensimate.R
-
+/*
 @Preview
 @Composable
 fun BurgerMenuScreenPreview(){
@@ -43,7 +43,7 @@ fun BurgerMenuScreen(){
                     modifier = Modifier.width(100.dp),
                     alignment = Alignment.TopStart)
                 Spacer(modifier = Modifier.height(16.dp))
-                // Text(text = stringResource(R.string.SensiMate), fontStyle = MaterialTheme.colors,Color.)
+               // Text(text = stringResource(R.string.SensiMate), fontStyle = MaterialTheme.colors,Color.)
 
 
         }
@@ -52,23 +52,7 @@ fun BurgerMenuScreen(){
 
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ */
 
 
 

@@ -43,7 +43,7 @@ fun frame(content: @Composable () -> Unit){
         modifier = Modifier
             .fillMaxSize()
             .padding(20.dp)
-            .background(Color(0xFFF9FAFB)),
+            .background(MaterialTheme.colors.onSecondary),
         contentAlignment = Alignment.TopCenter
     ){
         Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
@@ -87,6 +87,7 @@ modifier = Modifier.width(500.dp)) {
 
 @Composable
 fun question(text: String){
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -103,8 +104,8 @@ fun question(text: String){
 
 
                 .clip(RoundedCornerShape(20.dp))
-                .background(Color(0xFFFFFFFF))
-                .border(BorderStroke(2.dp, Color(0xFF000000)), RoundedCornerShape(20.dp)),
+                .background(MaterialTheme.colors.onPrimary)
+                .border(BorderStroke(2.dp, MaterialTheme.colors.onBackground), RoundedCornerShape(20.dp)),
                 contentAlignment = Alignment.BottomCenter
 
                 ) {

@@ -1,4 +1,4 @@
-package com.example.sensimate
+package com.example.sensimate.navigation
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
@@ -21,7 +21,7 @@ sealed class BottomBarScreen (
    )
 
     object Profile: BottomBarScreen(
-        route = "discover_em",
+        route = "profile",
         title = "Profile",
         icon = Icons.Default.Person
     )

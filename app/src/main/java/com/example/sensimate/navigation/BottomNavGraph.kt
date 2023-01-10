@@ -6,10 +6,11 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.sensimate.navigation.BottomBarScreen
+import com.example.sensimate.navigation.Screen
 import com.example.sensimate.ui.screens.Discover
-import com.example.sensimate.ui.screens.MyEvent
 import com.example.sensimate.ui.screens.EventDetails
-import com.example.sensimate.ui.screens_employee.Discover_emPreview
+import com.example.sensimate.ui.screens.MyEvent
 
 
 @Composable
@@ -17,12 +18,13 @@ import com.example.sensimate.ui.screens_employee.Discover_emPreview
 fun BottomNavGraph(navController: NavHostController) {
     NavHost(
         navController = navController,
-        startDestination = Screen.Discover.route
+        startDestination = BottomBarScreen.Discover.route
 
     ) {
         composable(route = BottomBarScreen.Home.route) {
             MyEvent()
         }
+        // Here is just make screen EventDetails instead of  Profile screen
 
         composable(route = Screen.EventDetails.route) {
             EventDetails()
@@ -30,13 +32,9 @@ fun BottomNavGraph(navController: NavHostController) {
         composable(route = Screen.Discover.route) {
             Discover(navController)
         }
-        composable(route = Screen.DiscoverEm.route) {
-            Discover_emPreview()
-        }
 
     }
 }
-
 
 
 
