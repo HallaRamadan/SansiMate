@@ -4,16 +4,18 @@
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-     <!-- the Color for SensiMate app -->
-    <color name="LightBlack">#2C2525</color>
+    <color name="turquoise_dark">#FF018786</color>
+    <color name="black_2">#FF222222</color>
+    <color name="dark">#FF323232</color>
+    <color name="blue_greyish">#FF2E3047</color>
+    <color name="orange_light">#FFED7069</color>
+    <color name="purple_light">#FF9F6CF1</color>
+    <color name="white_dark">#FFF9FAFB</color>
+    <color name="black_dark">#FF000000</color>
+    <color name="BlackLight">#2C2525</color>
     <color name="NaplesYellow">#F4CA5B</color>
     <color name="Gunmetal">#2E3047</color>
     <color name="White">#FFFFFF</color>
-    <color name="Violets_Are_Blue">#9B6BFE</color>
-    <color name="Light_Carmine_Pink">#EE7068</color>
+    <color name="Violet">#9B6BFE</color>
     <color name="Text_body">#FFFFFF</color>
-
 </resources>

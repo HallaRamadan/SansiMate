@@ -27,7 +27,7 @@ fun Background(content: @Composable () -> Unit){
         contentAlignment = Alignment.TopCenter
     ) {
         Column(
-            modifier = Modifier.shadow(20.dp, spotColor = Color(0xFF222222)),
+            modifier = Modifier.shadow(20.dp, spotColor = MaterialTheme.colors.surface),
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
             content()
@@ -42,7 +42,7 @@ fun Card (modifier: Modifier = Modifier, alignment: Alignment = Alignment.TopCen
             .width(370.dp)
             .height(180.dp)
             .padding().border(
-                brush = Brush.horizontalGradient(listOf(Color(0xFFED7069), Color(0xFF9F6CF1))),
+                brush = Brush.horizontalGradient(listOf(MaterialTheme.colors.secondaryVariant, MaterialTheme.colors.error)),
                 width = 3.dp,
                 shape = RoundedCornerShape(18.dp)
             ).background(MaterialTheme.colors.surface, RoundedCornerShape(20.dp))
@@ -67,7 +67,7 @@ fun SensimateLogo(){
             painterResource(R.drawable.sensimate_logo_white), "ContentDescription",
             contentScale = ContentScale.Fit,
             modifier =
-            Modifier.background(Color(0xFF323232)).padding(vertical = 10.dp)
+            Modifier.background(MaterialTheme.colors.onError).padding(vertical = 10.dp)
         )
     }
 
