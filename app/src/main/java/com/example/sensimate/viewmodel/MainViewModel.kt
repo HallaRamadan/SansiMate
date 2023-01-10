@@ -1,34 +1,23 @@
 package com.example.sensimate.viewmodel
 
-// class SurvayViewModel : ViewModel() {
-    // val _SurvayID:String =TODO()
-   // val Survey: Survey = getEventSurvay(_SurvayID)
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+/*
+ class SurvayViewModel : ViewModel() {
+     val _SurvayID:String =TODO()
+    val Survey: Survey = getEventSurvay(_SurvayID)
 
- //   fun getEventSurvay(survayID: String): Survey {
-        //TODO: Call function in datalayer, that retrives a survay json from firestore
-        //      Takes a String as Parameter
-        //      Returns a Survay Object
-    //    return SurvayObject
-  //  }
-
-// }
-
-
-
-
-
-
-
-
-
+    fun getEventSurvay(survayID: String): Survey {
+        TODO: Call function in datalayer, that retrives a survay json from firestore
+              Takes a String as Parameter
+              Returns a Survay Object
+        return SurvayObject
+         }
+ }
+*/
 
 
 /*
-package com.example.sensimate.viewmodel
-
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-
 class MainViewModel {
     fun mainView(){
 
@@ -70,6 +59,7 @@ fun ChoiceOfLogin(){
 
     }
 }
+
 
 
  */
