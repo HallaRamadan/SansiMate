@@ -5,10 +5,20 @@ import com.example.sensimate.model.Question
 import com.example.sensimate.model.Survey
 
 @Composable
-fun RenderSurvay(Survey: Survey){
+fun RenderSurvey(Survey: Survey){
     //TODO: This function Should take in a Survay Object, and render the question based on the question Type
     //      Use forEach on Survay Objects question array, and then use a switch cases that uses the question
     //      type to render the appropriat composable
+}
+
+@Composable
+fun SurveyTopBar(survey: Survey) {
+    //TODO: Create composable that can render a multiple choice question
+}
+
+@Composable
+fun SurveyBottomBar(survey: Survey) {
+    //TODO: Create composable that can render a multiple choice question
 }
 
 @Composable
