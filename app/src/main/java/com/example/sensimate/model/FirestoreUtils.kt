@@ -3,7 +3,9 @@ package com.example.sensimate.model
 import android.util.Log
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
+import java.util.Collections.list
 
 
 // object FirestoreSingleton {
@@ -50,14 +52,46 @@ object FirestoreDatabase {
 // FirebaseDatabase.deleteValue("users/John")
 
 
-fun RetrieveAndParseSurveyJson(surveyID: String):String {
+fun RetrieveAndParseSurveyJson(surveyID: String):Survey? {
+
     //TODO: Connects to the firestore, and retrives a survay based on ID
     //      Returns a JSON Strings
-    return JsonString
+    val docRef = FirestoreDatabase.firestore.collection("surveys").document(surveyID)
+    var surveyObject: Survey? = null
+
+    docRef.get()
+        .addOnSuccessListener { document ->
+            if (document != null) {
+                surveyObject = document.toObject<Survey>()
+            } else {
+                Log.d("FirestoreUtils", "No such document")
+            }
+        }
+        .addOnFailureListener { exception ->
+            Log.w("FirestoreUtils", "Error getting documents: ", exception)
+        }
+    return surveyObject
 }
 
-fun RetrieveAndParseQuestionsJson(SurveyID: String):Array<String> {
+fun RetrieveAndParseQuestionsJson(surveyID: String):MutableList<Question> {
     //TODO: Connects to the firestore, and retrives questions based on ID
     //      Returns an Array of JSON Strings
-    return [JsonStrings]
+    val docRef = FirestoreDatabase.firestore.collection("questions").whereEqualTo("surveyId", surveyID)
+    val questionList: MutableList<Question> = mutableListOf()
+
+    docRef
+        .get()
+        .addOnSuccessListener { documents ->
+            if(documents != null) {
+                for (document in documents) {
+                    questionList.add(document.toObject())
+                }
+            }else{
+                Log.d("FirestoreUtils", "RetrieveAndParseQuestionsJson: documents null")
+            }
+        }
+        .addOnFailureListener { exception ->
+            Log.w("FirestoreUtils", "Error getting documents: ", exception)
+        }
+    return questionList
 }
