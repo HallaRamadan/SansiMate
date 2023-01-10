@@ -76,10 +76,7 @@ modifier = Modifier.width(500.dp)) {
             color = Black,
         )
        // Text(text = prog,"/",max)
-        Text(text = prog
-
-        
-            )
+        Text(text = prog)
 
 
 }}
