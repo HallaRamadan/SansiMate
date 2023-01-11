@@ -13,13 +13,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.ViewModel
 import com.example.sensimate.R
 import com.example.sensimate.ui.components.Card
 import com.example.sensimate.ui.components.Background
 
 
 @Composable
-fun EventDetails() {
+fun EventDetails(viewModel: ViewModel) {
     Background {
         Card(
             modifier = Modifier
@@ -66,12 +67,6 @@ fun EventDetails() {
             }
         }
     }
-}
-
-@Composable
-@Preview
-fun EventDetailsPreview(){
-    EventDetails()
 }
 
 

@@ -19,13 +19,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModel
 import com.example.sensimate.R
 import com.example.sensimate.ui.components.Card
 import com.example.sensimate.ui.theme.SensiMateTheme
 import com.example.sensimate.ui.components.Background
 
 @Composable
-fun MyEvent() {
+fun MyEvent(viewModel: ViewModel) {
     SensiMateTheme {
         Background{
             Card{
@@ -131,8 +132,4 @@ fun CardBodyContent(modifier: Modifier = Modifier, maxWidthFraction: Float, cont
         content()
     }
 }
-@Preview
-@Composable
-fun MyEventsPreview(){
-    MyEvent()
-}
+

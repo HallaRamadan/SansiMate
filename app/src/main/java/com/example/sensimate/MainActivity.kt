@@ -5,10 +5,12 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.sensimate.ui.theme.SensiMateTheme
+import com.example.sensimate.viewmodel.MainViewModel
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.firestore.DocumentReference
@@ -20,7 +22,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
 
-
+        val viewModel: MainViewModel by viewModels()
 
         setContent {
 
@@ -29,7 +31,7 @@ class MainActivity : ComponentActivity() {
             SensiMateTheme  {
                 Surface(
                 ) {
-                            MainScreen()
+                            MainScreen(viewModel)
                 }
 
             }
@@ -40,12 +42,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Preview
-@Composable
-fun MainActivityPreview() {
-     MainScreen()
 
-}
 
 
 

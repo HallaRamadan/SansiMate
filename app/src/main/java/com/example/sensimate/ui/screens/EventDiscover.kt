@@ -13,62 +13,21 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import com.example.sensimate.R
 import com.example.sensimate.navigation.Screen
 import com.example.sensimate.model.Event
 import com.example.sensimate.ui.components.Card
 import com.example.sensimate.ui.components.Background
+import com.example.sensimate.viewmodel.MainViewModel
 
 
 /* -------- Composable that to display Discover screen  -------*/
 
 @Composable
-fun Discover(navController: NavController){
-    val eventList = listOf(
-        Event(id = 1,
-            title = "Beer from GoldStar",
-            date = "12/01/2023",
-            image = R.drawable.hand_beer, street = "FakeStreet 123",
-            town = "Fake",
-            postcode = 123,
-            country = "Denmark"),
-        Event(id = 2,
-            title = "Cider from Goldstar",
-            date = "24/02/2023",
-            image = R.drawable.coke, street = "FakeStreet 123",
-            town = "Fake",
-            postcode = 123,
-            country = "Denmark"),
-        Event(id = 3,
-            title = "Soda from Hejsommer",
-            date = "29/03/2022",
-            image = R.drawable.cider, street = "FakeStreet 123",
-            town = "Fake",
-            postcode = 123,
-            country = "Denmark"),
-        Event(id = 3,
-            title = "Soda from Hejsommer",
-            date = "29/03/2022",
-            image = R.drawable.cider, street = "FakeStreet 123",
-            town = "Fake",
-            postcode = 123,
-            country = "Denmark"),
-        Event(id = 3,
-            title = "Soda from Hejsommer",
-            date = "29/03/2022",
-            image = R.drawable.cider, street = "FakeStreet 123",
-            town = "Fake",
-            postcode = 123,
-            country = "Denmark"),        Event(id = 3,
-            title = "Soda from Hejsommer",
-            date = "29/03/2022",
-            image = R.drawable.cider, street = "FakeStreet 123",
-            town = "Fake",
-            postcode = 123,
-            country = "Denmark"),
-
-    )
+fun Discover(navController: NavController, viewModel: MainViewModel){
+    val eventList = viewModel.eventList
     Background {
         for (event: Event in eventList) {
             Foodstuff(event, navController)
