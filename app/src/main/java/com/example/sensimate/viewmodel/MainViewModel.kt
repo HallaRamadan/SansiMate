@@ -27,6 +27,7 @@ import com.example.sensimate.navigation.Screen
 
 class MainViewModel : ViewModel() {
     var navController: NavController? = null
+    var currentViewedEvent: Event? = null
     val eventList = listOf(
         Event(id = 1,
             title = "Beer from GoldStar",
@@ -184,7 +185,13 @@ class MainViewModel : ViewModel() {
         }
 
     }
-
+    fun navigateToEventDetails(){
+        if(navController != null){
+            navController!!.navigate(Screen.EventDetails.route)
+        }else{
+            Log.w("viewModel", "NavController is null")
+        }
+    }
 }
 
 
