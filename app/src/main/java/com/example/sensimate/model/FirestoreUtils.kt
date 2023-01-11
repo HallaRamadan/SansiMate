@@ -44,8 +44,6 @@ object FirestoreDatabase {
 }
 
 
-
-
 // And then you can use the singleton object like this:
 // FirebaseDatabase.addValue("users", mapOf("name" to "John", "age" to 30))
 // val userData = FirebaseDatabase.getValue("users/John")

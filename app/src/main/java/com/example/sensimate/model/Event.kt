@@ -3,7 +3,7 @@ package com.example.sensimate.model
 import com.example.sensimate.navigation.Screen
 
 
-//TODO: create Attribute, that contains the SurvayID
+//TODO: create Attribute, that contains the SurveyID
 class Event(
     id: Int,
     surveyId: String? = null,
