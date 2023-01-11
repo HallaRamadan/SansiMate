@@ -1,9 +1,12 @@
 package com.example.sensimate.model
 
+import com.example.sensimate.navigation.Screen
 
-//TODO: create Attribute, that contains the SurvayID
+
+//TODO: create Attribute, that contains the SurveyID
 class Event(
     id: Int,
+    surveyId: String? = null,
     title:String,
     date:String,
     image: Int,
@@ -12,6 +15,7 @@ class Event(
     postcode: Int,
     country:String){
     var id = id
+    var surveyId = surveyId
     var title = title
     var date = date
     var image = image

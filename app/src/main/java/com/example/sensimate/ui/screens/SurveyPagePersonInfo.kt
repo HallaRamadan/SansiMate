@@ -20,11 +20,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.Red
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.toSize
+import androidx.compose.foundation.layout.Column
+
 
 @Composable
 fun Survey_PageToPersonInfo(){
@@ -68,8 +72,11 @@ fun Info() {
 
 
             .clip(RoundedCornerShape(20.dp))
-            .background(Mater2ialTheme.colors.onPrimary)
             .border(BorderStroke(2.dp, MaterialTheme.colors.onBackground), RoundedCornerShape(20.dp)),
+=======
+            .background(Color(0xFFFFFFFF))
+            .border(BorderStroke(1.dp, Color(0xFF000000)), RoundedCornerShape(20.dp)),
+>>>>>>> 73e9a3c46a3b2b5bddcff469d69891c40bbaece7
             contentAlignment = Alignment.Center
 
 
@@ -125,6 +132,8 @@ fun AgeInfo(){
 
 
 }}
+
+@Preview
 @Composable
 fun TextField(visualTransformation:VisualTransformation = VisualTransformation.None,
               keyboardOptions: KeyboardOptions = KeyboardOptions.Default) {

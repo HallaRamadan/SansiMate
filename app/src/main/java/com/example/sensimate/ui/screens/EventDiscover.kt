@@ -30,7 +30,7 @@ fun Discover(navController: NavController, viewModel: MainViewModel){
     val eventList = viewModel.eventList
     Background {
         for (event: Event in eventList) {
-            Foodstuff(event, navController)
+            Foodstuff(event, viewModel)
         }
     }
 }
@@ -40,11 +40,11 @@ fun Discover(navController: NavController, viewModel: MainViewModel){
 
 @Composable
 
-fun Foodstuff(event:Event, navController: NavController) {
+fun Foodstuff(event:Event, viewModel: MainViewModel) {
     Card(modifier = Modifier
         .padding(0.dp)
         .height(150.dp)
-        .clickable(onClick = { navController.navigate(Screen.EventDetails.route) }),
+        .clickable(onClick = { viewModel.currentViewedEvent = event; viewModel.navigateToEventDetails() }),
         alignment = Alignment.CenterStart) {
 
             
