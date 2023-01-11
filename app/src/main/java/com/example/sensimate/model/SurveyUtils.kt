@@ -7,7 +7,7 @@ fun constructSurvey(SurveyId: String): Survey? {
     //      That can be used for rendering the Survey in the SurveyView
     var Survey = RetrieveAndParseSurveyJson(SurveyId)
     var Questions = RetrieveAndParseQuestionsJson(SurveyId)
-    Survey?.Questions = Questions
+ //   Survey?.Questions = Questions
 
     return Survey
 }

@@ -14,7 +14,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.sensimate.ui.screens.Card
-
+import com.example.sensimate.ui.components.Background
+import com.example.sensimate.ui.components.SensimateLogo
 @Preview
 @Composable
 fun DiscoverDetail_emPreviw(){
@@ -23,7 +24,7 @@ fun DiscoverDetail_emPreviw(){
 @Composable
 fun DiscoverDitail_em(){
     Background {
-        SensiMateImage()
+        SensimateLogo()
         SensiMateCard()
     }
 

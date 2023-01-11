@@ -8,7 +8,7 @@ import androidx.navigation.NavController
 import com.example.sensimate.R
 import com.example.sensimate.model.Event
 import com.example.sensimate.model.Survey
-import com.example.sensimate.model.constructSurvey
+//import com.example.sensimate.model.constructSurvey
 import com.example.sensimate.navigation.Screen
 
 /*
@@ -206,7 +206,7 @@ class MainViewModel : ViewModel() {
 
 
     fun getEventSurvay(): Survey {
-        currentSurvey = constructSurvey(currentViewedEvent!!.surveyId!!)
+        //currentSurvey = constructSurvey(currentViewedEvent!!.surveyId!!)
         return currentSurvey as Survey
     }
 
