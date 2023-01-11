@@ -43,7 +43,7 @@ fun frame(content: @Composable () -> Unit){
         modifier = Modifier
             .fillMaxSize()
             .padding(20.dp)
-            .background(MaterialTheme.colors.onSecondary),
+            .background(Color.White),
         contentAlignment = Alignment.TopCenter
     ){
         Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {

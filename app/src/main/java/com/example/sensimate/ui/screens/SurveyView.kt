@@ -146,8 +146,12 @@ fun RenderBulletPointQuestion(Question: Question) {
 }
 
 @Composable
-fun RenderTextInputQuestion(Question: Question) { /*
-    //TODO: Create composable that can render a Text Input question
+fun RenderTextInputQuestion(Question: Question) {
+    //hardcoded. first Question and answer options will be the same for all surveys
+    Info()
+
+        }
+    /*
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -156,7 +160,5 @@ fun RenderTextInputQuestion(Question: Question) { /*
         horizontalAlignment = Alignment.CenterHorizontally) {
         TextField().forEach { text ->
 */
-}
-
 
 
