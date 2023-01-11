@@ -18,6 +18,7 @@ import androidx.compose.ui.graphics.Color.Companion.Black
 import androidx.compose.ui.unit.dp
 import com.example.sensimate.model.Question
 import com.example.sensimate.model.Survey
+import com.example.sensimate.viewmodel.MainViewModel
 
 //TODO: This function Should take in a Survay Object, and render the question based on the question Type
 //      Use forEach on Survay Objects question array, and then use a switch cases that uses the question
@@ -30,8 +31,8 @@ var currentQuestion = 1
 
 
 @Composable
-fun RenderSurvey(survey: Survey, totalQuestions: Int) {
-    SurveyTopBar(survey, currentQuestion.toFloat() / totalQuestions.toFloat(), currentQuestion, totalQuestions)
+fun RenderSurvey(viewModel: MainViewModel) {
+  //  SurveyTopBar(survey, currentQuestion.toFloat() / totalQuestions.toFloat(), currentQuestion, totalQuestions)
 
 }
 
