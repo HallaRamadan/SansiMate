@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModel
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -21,6 +22,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.sensimate.navigation.BottomBarScreen
 import com.example.sensimate.ui.components.SensimateLogo
+import com.example.sensimate.viewmodel.MainViewModel
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.firestore.DocumentReference
@@ -28,7 +30,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun MainScreen() {
+fun MainScreen(viewModel: MainViewModel) {
     val navController = rememberNavController()
     Scaffold(
         modifier = Modifier
@@ -37,7 +39,7 @@ fun MainScreen() {
         bottomBar = { BottomBar(navController = navController)}
     ) { innerPadding ->
         Box(modifier = Modifier.padding(innerPadding)) {
-            BottomNavGraph(navController = navController)
+            BottomNavGraph(navController = navController, viewModel = viewModel)
         }
     }
 }
@@ -93,11 +95,5 @@ fun RowScope.AddItem(
         }
 
     )
-
-}
-@Preview
-@Composable
-fun MainScreenPreview() {
-    MainScreen()
 
 }

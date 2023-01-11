@@ -1,6 +1,6 @@
 package com.example.sensimate.model
 
-
+/*
 fun fetchSurvey(SurveyId: String):String {
     //TODO: Calls the function in FirestoreUtils, that retrives a survey from the firestore
     //      Returns a Json String
@@ -19,3 +19,5 @@ fun constructSurvey(SurveyId: String): Survey {
     //      That can be used for rendering the Survey in the SurveyView
     return SurveyObject
 }
+
+ */
