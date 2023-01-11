@@ -10,7 +10,7 @@ class Survey (
     var Id: String,
     var Title: String,
     var SubTitle: String,
-    var Questions: Array<Question>
+    var Questions: MutableList<Question>
 
 
 

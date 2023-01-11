@@ -1,7 +1,7 @@
 package com.example.sensimate.model
 
 
-//TODO: create Attribute, that contains the SurvayID
+//TODO: create Attribute, that contains the SurveyID
 class Event(
     id: Int,
     title:String,
