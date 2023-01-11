@@ -32,16 +32,23 @@ import com.google.firebase.firestore.FirebaseFirestore
 @Composable
 fun MainScreen(viewModel: MainViewModel) {
     val navController = rememberNavController()
+    viewModel.navController = navController
     Scaffold(
         modifier = Modifier
             .navigationBarsPadding(),
-        topBar = {SensimateLogo() },
-        bottomBar = { BottomBar(navController = navController)}
+        topBar = {if(currentRoute(navController) !="survey"){ SensimateLogo() }},
+        bottomBar = { if(currentRoute(navController) !="survey"){ BottomBar(navController = navController)}}
     ) { innerPadding ->
         Box(modifier = Modifier.padding(innerPadding)) {
             BottomNavGraph(navController = navController, viewModel = viewModel)
         }
     }
+}
+
+@Composable
+fun currentRoute(navController: NavHostController): String? {
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    return navBackStackEntry?.destination?.route
 }
 
 @Composable

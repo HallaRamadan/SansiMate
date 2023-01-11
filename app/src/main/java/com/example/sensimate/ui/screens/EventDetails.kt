@@ -3,6 +3,7 @@ package com.example.sensimate.ui.screens
 import androidx.compose.foundation.Image
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -10,6 +11,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -17,14 +20,16 @@ import androidx.lifecycle.ViewModel
 import com.example.sensimate.R
 import com.example.sensimate.ui.components.Card
 import com.example.sensimate.ui.components.Background
+import com.example.sensimate.viewmodel.MainViewModel
 
 
 @Composable
-fun EventDetails(viewModel: ViewModel) {
+fun EventDetails(viewModel: MainViewModel) {
     Background {
         Card(
             modifier = Modifier
-                .padding(0.dp).height(500.dp)
+                .padding(0.dp)
+                .height(500.dp)
                 .fillMaxHeight(), alignment = Alignment.TopCenter
         ) {
             Column(
@@ -51,16 +56,25 @@ fun EventDetails(viewModel: ViewModel) {
                                 .fillMaxWidth(1F)
                                 .fillMaxHeight(0.65F)
                         )
-                        Text(
-                            text = "                       Check Results",
-                            color = Color.Magenta,
-                            fontSize = 20.sp
-                        )
-                        Text(
-                            text = "                       Edit Survey",
-                            color = Color.Magenta,
-                            fontSize = 20.sp
-                        )
+                        if(true){
+
+                            ClickableText(text = AnnotatedString.Builder().apply {
+                                pushStyle(SpanStyle(color = Color.Magenta, fontSize = 20.sp))
+                                append("Answer Survey")
+                            }.toAnnotatedString(), onClick = { viewModel.navigateToSurvey()} )
+
+                        }else {
+                            Text(
+                                text = "                       Check Results",
+                                color = Color.Magenta,
+                                fontSize = 20.sp
+                            )
+                            Text(
+                                text = "                       Edit Survey",
+                                color = Color.Magenta,
+                                fontSize = 20.sp
+                            )
+                        }
                     }
 
                 }

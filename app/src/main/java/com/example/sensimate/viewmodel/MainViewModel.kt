@@ -1,10 +1,13 @@
 package com.example.sensimate.viewmodel
 
+import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
+import androidx.navigation.NavController
 import com.example.sensimate.R
 import com.example.sensimate.model.Event
+import com.example.sensimate.navigation.Screen
 
 /*
  class SurvayViewModel : ViewModel() {
@@ -23,6 +26,7 @@ import com.example.sensimate.model.Event
 
 
 class MainViewModel : ViewModel() {
+    var navController: NavController? = null
     val eventList = listOf(
         Event(id = 1,
             title = "Beer from GoldStar",
@@ -171,6 +175,15 @@ class MainViewModel : ViewModel() {
 
 
         )
+
+    fun navigateToSurvey(){
+        if(navController != null){
+            navController!!.navigate(Screen.Survey.route)
+        }else{
+            Log.w("viewModel", "NavController is null")
+        }
+
+    }
 
 }
 
