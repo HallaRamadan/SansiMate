@@ -84,6 +84,7 @@ modifier = Modifier.width(500.dp)) {
 
 @Composable
 fun question(text: String){
+
     Column(
         modifier = Modifier
             .fillMaxSize()
