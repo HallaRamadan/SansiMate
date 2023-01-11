@@ -2,10 +2,16 @@ package com.example.sensimate.ui.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.LinearProgressIndicator
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.RadioButton
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color.Companion.Black
@@ -19,21 +25,33 @@ import com.example.sensimate.model.Survey
 
 //totalquestion skal defineres i Survey.kt
 var currentQuestion = 1
+
+
+
+
 @Composable
 fun RenderSurvey(survey: Survey, totalQuestions: Int) {
     SurveyTopBar(survey, currentQuestion.toFloat() / totalQuestions.toFloat(), currentQuestion, totalQuestions)
-    survey.question?.forEach { question ->
-        when (question.type) {
-            1 -> RenderMultipleChoiceQuestion(question)
-            2 -> RenderBulletPointQuestion(question)
-            3 -> RenderTextInputQuestion(question)
-            else -> {
-                // ...andre typer spørgsmål
-            }
-        }
-        currentQuestion++
-    }
+
 }
+
+
+
+@Composable
+fun Questiontype(question: Question){
+    when (question.type) {
+        1 -> RenderMultipleChoiceQuestion(question)
+        2 -> RenderBulletPointQuestion(question)
+        3 -> RenderTextInputQuestion(question)
+        else -> {
+            // ...andre typer spørgsmål
+        }
+    }
+    currentQuestion++
+}
+
+
+
 
 //TODO: Create composable that can render a multiple choice question
 @Composable
@@ -55,8 +73,8 @@ fun SurveyTopBar(survey: Survey, progress: Float, currentQuestion: Int, totalQue
         }
 
         //følgende skal der laves box with questions?? ved ikke hvad title og subtitle præcis er
-      //  Text(text = survey.title, style = TextStyle(fontSize = 24.sp))
-       // Text(text = survey.subtitle, style = TextStyle(fontSize = 16.sp))
+        //  Text(text = survey.title, style = TextStyle(fontSize = 24.sp))
+        // Text(text = survey.subtitle, style = TextStyle(fontSize = 16.sp))
     }
 }
 
@@ -73,6 +91,38 @@ fun RenderMultipleChoiceQuestion(Question: Question) {
 @Composable
 fun RenderBulletPointQuestion(Question: Question) {
     //TODO: Create composable that can render a BulletPoints choice question
+    val radioOptions = Question.answers
+    val (selectedOption, onOptionSelected) = remember { mutableStateOf("") }
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .fillMaxHeight(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally) {
+        radioOptions.forEach { text ->
+            Row(
+                Modifier
+                    .fillMaxWidth()
+                    .selectable(
+                        selected = (text == selectedOption),
+                        onClick = {
+                            onOptionSelected(text)
+                        }
+                    )
+                    .padding(horizontal = 16.dp)
+            ) {
+                RadioButton(
+                    selected = (text == selectedOption),
+                    onClick = { onOptionSelected(text) }
+                )
+                Text(
+                    text = text,
+                    style = MaterialTheme.typography.body1.merge(),
+                    modifier = Modifier.padding(start = 20.dp)
+                )
+            }
+        }
+    }
 }
 
 @Composable

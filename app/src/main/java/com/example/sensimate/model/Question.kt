@@ -13,7 +13,7 @@ JSON:
 The ID of the question objects, is the ID that firestore gives the document. This ID should
 be stored under the attribute ID in the Question Object.
  */
-    //answer
+//answer
 //TODO: Create Questions class
 
 class Question (
@@ -21,13 +21,14 @@ class Question (
     id: String?= null,
     title: String,
     type: Int,
+    answers: MutableList<String>
 ) {
 
     var surveyId = surveyId
     var id = id
     var title = title
     var type = type
-    var answers: MutableList<Question>? = null
+    var answers = answers
     var subtitle = null
 
 }
