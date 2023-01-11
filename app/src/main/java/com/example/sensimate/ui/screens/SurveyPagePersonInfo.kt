@@ -68,7 +68,7 @@ fun Info() {
 
 
             .clip(RoundedCornerShape(20.dp))
-            .background(MaterialTheme.colors.onPrimary)
+            .background(Mater2ialTheme.colors.onPrimary)
             .border(BorderStroke(2.dp, MaterialTheme.colors.onBackground), RoundedCornerShape(20.dp)),
             contentAlignment = Alignment.Center
 

@@ -17,6 +17,7 @@ import com.example.sensimate.model.Survey
 //      Use forEach on Survay Objects question array, and then use a switch cases that uses the question
 //      type to render the appropriat composable
 
+//totalquestion skal defineres i Survey.kt
 var currentQuestion = 1
 @Composable
 fun RenderSurvey(survey: Survey, totalQuestions: Int) {
