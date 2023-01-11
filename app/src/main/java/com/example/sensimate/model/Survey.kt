@@ -11,7 +11,7 @@ class Survey (
     var id = id
     var title = title
     var subtitle = subtitle
-    var question: MutableList<Question> ?= null
+    var questions: MutableList<Question> ?= null
     var eventId = eventId
 
 }
