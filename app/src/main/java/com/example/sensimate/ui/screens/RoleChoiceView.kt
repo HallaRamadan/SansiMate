@@ -49,7 +49,7 @@ fun RoleChoiceViewButton(
 @Composable
 fun RoleChoiceViewButtonPreview(){
     RoleChoiceViewButton(
-        text = "Admain",
+        text = "Admin",
         textColor = Color.White ,
         rolechoiceview = Brush.horizontalGradient(
             colors = listOf(
