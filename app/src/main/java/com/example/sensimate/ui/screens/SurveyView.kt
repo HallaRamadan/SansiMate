@@ -60,8 +60,14 @@ fun Questiontype(question: Question){
 @Preview
 @Composable
 fun InvalidQuestionType() {
+    Column(modifier = Modifier
+        .fillMaxWidth()
+        .fillMaxHeight(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally){
     Box(modifier = Modifier .background(color = Red), (Alignment.Center)) {
-        Text("Invalid Question Type", style = TextStyle(color = Color.White), fontSize = 10.sp)
+        Text("Invalid Question Type", style = TextStyle(color = Color.White), fontSize = 30.sp)
+    }
     }
 }
 
@@ -140,6 +146,17 @@ fun RenderBulletPointQuestion(Question: Question) {
 }
 
 @Composable
-fun RenderTextInputQuestion(Question: Question) {
+fun RenderTextInputQuestion(Question: Question) { /*
     //TODO: Create composable that can render a Text Input question
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .fillMaxHeight(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally) {
+        TextField().forEach { text ->
+*/
 }
+
+
+

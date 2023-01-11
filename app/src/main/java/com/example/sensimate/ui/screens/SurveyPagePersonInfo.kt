@@ -128,6 +128,8 @@ fun AgeInfo(){
 
 
 }}
+
+@Preview
 @Composable
 fun TextField(visualTransformation:VisualTransformation = VisualTransformation.None,
               keyboardOptions: KeyboardOptions = KeyboardOptions.Default) {
