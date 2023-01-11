@@ -61,7 +61,7 @@ fun EventDetails(viewModel: MainViewModel) {
                             ClickableText(text = AnnotatedString.Builder().apply {
                                 pushStyle(SpanStyle(color = Color.Magenta, fontSize = 20.sp))
                                 append("Answer Survey")
-                            }.toAnnotatedString(), onClick = { viewModel.navigateToSurvey()} )
+                            }.toAnnotatedString(), onClick = { viewModel.getEventSurvay();viewModel.navigateToSurvey()} )
 
                         }else {
                             Text(

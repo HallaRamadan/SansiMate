@@ -13,6 +13,8 @@ fun fetchQuestions(SurveyId: String):String {
     return JsonString
 }
 
+
+ */
 fun constructSurvey(SurveyId: String): Survey {
     //TODO: Makes use of the functions above, and constructs a surveyObject.
     //      This will be the "Main" function for retriving and creating a surveyObject
@@ -20,4 +22,3 @@ fun constructSurvey(SurveyId: String): Survey {
     return SurveyObject
 }
 
- */
