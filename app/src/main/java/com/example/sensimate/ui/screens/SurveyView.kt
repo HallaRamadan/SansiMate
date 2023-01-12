@@ -188,6 +188,7 @@ fun SurveyBottomBar(pageCount: MutableState<Int>, maxPageCount: Int){
                 ) {
                 Text(text = "Next ->")
 
+
             }
 
         }}}

@@ -122,7 +122,7 @@ fun AgeInfo(){
         ){
             Text(text = "Alder",
                 modifier = Modifier.padding(
-                    bottom = 25.dp
+                    top = 25.dp
 
                 )
 
@@ -195,7 +195,7 @@ fun Gender() {
                 ){
             Text(text = "Gender",
                 modifier = Modifier.padding(
-                    bottom = 25.dp
+                    top = 25.dp
 
                 )
 
@@ -250,7 +250,7 @@ fun Postcode(){
         ){
             Text(text = "Postnummer",
                 modifier = Modifier.padding(
-                    bottom = 25.dp)
+                    top = 25.dp)
 
             )
             LabelAndPlaceHolder(label = "Postnummer", skriv = "skriv dit postnummer")
