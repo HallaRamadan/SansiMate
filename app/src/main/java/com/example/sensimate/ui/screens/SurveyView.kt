@@ -54,7 +54,7 @@ fun RenderSurvey(viewModel: MainViewModel) {
         if (!viewModel.loading.value) {
             var survey = viewModel.currentSurvey
             Column() {
-                Row(modifier = Modifier.fillMaxHeight(0.2F)) {
+                Row(modifier = Modifier.fillMaxHeight(0.07F)) {
                         SurveyTopBar((viewModel.surveyPageCounter.value+1).toFloat().div(survey!!.questions!!.size))
 
                 }
@@ -78,16 +78,19 @@ fun RenderSurvey(viewModel: MainViewModel) {
 
 @Composable
 fun Questiontype(question: Question){
-    Questionbox(Question = question)
-    when (question.type) {
-        1 -> RenderInfo(question)
-        2 -> RenderBulletPointQuestion(question)
-        3 -> RenderBulletPointQuestion(question)
-        else -> {
-            InvalidQuestionType()
+    Row(modifier = Modifier.fillMaxHeight(0.3f)) {
+        Questionbox(Question = question)
+    }
+    Row(modifier = Modifier.fillMaxHeight(1f)) {
+        when (question.type) {
+            1 -> RenderInfo(question)
+            2 -> RenderBulletPointQuestion(question)
+            3 -> RenderBulletPointQuestion(question)
+            else -> {
+                InvalidQuestionType()
+            }
         }
     }
-    currentQuestion++
 }
 
 @Composable
@@ -178,7 +181,7 @@ fun SurveyBottomBar(pageCount: MutableState<Int>, maxPageCount: Int){
                 shape = RoundedCornerShape(20.dp),
 
                 ) {
-                Text(text = "<- Previous")
+                Text(text = "<- Previous", color = White)
             }
             Button(colors = mainButtonColor,
                 onClick = { pageCount.value++}, enabled = (pageCount.value < maxPageCount-1),
@@ -188,7 +191,7 @@ fun SurveyBottomBar(pageCount: MutableState<Int>, maxPageCount: Int){
                 shape = RoundedCornerShape(20.dp),
 
                 ) {
-                Text(text = "Next ->")
+                Text(text = "Next ->", color = White)
 
 
             }
@@ -227,8 +230,8 @@ fun RenderBulletPointQuestion(Question: Question) {
     val radioOptions = Question.answers
     val (selectedOption, onOptionSelected) = remember { mutableStateOf("") }
 
+    Column(){
     radioOptions?.forEach { text ->
-        Log.w("LOOK HERE", text)
         Row(
             Modifier
                 .fillMaxWidth()
@@ -238,11 +241,16 @@ fun RenderBulletPointQuestion(Question: Question) {
                         onOptionSelected(text)
                     }
                 )
-                .padding(horizontal = 16.dp)
+                .padding(horizontal = 16.dp), verticalAlignment = Alignment.CenterVertically
         ) {
             RadioButton(
                 selected = (text == selectedOption),
-                onClick = { onOptionSelected(text) }
+                onClick = { onOptionSelected(text) },
+                colors = RadioButtonDefaults.colors(
+                    selectedColor = Color.Magenta,
+                    unselectedColor = Color.DarkGray,
+                    disabledColor = Color.LightGray
+                ),
             )
             Text(
                 text = text,
@@ -251,12 +259,12 @@ fun RenderBulletPointQuestion(Question: Question) {
             )
         }
     }
+    }
 }
 
 @Composable
 fun RenderInfo(Question: Question) {
     //hardcoded. first Question and answer options will be the same for all surveys
-    Question.title?.let { questionscreen(text = it) }
     Info()
 
 }

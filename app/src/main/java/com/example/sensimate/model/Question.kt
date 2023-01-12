@@ -24,6 +24,7 @@ class Question (
     answers: MutableList<String>?=null
 ) {
 
+    val order: Int = -1
     var surveyId = surveyId
     var id = id
     var title = title
