@@ -203,7 +203,7 @@ fun RenderBulletPointQuestion(Question: Question) {
             )
         }
     }
-
+}
 
 @Composable
 fun RenderTextInputQuestion(Question: Question) {
