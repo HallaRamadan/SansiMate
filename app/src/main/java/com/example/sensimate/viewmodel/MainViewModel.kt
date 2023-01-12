@@ -35,7 +35,7 @@ class MainViewModel : ViewModel() {
     var currentViewedEvent: Event? = null
     var currentSurvey: Survey? = null
     var answersList: MutableList<MutableList<String>> = mutableListOf()
-    var currentQuestionIndex: Int? = null
+    var currentQuestionIndex: Int = 0
     val eventList = listOf(
         Event(id = 1,
             surveyId = "upx7JFmXZmA6Gvo6Qyyz",

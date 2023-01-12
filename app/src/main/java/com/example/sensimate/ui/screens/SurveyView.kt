@@ -53,22 +53,18 @@ fun RenderSurvey(viewModel: MainViewModel) {
     ) {
         if (!viewModel.loading.value) {
             var survey = viewModel.currentSurvey
-            Scaffold(
-                modifier = Modifier
-                    .navigationBarsPadding(),
-                topBar = { SurveyTopBar(progress = survey?.questions?.size?.toFloat()!!.div(viewModel.surveyPageCounter.value.toFloat()),
-                    currentQuestion = view,
-                    totalQuestions = ,
-                    Question = )},
-                bottomBar = {
-                    SurveyBottomBar(pageCount = viewModel.surveyPageCounter, viewModel = viewModel)
-                }
-            ) { innerPadding ->
-                Box(modifier = Modifier.padding(innerPadding)) {
+            Column() {
+                Row(modifier = Modifier.fillMaxHeight(0.2F)) {
+                        SurveyTopBar((viewModel.surveyPageCounter.value+1).toFloat().div(survey!!.questions!!.size))
 
-                    Column(modifier = Modifier.fillMaxWidth(0.9f)) {
-                        survey?.questions?.forEach { question -> Questiontype(question) }
+                }
+                Row(modifier = Modifier.fillMaxHeight(0.99F)) {
+                    Column(modifier = Modifier.fillMaxWidth(0.99f)) {
+                        Questiontype(question = survey?.questions!![viewModel.surveyPageCounter.value])
                     }
+                }
+                Row(modifier = Modifier.fillMaxHeight(1F)) {
+                    SurveyBottomBar(pageCount = viewModel.surveyPageCounter, maxPageCount = survey?.questions!!.size)
                 }
             }
         } else {
@@ -103,7 +99,7 @@ fun InvalidQuestionType() {
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically){
         Box(modifier = Modifier .background(color = Red), (Alignment.Center)) {
-            Text("Invalid Question Type", style = TextStyle(color = Color.White), fontSize = 30.sp)
+            Text("Invalid Question Type", style = TextStyle(color = White), fontSize = 30.sp)
         }
     }
 }
@@ -116,14 +112,14 @@ fun default(){
         title = "hej hvad hedder du",
         type =null,
         answers =null)
-    SurveyTopBar(progress =0.6f , currentQuestion = 1, totalQuestions = 7, Question = newquestion)
+    SurveyTopBar(progress =0.6f)
 }
 
 
 
 //TODO: Create composable that can render a multiple choice question
 @Composable
-fun SurveyTopBar(progress: Float, currentQuestion: Int, totalQuestions: Int, Question: Question)
+fun SurveyTopBar(progress: Float)
 
 {
     frame {
@@ -144,7 +140,6 @@ fun SurveyTopBar(progress: Float, currentQuestion: Int, totalQuestions: Int, Que
 
                 )
             }
-            Question.title?.let { question(text = it) }
             //følgende skal der laves box with questions?? ved ikke hvad title og subtitle præcis er
             //  Text(text = survey.title, style = TextStyle(fontSize = 24.sp))
             // Text(text = survey.subtitle, style = TextStyle(fontSize = 16.sp))
@@ -152,18 +147,21 @@ fun SurveyTopBar(progress: Float, currentQuestion: Int, totalQuestions: Int, Que
     }}
 
 @Composable
-fun SurveyBottomBar(pageCount: MutableState<Int>, viewModel: MainViewModel) {
+fun SurveyBottomBar(pageCount: MutableState<Int>, maxPageCount: Int) {
+    Box(contentAlignment = Alignment.TopCenter){
     Row(){
-        Column() {
-            Button(onClick = { pageCount.value++; Log.w("LOOK HERE", viewModel.surveyPageCounter.value.toString()) }) {
+        Column(Modifier.fillMaxWidth(0.5F),horizontalAlignment = Alignment.CenterHorizontally) {
+
+            Button(onClick = { pageCount.value-- },enabled = (pageCount.value > 0)) {
 
             }
         }
-        Column() {
-            Button(onClick = { pageCount.value--; Log.w("LOOK HERE", viewModel.surveyPageCounter.value.toString())}) {
+        Column(Modifier.fillMaxWidth(1F), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Bottom) {
+            Button(onClick = { pageCount.value++}, enabled = (pageCount.value < maxPageCount-1)) {
 
             }
         }
+    }
     }
 }
 
