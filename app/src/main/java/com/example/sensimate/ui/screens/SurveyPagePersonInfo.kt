@@ -39,7 +39,7 @@ fun Survey_PageToPersonInfo(){
 
 
     progress_indicator(0.1f, prog = "1/7")
-    question("Before we start, we would like to\n" +
+    questionscreen("Before we start, we would like to\n" +
             "know a little about you")}}
 
 

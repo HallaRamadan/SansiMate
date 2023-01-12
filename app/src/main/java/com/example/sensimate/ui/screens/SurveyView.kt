@@ -4,7 +4,6 @@ import android.util.Log
 import android.view.WindowManager
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.Arrangement.Absolute.Center
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -26,11 +25,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.sensimate.BottomBar
-import com.example.sensimate.currentRoute
 import com.example.sensimate.model.Question
-import com.example.sensimate.model.Survey
-import com.example.sensimate.ui.components.SensimateLogo
 import com.example.sensimate.viewmodel.MainViewModel
 
 //TODO: This function Should take in a Survay Object, and render the question based on the question Type
@@ -81,6 +76,7 @@ fun RenderSurvey(viewModel: MainViewModel) {
 
 @Composable
 fun Questiontype(question: Question){
+    Questionbox(Question = question)
     when (question.type) {
         1 -> RenderBulletPointQuestion(question)
         2 -> RenderBulletPointQuestion(question)
@@ -94,7 +90,7 @@ fun Questiontype(question: Question){
 
 @Composable
 fun Questionbox(Question: Question){
-    Question.title?.let { question(text = it) }
+    Question.title?.let { questionscreen(text = it) }
 }
 
 @Preview
@@ -114,7 +110,8 @@ fun InvalidQuestionType() {
 @Preview
 @Composable
 fun default(){
-    var newquestion: Question = Question(    surveyId=null,
+    var newquestion: Question = Question(
+        surveyId=null,
         id = null,
         title = "hej hvad hedder du",
         type =null,
@@ -126,17 +123,14 @@ fun default(){
 
 //TODO: Create composable that can render a multiple choice question
 @Composable
-fun SurveyTopBar(progress: Float)
-
-{
+fun SurveyTopBar(progress: Float) {
     frame {
-
-
         Column {
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween
-            ) {
+            )
+            {
                 LinearProgressIndicator(
                     progress = progress,
                     modifier = Modifier
@@ -144,7 +138,6 @@ fun SurveyTopBar(progress: Float)
                         .clip(shape = RoundedCornerShape(8.dp))
                         .background(color = White),
                     color = Black
-
                 )
             }
             //følgende skal der laves box with questions?? ved ikke hvad title og subtitle præcis er

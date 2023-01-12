@@ -24,14 +24,14 @@ import androidx.compose.ui.graphics.Color.Companion.Black
 fun SurveyPageSingleChoice(){
 frame {
     progress_indicator(0.6f, prog = "6/7")
-    question("This is a question, dont question\n" +
+    questionscreen("This is a question, dont question\n" +
             "it, just answer it*")
 }
     Answers()
     NextandPreviousButton()
 
 }
-@Preview
+@Preview (showBackground = true)
 @Composable
 fun SurveyPageSingleChoicePreview(){
     SurveyPageSingleChoice()
@@ -83,7 +83,7 @@ modifier = Modifier.width(500.dp)) {
 
 
 @Composable
-fun question(text: String){
+fun questionscreen(text: String){
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -132,7 +132,7 @@ Text(
 )
 }*/
 
-@Preview
+@Preview (showBackground = true)
 @Composable
 fun Answers() {
     val radioOptions = listOf("A", "Not me", "Me neither", "Choose A")
