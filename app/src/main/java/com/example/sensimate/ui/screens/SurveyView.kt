@@ -18,6 +18,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Black
 import androidx.compose.ui.graphics.Color.Companion.Red
+import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -71,32 +72,47 @@ fun InvalidQuestionType() {
     }
 }
 
+@Preview
+@Composable
+fun default(){
+    var newquestion: Question = Question(    surveyId=null,
+    id = null,
+    title = "hej hvad hedder du",
+    type =null,
+    answers =null)
+    SurveyTopBar(progress =0.6f , currentQuestion = 1, totalQuestions = 7, Question = newquestion)
+}
 
 
 //TODO: Create composable that can render a multiple choice question
 @Composable
-fun SurveyTopBar(survey: Survey, progress: Float, currentQuestion: Int, totalQuestions: Int)
-{
-    Column {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            LinearProgressIndicator(
-                progress = progress,
-                modifier = Modifier
-                    .width(500.dp)
-                    .clip(shape = RoundedCornerShape(8.dp))
-                    .background(color = Black)
-            )
-            Text("$currentQuestion/$totalQuestions")
-        }
+fun SurveyTopBar(progress: Float, currentQuestion: Int, totalQuestions: Int, Question: Question)
 
-        //følgende skal der laves box with questions?? ved ikke hvad title og subtitle præcis er
-        //  Text(text = survey.title, style = TextStyle(fontSize = 24.sp))
-        // Text(text = survey.subtitle, style = TextStyle(fontSize = 16.sp))
-    }
-}
+    {
+        frame {
+
+
+        Column {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                LinearProgressIndicator(
+                    progress = progress,
+                    modifier = Modifier
+                        .width(500.dp)
+                        .clip(shape = RoundedCornerShape(8.dp))
+                        .background(color = White),
+                    color = Black
+
+                )
+            }
+            Question.title?.let { question(text = it) }
+            //følgende skal der laves box with questions?? ved ikke hvad title og subtitle præcis er
+            //  Text(text = survey.title, style = TextStyle(fontSize = 24.sp))
+            // Text(text = survey.subtitle, style = TextStyle(fontSize = 16.sp))
+        }
+    }}
 
 @Composable
 fun SurveyBottomBar(survey: Survey) {
