@@ -5,14 +5,18 @@ package com.example.sensimate.model
 class Survey (
     id: String?= null,
     eventId: String?=null,
-    title: String,
-    subtitle: String,
+    title: String?=null,
+    subtitle: String?=null,
 ) {
     var id = id
     var title = title
     var subtitle = subtitle
-    var question: MutableList<Question> ?= null
+    var questions: MutableList<Question> ?= null
     var eventId = eventId
+
+    override fun toString(): String {
+        return " ${questions.toString()} ${id} ${eventId} ${title} Hallo"
+    }
 
 }
 

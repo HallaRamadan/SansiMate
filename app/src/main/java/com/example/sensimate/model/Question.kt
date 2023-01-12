@@ -19,9 +19,9 @@ be stored under the attribute ID in the Question Object.
 class Question (
     surveyId: String?=null,
     id: String?= null,
-    title: String,
-    type: Int,
-    answers: MutableList<String>
+    title: String?=null,
+    type: Int?=null,
+    answers: MutableList<String>?=null
 ) {
 
     var surveyId = surveyId
@@ -30,5 +30,7 @@ class Question (
     var type = type
     var answers = answers
     var subtitle = null
+
+    constructor(nothing: Nothing?) : this()
 
 }

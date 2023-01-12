@@ -3,13 +3,19 @@ package com.example.sensimate.viewmodel
 import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
 import com.example.sensimate.R
 import com.example.sensimate.model.Event
 import com.example.sensimate.model.Survey
+import com.example.sensimate.model.constructSurvey
 //import com.example.sensimate.model.constructSurvey
 import com.example.sensimate.navigation.Screen
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 /*
  class SurvayViewModel : ViewModel() {
@@ -23,9 +29,12 @@ import com.example.sensimate.navigation.Screen
 
 
 class MainViewModel : ViewModel() {
+    var loading = mutableStateOf(false)
     var navController: NavController? = null
     var currentViewedEvent: Event? = null
     var currentSurvey: Survey? = null
+    var answersList: MutableList<MutableList<String>> = mutableListOf()
+    var currentQuestionIndex: Int? = null
     val eventList = listOf(
         Event(id = 1,
             surveyId = "upx7JFmXZmA6Gvo6Qyyz",
@@ -205,11 +214,14 @@ class MainViewModel : ViewModel() {
 
 
 
-    fun getEventSurvay(): Survey {
-        //currentSurvey = constructSurvey(currentViewedEvent!!.surveyId!!)
-        return currentSurvey as Survey
+    fun getEventSurvey() {
+        viewModelScope.launch(Dispatchers.IO) {
+            loading.value = true
+            Log.w("LOOK HERE", currentViewedEvent!!.surveyId!!)
+            currentSurvey = constructSurvey(currentViewedEvent!!.surveyId!!)
+            loading.value = false
+        }
     }
-
     fun navigateToSurvey(){
         if(navController != null){
             navController!!.navigate(Screen.Survey.route)
