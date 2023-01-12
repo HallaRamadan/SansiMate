@@ -29,6 +29,7 @@ import kotlinx.coroutines.launch
 
 
 class MainViewModel : ViewModel() {
+    val surveyPageCounter = mutableStateOf(0)
     var loading = mutableStateOf(false)
     var navController: NavController? = null
     var currentViewedEvent: Event? = null
