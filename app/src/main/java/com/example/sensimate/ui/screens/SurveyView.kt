@@ -44,7 +44,6 @@ fun RenderSurvey(viewModel: MainViewModel) {
 }
 
 
-
 @Composable
 fun Questiontype(question: Question){
     when (question.type) {
@@ -56,6 +55,11 @@ fun Questiontype(question: Question){
         }
     }
     currentQuestion++
+}
+
+@Composable
+fun Questionbox(Question: Question){
+    Question.title?.let { question(text = it) }
 }
 
 @Preview
@@ -107,10 +111,7 @@ fun SurveyTopBar(progress: Float, currentQuestion: Int, totalQuestions: Int, Que
 
                 )
             }
-            Question.title?.let { question(text = it) }
-            //følgende skal der laves box with questions?? ved ikke hvad title og subtitle præcis er
-            //  Text(text = survey.title, style = TextStyle(fontSize = 24.sp))
-            // Text(text = survey.subtitle, style = TextStyle(fontSize = 16.sp))
+
         }
     }}
 

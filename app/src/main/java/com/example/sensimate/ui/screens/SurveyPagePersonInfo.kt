@@ -29,6 +29,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.toSize
 import androidx.compose.foundation.layout.Column
 
+import androidx.compose.ui.text.input.TextFieldValue
+import com.google.protobuf.DescriptorProtos.FieldDescriptorProto.Label
+
 
 @Composable
 fun Survey_PageToPersonInfo(){
@@ -70,9 +73,11 @@ fun Info() {
             )
 
 
-
             .clip(RoundedCornerShape(20.dp))
-            .border(BorderStroke(2.dp, MaterialTheme.colors.onBackground), RoundedCornerShape(20.dp))
+            .border(
+                BorderStroke(2.dp, MaterialTheme.colors.onBackground),
+                RoundedCornerShape(20.dp)
+            )
             .background(Color(0xFFFFFFFF))
             .border(BorderStroke(1.dp, Color(0xFFFFFFFF)), RoundedCornerShape(20.dp)),
 
@@ -83,7 +88,7 @@ fun Info() {
 
         ) {
 
-            Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+            Column(verticalArrangement = Arrangement.spacedBy(20.dp)) {
                 AgeInfo()
                 Gender()
                 Postcode()
@@ -120,18 +125,39 @@ fun AgeInfo(){
 
 
         ){
-            Text(text = "Age",
+            Text(text = "Alder",
                 modifier = Modifier.padding(
                     bottom = 25.dp
 
                 )
 
             )
-            TextField()
+            LabelAndPlaceHolder(label = "Alder", skriv = "hvor gammel er du")
 
 
 }}
 
+
+@Composable
+fun LabelAndPlaceHolder(label: String, skriv: String) {
+    var text by remember { mutableStateOf(TextFieldValue("")) }
+    OutlinedTextField( modifier = Modifier
+        .width(200.dp)
+        .height(60.dp),
+
+        value = text,
+        onValueChange = {
+            text = it
+        },
+        label = { Text(text = label) },
+        placeholder = { Text(text = skriv) },
+        shape = RoundedCornerShape(20.dp)
+    )
+}
+
+
+
+/*
 @Preview
 @Composable
 fun TextField(visualTransformation:VisualTransformation = VisualTransformation.None,
@@ -142,7 +168,7 @@ fun TextField(visualTransformation:VisualTransformation = VisualTransformation.N
     OutlinedTextField(modifier = Modifier
         .width(200.dp)
         .height(10.dp),
-        value = text,
+        value = "$text",
         onValueChange ={setText(it)},
         visualTransformation = visualTransformation,
         keyboardOptions = keyboardOptions,
@@ -150,14 +176,14 @@ fun TextField(visualTransformation:VisualTransformation = VisualTransformation.N
 
     )
 
-}
+}*/
 
 @SuppressLint("SuspiciousIndentation")
 @Preview
 @Composable
 fun Gender() {
     var expanded by remember { mutableStateOf(false) }
-    val suggestions = listOf("male", "female")
+    val suggestions = listOf("male", "female", "other")
     var selectedText by remember { mutableStateOf("") }
 
     var textfieldSize by remember { mutableStateOf(Size.Zero) }
@@ -187,7 +213,7 @@ fun Gender() {
                 modifier = Modifier
 
                     .width(200.dp)
-                    .height(10.dp)
+                    .height(60.dp)
                     .onGloballyPositioned { coordinates ->
                         //This value is used to assign to the DropDown the same width
                         textfieldSize = coordinates.size.toSize()
@@ -227,12 +253,12 @@ fun Postcode(){
 
 
         ){
-            Text(text = "Postcode",
+            Text(text = "Postnummer",
                 modifier = Modifier.padding(
                     bottom = 25.dp)
 
             )
-            TextField()
+            LabelAndPlaceHolder(label = "Postnummer", skriv = "skriv dit postnummer")
 
 
         }}
