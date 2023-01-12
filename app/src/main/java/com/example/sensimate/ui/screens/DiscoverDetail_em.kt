@@ -22,11 +22,6 @@ fun DiscoverDetail_emPreviw(){
 }
 @Composable
 fun DiscoverDitail_em(){
-    Background {
-        SensiMateImage()
-        SensiMateCard()
-    }
-
 
 }
 
