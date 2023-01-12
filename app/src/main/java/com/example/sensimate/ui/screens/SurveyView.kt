@@ -46,7 +46,9 @@ fun RenderSurvey(viewModel: MainViewModel) {
     Box(
         modifier = Modifier
             .verticalScroll(rememberScrollState())
-            .height(screenHeight).width(screenWidth).background(color = White),
+            .height(screenHeight)
+            .width(screenWidth)
+            .background(color = White),
         contentAlignment = Alignment.TopCenter
     ) {
         if (!viewModel.loading.value) {
@@ -78,7 +80,7 @@ fun RenderSurvey(viewModel: MainViewModel) {
 fun Questiontype(question: Question){
     Questionbox(Question = question)
     when (question.type) {
-        1 -> RenderBulletPointQuestion(question)
+        1 -> RenderInfo(question)
         2 -> RenderBulletPointQuestion(question)
         3 -> RenderBulletPointQuestion(question)
         else -> {
@@ -252,8 +254,9 @@ fun RenderBulletPointQuestion(Question: Question) {
 }
 
 @Composable
-fun RenderTextInputQuestion(Question: Question) {
+fun RenderInfo(Question: Question) {
     //hardcoded. first Question and answer options will be the same for all surveys
+    Question.title?.let { questionscreen(text = it) }
     Info()
 
 }
