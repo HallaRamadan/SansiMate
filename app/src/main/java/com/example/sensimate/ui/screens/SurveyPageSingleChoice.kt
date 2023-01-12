@@ -31,7 +31,7 @@ frame {
     NextandPreviousButton()
 
 }
-@Preview
+@Preview (showBackground = true)
 @Composable
 fun SurveyPageSingleChoicePreview(){
     SurveyPageSingleChoice()
@@ -132,7 +132,7 @@ Text(
 )
 }*/
 
-@Preview
+@Preview (showBackground = true)
 @Composable
 fun Answers() {
     val radioOptions = listOf("A", "Not me", "Me neither", "Choose A")

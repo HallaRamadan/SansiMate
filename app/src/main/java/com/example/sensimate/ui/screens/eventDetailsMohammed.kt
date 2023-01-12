@@ -22,9 +22,9 @@ import com.example.sensimate.ui.components.Card
 import com.example.sensimate.ui.components.Background
 import com.example.sensimate.viewmodel.MainViewModel
 
-
+@Preview (showBackground = true)
 @Composable
-fun EventDetails(viewModel: MainViewModel) {
+fun EventDetails() {
     Background {
         Card(
             modifier = Modifier
@@ -56,34 +56,23 @@ fun EventDetails(viewModel: MainViewModel) {
                                 .fillMaxWidth(1F)
                                 .fillMaxHeight(0.65F)
                         )
-                        if(true){
-
-                            ClickableText(text = AnnotatedString.Builder().apply {
-                                pushStyle(SpanStyle(color = Color.Magenta, fontSize = 20.sp))
-                                append("Answer Survey")
-                            }.toAnnotatedString(), onClick =
-                            { viewModel.getEventSurvey();viewModel.navigateToSurvey()} )
-
-                        }else {
-                            Text(
-                                text = "                       Check Results",
-                                color = Color.Magenta,
-                                fontSize = 20.sp
-                            )
-                            Text(
-                                text = "                       Create Survey",
-                                color = Color.Magenta,
-                                fontSize = 20.sp
-                            )
-                        }
+                        Text(
+                            text = "                       Check Results",
+                            color = Color.Magenta,
+                            fontSize = 20.sp
+                        )
+                        Text(
+                            text = "                       Edit Survey",
+                            color = Color.Magenta,
+                            fontSize = 20.sp
+                        )
                     }
-
                 }
+
             }
         }
     }
 }
-
 
 
 //Discover Detail:
