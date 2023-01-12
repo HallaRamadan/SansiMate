@@ -52,19 +52,19 @@ fun RenderSurvey(viewModel: MainViewModel) {
         contentAlignment = Alignment.TopCenter
     ) {
         if (!viewModel.loading.value) {
-            Scaffold(
-                modifier = Modifier
-                    .navigationBarsPadding(),
-                topBar = {},
-                bottomBar = {
-                    SurveyBottomBar(pageCount = viewModel.surveyPageCounter, viewModel = viewModel)
+            var survey = viewModel.currentSurvey
+            Column() {
+                Row(modifier = Modifier.fillMaxHeight(0.2F)) {
+                        SurveyTopBar((viewModel.surveyPageCounter.value+1).toFloat().div(survey!!.questions!!.size))
+
                 }
-            ) { innerPadding ->
-                Box(modifier = Modifier.padding(innerPadding)) {
-                    var survey = viewModel.currentSurvey
-                    Column(modifier = Modifier.fillMaxWidth(0.9f)) {
-                        survey?.questions?.forEach { question -> Questiontype(question) }
+                Row(modifier = Modifier.fillMaxHeight(0.99F)) {
+                    Column(modifier = Modifier.fillMaxWidth(0.99f)) {
+                        Questiontype(question = survey?.questions!![viewModel.surveyPageCounter.value])
                     }
+                }
+                Row(modifier = Modifier.fillMaxHeight(1F)) {
+                    SurveyBottomBar(pageCount = viewModel.surveyPageCounter, maxPageCount = survey?.questions!!.size)
                 }
             }
         } else {
@@ -111,21 +111,21 @@ fun InvalidQuestionType() {
 @Composable
 fun default(){
     var newquestion: Question = Question(    surveyId=null,
-    id = null,
-    title = "hej hvad hedder du",
-    type =null,
-    answers =null)
-    SurveyTopBar(progress =0.6f , currentQuestion = 1, totalQuestions = 7, Question = newquestion)
+        id = null,
+        title = "hej hvad hedder du",
+        type =null,
+        answers =null)
+    SurveyTopBar(progress =0.6f)
 }
 
 
 
 //TODO: Create composable that can render a multiple choice question
 @Composable
-fun SurveyTopBar(progress: Float, currentQuestion: Int, totalQuestions: Int, Question: Question)
+fun SurveyTopBar(progress: Float)
 
-    {
-        frame {
+{
+    frame {
 
 
         Column {
@@ -143,23 +143,28 @@ fun SurveyTopBar(progress: Float, currentQuestion: Int, totalQuestions: Int, Que
 
                 )
             }
-
+            //følgende skal der laves box with questions?? ved ikke hvad title og subtitle præcis er
+            //  Text(text = survey.title, style = TextStyle(fontSize = 24.sp))
+            // Text(text = survey.subtitle, style = TextStyle(fontSize = 16.sp))
         }
     }}
 
 @Composable
-fun SurveyBottomBar(pageCount: MutableState<Int>, viewModel: MainViewModel) {
-    Row(){  
-        Column() {
-            Button(onClick = { pageCount.value++; Log.w("LOOK HERE", viewModel.surveyPageCounter.value.toString()) }) {
+fun SurveyBottomBar(pageCount: MutableState<Int>, maxPageCount: Int) {
+    Box(contentAlignment = Alignment.TopCenter){
+    Row(){
+        Column(Modifier.fillMaxWidth(0.5F),horizontalAlignment = Alignment.CenterHorizontally) {
+
+            Button(onClick = { pageCount.value-- },enabled = (pageCount.value > 0)) {
 
             }
         }
-        Column() {
-            Button(onClick = { pageCount.value--; Log.w("LOOK HERE", viewModel.surveyPageCounter.value.toString())}) {
+        Column(Modifier.fillMaxWidth(1F), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Bottom) {
+            Button(onClick = { pageCount.value++}, enabled = (pageCount.value < maxPageCount-1)) {
 
             }
         }
+    }
     }
 }
 
@@ -174,29 +179,28 @@ fun RenderBulletPointQuestion(Question: Question) {
     val radioOptions = Question.answers
     val (selectedOption, onOptionSelected) = remember { mutableStateOf("") }
 
-        radioOptions?.forEach { text ->
-            Log.w("LOOK HERE", text)
-            Row(
-                Modifier
-                    .fillMaxWidth()
-                    .selectable(
-                        selected = (text == selectedOption),
-                        onClick = {
-                            onOptionSelected(text)
-                        }
-                    )
-                    .padding(horizontal = 16.dp)
-            ) {
-                RadioButton(
+    radioOptions?.forEach { text ->
+        Log.w("LOOK HERE", text)
+        Row(
+            Modifier
+                .fillMaxWidth()
+                .selectable(
                     selected = (text == selectedOption),
-                    onClick = { onOptionSelected(text) }
+                    onClick = {
+                        onOptionSelected(text)
+                    }
                 )
-                Text(
-                    text = text,
-                    style = MaterialTheme.typography.body1.merge(),
-                    modifier = Modifier.padding(start = 20.dp)
-                )
-            }
+                .padding(horizontal = 16.dp)
+        ) {
+            RadioButton(
+                selected = (text == selectedOption),
+                onClick = { onOptionSelected(text) }
+            )
+            Text(
+                text = text,
+                style = MaterialTheme.typography.body1.merge(),
+                modifier = Modifier.padding(start = 20.dp)
+            )
         }
     }
 
@@ -206,15 +210,15 @@ fun RenderTextInputQuestion(Question: Question) {
     //hardcoded. first Question and answer options will be the same for all surveys
     Info()
 
-        }
-    /*
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .fillMaxHeight(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally) {
-        TextField().forEach { text ->
+}
+/*
+Column(
+    modifier = Modifier
+        .fillMaxWidth()
+        .fillMaxHeight(),
+    verticalArrangement = Arrangement.Center,
+    horizontalAlignment = Alignment.CenterHorizontally) {
+    TextField().forEach { text ->
 
 
 */
