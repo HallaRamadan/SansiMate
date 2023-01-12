@@ -119,7 +119,7 @@ fun RenderBulletPointQuestion(Question: Question) {
             .fillMaxHeight(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally) {
-        radioOptions.forEach { text ->
+        radioOptions?.forEach { text ->
             Row(
                 Modifier
                     .fillMaxWidth()
