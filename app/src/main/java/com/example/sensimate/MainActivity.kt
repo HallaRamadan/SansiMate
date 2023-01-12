@@ -32,32 +32,6 @@ class MainActivity : ComponentActivity() {
         val viewModel: MainViewModel by viewModels()
 
         setContent {
-            Row(
-                modifier = Modifier.fillMaxSize(),
-                horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                RoleChoiceViewButton1(
-                    text = "Admain",
-                    textColor = Color.White ,
-                    rolechoiceview1 = Brush.horizontalGradient(
-                        colors = listOf(
-                            color1,
-                            color2
-                        )
-                    )
-                )
-                { }
-                Button(onClick = { /*TODO*/ }) {
-                    Text(text = "Admain")
-                    Spacer(modifier = Modifier.height(16.dp))
-                    Text(text = "User ")
-                }
-
-            }
-
-
-
             SensiMateTheme  {
                 Surface(
                 ) {
