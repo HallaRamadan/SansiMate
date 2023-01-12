@@ -3,7 +3,6 @@ package com.example.sensimate.ui.screens
 import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.Arrangement.Absolute.Center
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -24,11 +23,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.sensimate.BottomBar
-import com.example.sensimate.currentRoute
 import com.example.sensimate.model.Question
-import com.example.sensimate.model.Survey
-import com.example.sensimate.ui.components.SensimateLogo
 import com.example.sensimate.viewmodel.MainViewModel
 
 //TODO: This function Should take in a Survay Object, and render the question based on the question Type
@@ -77,6 +72,7 @@ fun RenderSurvey(viewModel: MainViewModel) {
 
 @Composable
 fun Questiontype(question: Question){
+    Questionbox(Question = question)
     when (question.type) {
         1 -> RenderBulletPointQuestion(question)
         2 -> RenderBulletPointQuestion(question)
@@ -90,7 +86,7 @@ fun Questiontype(question: Question){
 
 @Composable
 fun Questionbox(Question: Question){
-    Question.title?.let { question(text = it) }
+    Question.title?.let { questionscreen(text = it) }
 }
 
 @Preview
