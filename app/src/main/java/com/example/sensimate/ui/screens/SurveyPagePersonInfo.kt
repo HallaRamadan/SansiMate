@@ -167,9 +167,6 @@ fun Gender() {
     else
         Icons.Filled.KeyboardArrowDown
 
-
-
-
         Row ( modifier = Modifier,
 
                 horizontalArrangement = Arrangement.spacedBy(20.dp),
@@ -219,6 +216,7 @@ fun Gender() {
         }
 
     }
+
 @Preview
 @Composable
 fun Postcode(){
