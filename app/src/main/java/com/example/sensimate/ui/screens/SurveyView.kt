@@ -1,15 +1,16 @@
 package com.example.sensimate.ui.screens
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.Arrangement.Absolute.Center
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.LinearProgressIndicator
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.RadioButton
-import androidx.compose.material.Text
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -23,8 +24,11 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.sensimate.BottomBar
+import com.example.sensimate.currentRoute
 import com.example.sensimate.model.Question
 import com.example.sensimate.model.Survey
+import com.example.sensimate.ui.components.SensimateLogo
 import com.example.sensimate.viewmodel.MainViewModel
 
 //TODO: This function Should take in a Survay Object, and render the question based on the question Type
@@ -39,18 +43,45 @@ var currentQuestion = 1
 
 @Composable
 fun RenderSurvey(viewModel: MainViewModel) {
-  //  SurveyTopBar(survey, currentQuestion.toFloat() / totalQuestions.toFloat(), currentQuestion, totalQuestions)
+    Box(
+        modifier = Modifier
+            .verticalScroll(rememberScrollState())
+            .fillMaxSize()
+            .fillMaxHeight()
+            .padding(15.dp),
+        contentAlignment = Alignment.TopCenter
+    ) {
+        if (!viewModel.loading.value) {
+            Scaffold(
+                modifier = Modifier
+                    .navigationBarsPadding(),
+                topBar = {},
+                bottomBar = {
+                    SurveyBottomBar(pageCount = viewModel.surveyPageCounter, viewModel = viewModel)
+                }
+            ) { innerPadding ->
+                Box(modifier = Modifier.padding(innerPadding)) {
+                    var survey = viewModel.currentSurvey
+                    Column(modifier = Modifier.fillMaxWidth(0.9f)) {
+                        survey?.questions?.forEach { question -> Questiontype(question) }
+                    }
+                }
+            }
+        } else {
+            Text("Loading")
+        }
+
+    }
 
 }
-
 
 
 @Composable
 fun Questiontype(question: Question){
     when (question.type) {
-        1 -> RenderMultipleChoiceQuestion(question)
+        1 -> RenderBulletPointQuestion(question)
         2 -> RenderBulletPointQuestion(question)
-        3 -> RenderTextInputQuestion(question)
+        3 -> RenderBulletPointQuestion(question)
         else -> {
             InvalidQuestionType()
         }
@@ -61,14 +92,14 @@ fun Questiontype(question: Question){
 @Preview
 @Composable
 fun InvalidQuestionType() {
-    Column(modifier = Modifier
+    Row(modifier = Modifier
         .fillMaxWidth()
         .fillMaxHeight(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally){
-    Box(modifier = Modifier .background(color = Red), (Alignment.Center)) {
-        Text("Invalid Question Type", style = TextStyle(color = Color.White), fontSize = 30.sp)
-    }
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically){
+        Box(modifier = Modifier .background(color = Red), (Alignment.Center)) {
+            Text("Invalid Question Type", style = TextStyle(color = Color.White), fontSize = 30.sp)
+        }
     }
 }
 
@@ -82,6 +113,7 @@ fun default(){
     answers =null)
     SurveyTopBar(progress =0.6f , currentQuestion = 1, totalQuestions = 7, Question = newquestion)
 }
+
 
 
 //TODO: Create composable that can render a multiple choice question
@@ -115,8 +147,19 @@ fun SurveyTopBar(progress: Float, currentQuestion: Int, totalQuestions: Int, Que
     }}
 
 @Composable
-fun SurveyBottomBar(survey: Survey) {
-    //TODO: Create composable that can render a multiple choice question
+fun SurveyBottomBar(pageCount: MutableState<Int>, viewModel: MainViewModel) {
+    Row(){  
+        Column() {
+            Button(onClick = { pageCount.value++; Log.w("LOOK HERE", viewModel.surveyPageCounter.value.toString()) }) {
+
+            }
+        }
+        Column() {
+            Button(onClick = { pageCount.value--; Log.w("LOOK HERE", viewModel.surveyPageCounter.value.toString())}) {
+
+            }
+        }
+    }
 }
 
 @Composable
@@ -129,13 +172,9 @@ fun RenderBulletPointQuestion(Question: Question) {
     //TODO: Create composable that can render a BulletPoints choice question
     val radioOptions = Question.answers
     val (selectedOption, onOptionSelected) = remember { mutableStateOf("") }
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .fillMaxHeight(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally) {
+
         radioOptions?.forEach { text ->
+            Log.w("LOOK HERE", text)
             Row(
                 Modifier
                     .fillMaxWidth()
@@ -159,7 +198,7 @@ fun RenderBulletPointQuestion(Question: Question) {
             }
         }
     }
-}
+
 
 @Composable
 fun RenderTextInputQuestion(Question: Question) {
@@ -175,6 +214,8 @@ fun RenderTextInputQuestion(Question: Question) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally) {
         TextField().forEach { text ->
+
+
 */
 
 
