@@ -106,7 +106,8 @@ fun InvalidQuestionType() {
 @Preview
 @Composable
 fun default(){
-    var newquestion: Question = Question(    surveyId=null,
+    var newquestion: Question = Question(
+        surveyId=null,
         id = null,
         title = "hej hvad hedder du",
         type =null,
@@ -118,17 +119,14 @@ fun default(){
 
 //TODO: Create composable that can render a multiple choice question
 @Composable
-fun SurveyTopBar(progress: Float)
-
-{
+fun SurveyTopBar(progress: Float) {
     frame {
-
-
         Column {
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween
-            ) {
+            )
+            {
                 LinearProgressIndicator(
                     progress = progress,
                     modifier = Modifier
@@ -136,7 +134,6 @@ fun SurveyTopBar(progress: Float)
                         .clip(shape = RoundedCornerShape(8.dp))
                         .background(color = White),
                     color = Black
-
                 )
             }
             //følgende skal der laves box with questions?? ved ikke hvad title og subtitle præcis er
