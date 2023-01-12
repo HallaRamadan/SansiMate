@@ -149,24 +149,72 @@ fun SurveyTopBar(progress: Float)
         }
     }}
 
+
+
+
+@Composable
+fun SurveyBottomBar(pageCount: MutableState<Int>, maxPageCount: Int){
+    val mainButtonColor = ButtonDefaults.buttonColors(
+        backgroundColor = Color.Black,
+        contentColor = MaterialTheme.colors.surface)
+    Column(modifier = Modifier
+        .fillMaxWidth()
+        .fillMaxHeight(),
+        verticalArrangement = Arrangement.Bottom,
+        horizontalAlignment = Alignment.CenterHorizontally
+
+    ) {
+
+        Row(modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            verticalAlignment = Alignment.Bottom
+
+        ) {
+
+            Button( colors = mainButtonColor,
+                onClick = { pageCount.value-- },enabled = (pageCount.value > 0),
+                modifier = Modifier
+                    .padding(8.dp),
+
+                shape = RoundedCornerShape(20.dp),
+
+                ) {
+                Text(text = "<- Previous")
+            }
+            Button(colors = mainButtonColor,
+                onClick = { pageCount.value++}, enabled = (pageCount.value < maxPageCount-1),
+                modifier = Modifier
+                    .padding(8.dp),
+
+                shape = RoundedCornerShape(20.dp),
+
+                ) {
+                Text(text = "Next ->")
+
+            }
+
+        }}}
+
+
+/*
 @Composable
 fun SurveyBottomBar(pageCount: MutableState<Int>, maxPageCount: Int) {
     Box(contentAlignment = Alignment.TopCenter){
-    Row(){
-        Column(Modifier.fillMaxWidth(0.5F),horizontalAlignment = Alignment.CenterHorizontally) {
+        Row(){
+            Column(Modifier.fillMaxWidth(0.5F),horizontalAlignment = Alignment.CenterHorizontally) {
 
-            Button(onClick = { pageCount.value-- },enabled = (pageCount.value > 0)) {
+                Button(onClick = { pageCount.value-- },enabled = (pageCount.value > 0)) {
 
+                }
             }
-        }
-        Column(Modifier.fillMaxWidth(1F), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Bottom) {
-            Button(onClick = { pageCount.value++}, enabled = (pageCount.value < maxPageCount-1)) {
+            Column(Modifier.fillMaxWidth(1F), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Bottom) {
+                Button(onClick = { pageCount.value++}, enabled = (pageCount.value < maxPageCount-1)) {
 
+                }
             }
         }
     }
-    }
-}
+}*/
 
 @Composable
 fun RenderMultipleChoiceQuestion(Question: Question) {

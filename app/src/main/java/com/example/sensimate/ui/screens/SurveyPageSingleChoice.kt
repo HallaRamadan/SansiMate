@@ -28,7 +28,7 @@ frame {
             "it, just answer it*")
 }
     Answers()
-    NextButton()
+    NextandPreviousButton()
 
 }
 @Preview
@@ -101,7 +101,10 @@ fun question(text: String){
 
                 .clip(RoundedCornerShape(20.dp))
                 .background(MaterialTheme.colors.onPrimary)
-                .border(BorderStroke(2.dp, MaterialTheme.colors.onBackground), RoundedCornerShape(20.dp)),
+                .border(
+                    BorderStroke(2.dp, MaterialTheme.colors.onBackground),
+                    RoundedCornerShape(20.dp)
+                ),
                 contentAlignment = Alignment.BottomCenter
 
                 ) {
@@ -195,9 +198,8 @@ Row(modifier = Modifier.padding(24.dp)) {
 }*/
 
 
-@Preview
 @Composable
-fun NextButton(){
+fun NextandPreviousButton(){
     val mainButtonColor = ButtonDefaults.buttonColors(
         backgroundColor = Color.Black,
         contentColor = MaterialTheme.colors.surface)
@@ -216,7 +218,7 @@ verticalArrangement = Arrangement.Bottom,
     ) {
 
     Button( colors = mainButtonColor,
-        onClick = { /*TODO*/ },
+        onClick = { },
         modifier = Modifier
             .padding(8.dp),
 
@@ -226,7 +228,7 @@ verticalArrangement = Arrangement.Bottom,
         Text(text = "<- Previous")
     }
         Button(colors = mainButtonColor,
-            onClick = { /*TODO*/ },
+            onClick = { },
             modifier = Modifier
                 .padding(8.dp),
 
