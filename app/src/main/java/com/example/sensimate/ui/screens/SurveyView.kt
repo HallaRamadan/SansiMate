@@ -1,6 +1,7 @@
 package com.example.sensimate.ui.screens
 
 import android.util.Log
+import android.view.WindowManager
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.Arrangement.Absolute.Center
@@ -20,6 +21,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Black
 import androidx.compose.ui.graphics.Color.Companion.Red
 import androidx.compose.ui.graphics.Color.Companion.White
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -43,12 +45,13 @@ var currentQuestion = 1
 
 @Composable
 fun RenderSurvey(viewModel: MainViewModel) {
+    val configuration = LocalConfiguration.current
+    val screenHeight = configuration.screenHeightDp.dp
+    val screenWidth = configuration.screenWidthDp.dp
     Box(
         modifier = Modifier
             .verticalScroll(rememberScrollState())
-            .fillMaxSize()
-            .fillMaxHeight()
-            .padding(15.dp),
+            .height(screenHeight).width(screenWidth).background(color = White),
         contentAlignment = Alignment.TopCenter
     ) {
         if (!viewModel.loading.value) {
@@ -58,8 +61,8 @@ fun RenderSurvey(viewModel: MainViewModel) {
                         SurveyTopBar((viewModel.surveyPageCounter.value+1).toFloat().div(survey!!.questions!!.size))
 
                 }
-                Row(modifier = Modifier.fillMaxHeight(0.99F)) {
-                    Column(modifier = Modifier.fillMaxWidth(0.99f)) {
+                Row(modifier = Modifier.fillMaxHeight(0.8f)) {
+                    Column() {
                         Questiontype(question = survey?.questions!![viewModel.surveyPageCounter.value])
                     }
                 }
@@ -67,6 +70,7 @@ fun RenderSurvey(viewModel: MainViewModel) {
                     SurveyBottomBar(pageCount = viewModel.surveyPageCounter, maxPageCount = survey?.questions!!.size)
                 }
             }
+
         } else {
             Text("Loading")
         }

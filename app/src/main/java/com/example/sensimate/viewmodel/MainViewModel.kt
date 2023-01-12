@@ -29,6 +29,7 @@ import kotlinx.coroutines.launch
 
 
 class MainViewModel : ViewModel() {
+    var darkTheme = mutableStateOf(true)
     val surveyPageCounter = mutableStateOf(0)
     var loading = mutableStateOf(false)
     var navController: NavController? = null

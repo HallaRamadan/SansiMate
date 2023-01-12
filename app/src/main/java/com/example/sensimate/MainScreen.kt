@@ -38,10 +38,12 @@ fun MainScreen(viewModel: MainViewModel) {
             .navigationBarsPadding(),
         topBar = {if(currentRoute(navController) !="survey"){ SensimateLogo() }},
         bottomBar = { if(currentRoute(navController) !="survey"){ BottomBar(navController = navController)}}
-    ) { innerPadding ->
-        Box(modifier = Modifier.padding(innerPadding)) {
+    ) {
+
+        Box() {
             BottomNavGraph(navController = navController, viewModel = viewModel)
         }
+
     }
 }
 

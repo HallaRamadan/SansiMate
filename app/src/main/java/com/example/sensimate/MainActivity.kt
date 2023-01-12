@@ -28,7 +28,7 @@ class MainActivity : ComponentActivity() {
 
 
 
-            SensiMateTheme  {
+            SensiMateTheme(viewModel.darkTheme.value)  {
                 Surface(
                 ) {
                             MainScreen(viewModel)
