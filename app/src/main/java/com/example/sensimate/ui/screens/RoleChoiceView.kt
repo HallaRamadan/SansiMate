@@ -21,23 +21,11 @@ import com.example.sensimate.ui.theme.color1
 import com.example.sensimate.ui.theme.color2
 import com.example.sensimate.viewmodel.MainViewModel
 
-@Composable
-fun RoleChoiceView(){
-    Box(modifier = Modifier
-        .fillMaxSize()
-        .border(BorderStroke(1.dp, Color.Black))
-        .background(MaterialTheme.colors.onBackground),
-        contentAlignment = Alignment.Center)
 
-    {
-        Button(
-            onClick = { "Admin" })
-        { }
-        Button(
-            onClick = { "User" })
-        { }
-    }
-}
+
+
+
+
 
 
 // Compose for button nummber 0ne ( Admin)
@@ -57,10 +45,10 @@ fun RoleChoiceViewButton1(
         onClick = { role.value = text }
     ) {
 
-        Box(modifier = Modifier
+        Box(modifier = Modifier.size(width = 100.dp,height = 35.dp)
             .background(rolechoiceview1)
             .padding(horizontal = 16.dp, vertical = 8.dp),
-            contentAlignment = Alignment.TopCenter
+            contentAlignment = Alignment.Center
         ) {
             Text(text = text, color = textColor)
         }
@@ -80,10 +68,10 @@ fun RoleChoiceViewButton2(text: String,
             backgroundColor = Color.Transparent),
         contentPadding = PaddingValues(),
         onClick = { role.value = text }) {
-        Box(modifier = Modifier
+        Box(modifier = Modifier.size(width = 100.dp,height = 35.dp)
             .background(rolechoiceview2)
-            .padding(horizontal = 16.dp, vertical = 8.dp),
-            contentAlignment = Alignment.TopCenter) {
+            .padding(horizontal = 20.dp, vertical = 8.dp),
+            contentAlignment = Alignment.Center) {
             Text(text = text , color = textColor)
         }
     }
@@ -92,60 +80,61 @@ fun RoleChoiceViewButton2(text: String,
 
 @Composable
 fun  RoleChoiceView (viewModel: MainViewModel) {
+    Box(modifier = Modifier
+        .fillMaxSize()
+        .border(BorderStroke(1.dp, Color.Black))
+        .background(MaterialTheme.colors.onBackground),
+        contentAlignment = Alignment.Center)
 
-    // Button to Admin
-    Column(
-        modifier = Modifier
-            .fillMaxHeight()
-            .fillMaxWidth(1F),
-    ) {
+    {
+        Column() {
+            Row() {
+                RoleChoiceViewButton1(text = "Admin",
+                    textColor = Color.White,
+                    rolechoiceview1 = Brush.horizontalGradient(colors = listOf(color1, color2)), role = viewModel.role) { }
+            }
+            Spacer(modifier = Modifier.height(16.dp))
+            Row() {
+                RoleChoiceViewButton2(text = "User  ",
+                    textColor = Color.White,
+                    rolechoiceview2 = Brush.horizontalGradient(colors = listOf(color1, color2)),
+                    role = viewModel.role
+                ) { }
 
-
-        RoleChoiceViewButton1(text = "Admin",
-            textColor = Color.White,
-            rolechoiceview1 = Brush.horizontalGradient(colors = listOf(color1, color2)),
-            role = viewModel.role
-        ) { }
-        Spacer(modifier = Modifier.height(16.dp))
-
-        // Button to User
-        RoleChoiceViewButton2(text = "User",
-            textColor = Color.White,
-            rolechoiceview2 = Brush.horizontalGradient(colors = listOf(color1, color2)),
-            role = viewModel.role
-        ) { }
+            }
+        }
     }
+
 }
 
-  /*
-
-if (Role == "Admin"){
-      //  ShowthisapptoAdmin()
-
-    }
-    else if(Role == "User" ){
-        ShowthisapptoUser()
-
-    }*/
-
- //
 
 @Preview
 @Composable
 fun RoleChoiceViewButtonPreview() {
     val role = remember{mutableStateOf("")}
-    RoleChoiceView()
+    Box(modifier = Modifier
+        .fillMaxSize()
+        .border(BorderStroke(1.dp, Color.Black))
+        .background(MaterialTheme.colors.onBackground),
+        contentAlignment = Alignment.Center)
 
-    // Button to Admin
-    RoleChoiceViewButton1(text = "Admin",
-        textColor = Color.White,
-        rolechoiceview1 = Brush.horizontalGradient(colors = listOf(color1, color2)), role = role) { }
-    Spacer(modifier = Modifier.height(16.dp))
+    {
+        Column() {
+            Row() {
+                RoleChoiceViewButton1(text = "Admin",
+                    textColor = Color.White,
+                    rolechoiceview1 = Brush.horizontalGradient(colors = listOf(color1, color2)), role = role) { }
+            }
+            Row() {
+                RoleChoiceViewButton2(text = "User",
+                    textColor = Color.White,
+                    rolechoiceview2 = Brush.horizontalGradient(colors = listOf(color1, color2)),
+                    role = role
+                ) { }
 
-    // Button to User
-    RoleChoiceViewButton2(text = "User",
-        textColor = Color.White,
-        rolechoiceview2 =Brush.horizontalGradient(colors = listOf(color1, color2)), role = role ) {}
+            }
+        }
+    }
 }
 
 
