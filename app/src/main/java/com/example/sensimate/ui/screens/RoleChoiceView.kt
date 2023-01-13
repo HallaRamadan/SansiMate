@@ -21,13 +21,6 @@ import com.example.sensimate.ui.theme.color1
 import com.example.sensimate.ui.theme.color2
 import com.example.sensimate.viewmodel.MainViewModel
 
-
-
-
-
-
-
-
 // Compose for button nummber 0ne ( Admin)
 @Composable
 fun RoleChoiceViewButton1(
@@ -45,7 +38,7 @@ fun RoleChoiceViewButton1(
         onClick = { role.value = text }
     ) {
 
-        Box(modifier = Modifier.size(width = 100.dp,height = 35.dp)
+        Box(modifier = Modifier.size(width = 120.dp,height = 40.dp)
             .background(rolechoiceview1)
             .padding(horizontal = 16.dp, vertical = 8.dp),
             contentAlignment = Alignment.Center
@@ -68,7 +61,7 @@ fun RoleChoiceViewButton2(text: String,
             backgroundColor = Color.Transparent),
         contentPadding = PaddingValues(),
         onClick = { role.value = text }) {
-        Box(modifier = Modifier.size(width = 100.dp,height = 35.dp)
+        Box(modifier = Modifier.size(width = 120.dp,height = 40.dp)
             .background(rolechoiceview2)
             .padding(horizontal = 20.dp, vertical = 8.dp),
             contentAlignment = Alignment.Center) {
@@ -93,7 +86,7 @@ fun  RoleChoiceView (viewModel: MainViewModel) {
                     textColor = Color.White,
                     rolechoiceview1 = Brush.horizontalGradient(colors = listOf(color1, color2)), role = viewModel.role) { }
             }
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(50.dp))
             Row() {
                 RoleChoiceViewButton2(text = "User  ",
                     textColor = Color.White,
