@@ -1,5 +1,6 @@
 package com.example.sensimate.ui.screens
 
+import android.annotation.SuppressLint
 import android.util.Log
 import android.view.WindowManager
 import androidx.compose.foundation.background
@@ -9,10 +10,7 @@ import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -20,6 +18,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Black
 import androidx.compose.ui.graphics.Color.Companion.Red
 import androidx.compose.ui.graphics.Color.Companion.White
+import androidx.compose.ui.graphics.FilterQuality.Companion.Low
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
@@ -38,6 +37,7 @@ import com.example.sensimate.viewmodel.MainViewModel
 
 
 
+@SuppressLint("UnrememberedMutableState")
 @Composable
 fun RenderSurvey(viewModel: MainViewModel) {
     val configuration = LocalConfiguration.current
@@ -54,13 +54,18 @@ fun RenderSurvey(viewModel: MainViewModel) {
         if (!viewModel.loading.value) {
             var survey = viewModel.currentSurvey
             var question = survey?.questions!![viewModel.surveyPageCounter.value]
-            var answer = viewModel.answersList.find {it.value.questionId == question.id }
-            Log.w("LOOK HERE", answer?.value!!.questionId)
-            if (answer == null) {
-                answer = remember { mutableStateOf( Answer()) }
-                answer.value.questionId = question.id
+            var answer = viewModel.answersList.find {it.value.questionId == question.id}
+            if(question.type != 1) {
+                if (answer == null) {
+                    answer = viewModel.newCurrentAnswer(question.id)
+
+                }
+            }else{
+                answer = mutableStateOf(Answer())
             }
 
+            val callBack: ()->Boolean = { viewModel.saveAnswers()}
+            Log.w("LOOK HERE", answer?.value!!.questionId)
             Column() {
                 Row(modifier = Modifier.fillMaxHeight(0.07F)) {
                         SurveyTopBar((viewModel.surveyPageCounter.value+1).toFloat().div(survey!!.questions!!.size))
@@ -72,7 +77,7 @@ fun RenderSurvey(viewModel: MainViewModel) {
                     }
                 }
                 Row(modifier = Modifier.fillMaxHeight(1F)) {
-                    SurveyBottomBar(pageCount = viewModel.surveyPageCounter, maxPageCount = survey?.questions!!.size)
+                    SurveyBottomBar(pageCount = viewModel.surveyPageCounter, maxPageCount = survey?.questions!!.size, saveAnswerCallback = callBack )
                 }
             }
 
@@ -89,7 +94,6 @@ fun Questiontype(question: Question, answer: Answer){
     Row(modifier = Modifier.fillMaxHeight(0.3f)) {
         Questionbox(Question = question)
     }
-    Log.w("LOOK HERE", "${question.id}    ${answer.questionId}")
     Row(modifier = Modifier.fillMaxHeight(1f)) {
         when (question.type) {
             1 -> RenderInfo(question)
@@ -164,7 +168,7 @@ fun SurveyTopBar(progress: Float) {
 
 
 @Composable
-fun SurveyBottomBar(pageCount: MutableState<Int>, maxPageCount: Int){
+fun SurveyBottomBar(pageCount: MutableState<Int>, maxPageCount: Int, saveAnswerCallback: () -> Boolean){
     val mainButtonColor = ButtonDefaults.buttonColors(
         backgroundColor = Color.Black,
         contentColor = MaterialTheme.colors.surface)
@@ -192,6 +196,7 @@ fun SurveyBottomBar(pageCount: MutableState<Int>, maxPageCount: Int){
                 ) {
                 Text(text = "<- Previous", color = White)
             }
+            if(pageCount.value < maxPageCount-1){
             Button(colors = mainButtonColor,
                 onClick = { pageCount.value++}, enabled = (pageCount.value < maxPageCount-1),
                 modifier = Modifier
@@ -202,10 +207,21 @@ fun SurveyBottomBar(pageCount: MutableState<Int>, maxPageCount: Int){
                 ) {
                 Text(text = "Next ->", color = White)
 
+            }
+            }else{
+                Button(colors = mainButtonColor,
+                    onClick = { saveAnswerCallback(); Log.w("here","HdfALLO")},
+                    modifier = Modifier
+                        .padding(8.dp),
 
+                    shape = RoundedCornerShape(20.dp),
+
+                    ) {
+                    Text(text = "Finish Survey", color = White)
             }
 
         }}}
+}
 
 
 /*
@@ -237,12 +253,11 @@ fun RenderMultipleChoiceQuestion(Question: Question) {
 fun RenderBulletPointQuestion(Question: Question, answer: Answer) {
     //TODO: Create composable that can render a BulletPoints choice question
     val radioOptions = Question.answers
-    val (selectedOption, onOptionSelected) = remember { mutableStateOf("") }
-    Log.w("LOOK HERE", answer.answers.toString())
-    if(answer.answers.isNotEmpty()){
-        onOptionSelected(answer.answers[0])
+    var selectedOption by remember { mutableStateOf("") }
+    selectedOption = if(answer.answers.size > 0){
+        answer.answers[0]
     }else{
-        onOptionSelected("")
+        ""
     }
     Column(){
     radioOptions?.forEach { text ->
@@ -252,7 +267,7 @@ fun RenderBulletPointQuestion(Question: Question, answer: Answer) {
                 .selectable(
                     selected = (text == selectedOption),
                     onClick = {
-                        onOptionSelected(text)
+                        selectedOption = text
                         if (answer.answers.isEmpty()) {
                             answer.answers.add(text)
                         } else {
@@ -264,7 +279,7 @@ fun RenderBulletPointQuestion(Question: Question, answer: Answer) {
         ) {
             RadioButton(
                 selected = (text == selectedOption),
-                onClick = { onOptionSelected(text)
+                onClick = { selectedOption = text
                     if(answer.answers.isEmpty()){
                         answer.answers.add(text)
                     }else{

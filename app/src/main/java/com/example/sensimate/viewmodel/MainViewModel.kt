@@ -9,11 +9,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
 import com.example.sensimate.R
-import com.example.sensimate.model.Answer
-import com.example.sensimate.model.Event
-import com.example.sensimate.model.Survey
-import com.example.sensimate.model.constructSurvey
-//import com.example.sensimate.model.constructSurvey
+import com.example.sensimate.model.*
 import com.example.sensimate.navigation.Screen
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -38,184 +34,229 @@ class MainViewModel : ViewModel() {
     var currentViewedEvent: Event? = null
     var currentSurvey: Survey? = null
     var answersList: MutableList<MutableState<Answer>> = mutableListOf()
+    var currentAnswer = mutableStateOf(Answer())
     var currentQuestionIndex: Int = 0
     val eventList = listOf(
-        Event(id = 1,
+        Event(
+            id = 1,
             surveyId = "upx7JFmXZmA6Gvo6Qyyz",
             title = "Beer from GoldStar",
             date = "12/01/2023",
             image = R.drawable.hand_beer, street = "FakeStreet 123",
             town = "Fake",
             postcode = 123,
-            country = "Denmark"),
-        Event(id = 2,
+            country = "Denmark"
+        ),
+        Event(
+            id = 2,
             surveyId = "upx7JFmXZmA6Gvo6Qyyz",
             title = "Cider from Goldstar",
             date = "24/02/2023",
             image = R.drawable.coke, street = "FakeStreet 123",
             town = "Fake",
             postcode = 123,
-            country = "Denmark"),
-        Event(id = 3,
+            country = "Denmark"
+        ),
+        Event(
+            id = 3,
             surveyId = "upx7JFmXZmA6Gvo6Qyyz",
             title = "Soda from Hejsommer",
             date = "29/03/2022",
             image = R.drawable.cider, street = "FakeStreet 123",
             town = "Fake",
             postcode = 123,
-            country = "Denmark"),
-        Event(id = 3,
+            country = "Denmark"
+        ),
+        Event(
+            id = 3,
             surveyId = "upx7JFmXZmA6Gvo6Qyyz",
             title = "Soda from Hejsommer",
             date = "29/03/2022",
             image = R.drawable.cider, street = "FakeStreet 123",
             town = "Fake",
             postcode = 123,
-            country = "Denmark"),
-        Event(id = 3,
+            country = "Denmark"
+        ),
+        Event(
+            id = 3,
             surveyId = "upx7JFmXZmA6Gvo6Qyyz",
             title = "Soda from Hejsommer",
             date = "29/03/2022",
             image = R.drawable.cider, street = "FakeStreet 123",
             town = "Fake",
             postcode = 123,
-            country = "Denmark"),
-        Event(id = 3,
+            country = "Denmark"
+        ),
+        Event(
+            id = 3,
             surveyId = "upx7JFmXZmA6Gvo6Qyyz",
             title = "Soda from Hejsommer",
             date = "29/03/2022",
             image = R.drawable.cider, street = "FakeStreet 123",
             town = "Fake",
             postcode = 123,
-            country = "Denmark"),
-        Event(id = 3,
+            country = "Denmark"
+        ),
+        Event(
+            id = 3,
             surveyId = "upx7JFmXZmA6Gvo6Qyyz",
             title = "Soda from Hejsommer",
             date = "29/03/2022",
             image = R.drawable.cider, street = "FakeStreet 123",
             town = "Fake",
             postcode = 123,
-            country = "Denmark"),
-        Event(id = 3,
+            country = "Denmark"
+        ),
+        Event(
+            id = 3,
             surveyId = "upx7JFmXZmA6Gvo6Qyyz",
             title = "Soda from Hejsommer",
             date = "29/03/2022",
             image = R.drawable.cider, street = "FakeStreet 123",
             town = "Fake",
             postcode = 123,
-            country = "Denmark"),
-        Event(id = 3,
+            country = "Denmark"
+        ),
+        Event(
+            id = 3,
             surveyId = "upx7JFmXZmA6Gvo6Qyyz",
             title = "Soda from Hejsommer",
             date = "29/03/2022",
             image = R.drawable.cider, street = "FakeStreet 123",
             town = "Fake",
             postcode = 123,
-            country = "Denmark"),
-        Event(id = 3,
+            country = "Denmark"
+        ),
+        Event(
+            id = 3,
             surveyId = "upx7JFmXZmA6Gvo6Qyyz",
             title = "Soda from Hejsommer",
             date = "29/03/2022",
             image = R.drawable.cider, street = "FakeStreet 123",
             town = "Fake",
             postcode = 123,
-            country = "Denmark"),
-        Event(id = 3,
+            country = "Denmark"
+        ),
+        Event(
+            id = 3,
             surveyId = "upx7JFmXZmA6Gvo6Qyyz",
             title = "Soda from Hejsommer",
             date = "29/03/2022",
             image = R.drawable.cider, street = "FakeStreet 123",
             town = "Fake",
             postcode = 123,
-            country = "Denmark"),        Event(id = 3,
+            country = "Denmark"
+        ),
+        Event(
+            id = 3,
             title = "Soda from Hejsommer",
             date = "29/03/2022",
             image = R.drawable.cider, street = "FakeStreet 123",
             town = "Fake",
             postcode = 123,
-            country = "Denmark"),
-        Event(id = 3,
+            country = "Denmark"
+        ),
+        Event(
+            id = 3,
             surveyId = "upx7JFmXZmA6Gvo6Qyyz",
             title = "Soda from Hejsommer",
             date = "29/03/2022",
             image = R.drawable.cider, street = "FakeStreet 123",
             town = "Fake",
             postcode = 123,
-            country = "Denmark"),
-        Event(id = 3,
+            country = "Denmark"
+        ),
+        Event(
+            id = 3,
             surveyId = "upx7JFmXZmA6Gvo6Qyyz",
             title = "Soda from Hejsommer",
             date = "29/03/2022",
             image = R.drawable.cider, street = "FakeStreet 123",
             town = "Fake",
             postcode = 123,
-            country = "Denmark"),
-        Event(id = 3,
+            country = "Denmark"
+        ),
+        Event(
+            id = 3,
             surveyId = "upx7JFmXZmA6Gvo6Qyyz",
             title = "Soda from Hejsommer",
             date = "29/03/2022",
             image = R.drawable.cider, street = "FakeStreet 123",
             town = "Fake",
             postcode = 123,
-            country = "Denmark"),
-        Event(id = 3,
+            country = "Denmark"
+        ),
+        Event(
+            id = 3,
             surveyId = "upx7JFmXZmA6Gvo6Qyyz",
             title = "Soda from Hejsommer",
             date = "29/03/2022",
             image = R.drawable.cider, street = "FakeStreet 123",
             town = "Fake",
             postcode = 123,
-            country = "Denmark"),
-        Event(id = 3,
+            country = "Denmark"
+        ),
+        Event(
+            id = 3,
             surveyId = "upx7JFmXZmA6Gvo6Qyyz",
             title = "Soda from Hejsommer",
             date = "29/03/2022",
             image = R.drawable.cider, street = "FakeStreet 123",
             town = "Fake",
             postcode = 123,
-            country = "Denmark"),
-        Event(id = 3,
+            country = "Denmark"
+        ),
+        Event(
+            id = 3,
             surveyId = "upx7JFmXZmA6Gvo6Qyyz",
             title = "Soda from Hejsommer",
             date = "29/03/2022",
             image = R.drawable.cider, street = "FakeStreet 123",
             town = "Fake",
             postcode = 123,
-            country = "Denmark"),
-        Event(id = 3,
+            country = "Denmark"
+        ),
+        Event(
+            id = 3,
             surveyId = "upx7JFmXZmA6Gvo6Qyyz",
             title = "Soda from Hejsommer",
             date = "29/03/2022",
             image = R.drawable.cider, street = "FakeStreet 123",
             town = "Fake",
             postcode = 123,
-            country = "Denmark"),
-        Event(id = 3,
+            country = "Denmark"
+        ),
+        Event(
+            id = 3,
             surveyId = "upx7JFmXZmA6Gvo6Qyyz",
             title = "Soda from Hejsommer",
             date = "29/03/2022",
             image = R.drawable.cider, street = "FakeStreet 123",
             town = "Fake",
             postcode = 123,
-            country = "Denmark"),
-        Event(id = 3,
+            country = "Denmark"
+        ),
+        Event(
+            id = 3,
             surveyId = "upx7JFmXZmA6Gvo6Qyyz",
             title = "Soda from Hejsommer",
             date = "29/03/2022",
             image = R.drawable.cider, street = "FakeStreet 123",
             town = "Fake",
             postcode = 123,
-            country = "Denmark"),
-        Event(id = 3,
+            country = "Denmark"
+        ),
+        Event(
+            id = 3,
             surveyId = "upx7JFmXZmA6Gvo6Qyyz",
             title = "Soda from Hejsommer",
             date = "29/03/2022",
             image = R.drawable.cider, street = "FakeStreet 123",
             town = "Fake",
             postcode = 123,
-            country = "Denmark"),
-        )
-
+            country = "Denmark"
+        ),
+    )
 
 
     fun getEventSurvey() {
@@ -226,20 +267,48 @@ class MainViewModel : ViewModel() {
             loading.value = false
         }
     }
-    fun navigateToSurvey(){
-        if(navController != null){
+
+    fun navigateToSurvey() {
+        if (navController != null) {
             navController!!.navigate(Screen.Survey.route)
-        }else{
+        } else {
             Log.w("viewModel", "NavController is null")
         }
 
     }
-    fun navigateToEventDetails(){
-        if(navController != null){
+
+    fun navigateToEventDetails() {
+        if (navController != null) {
             navController!!.navigate(Screen.EventDetails.route)
-        }else{
+        } else {
             Log.w("viewModel", "NavController is null")
         }
+    }
+
+    fun newCurrentAnswer(questionId: String): MutableState<Answer> {
+        currentAnswer = mutableStateOf(Answer())
+        currentAnswer.value.questionId = questionId
+        answersList.add(currentAnswer)
+        return currentAnswer
+    }
+
+    fun saveAnswers(): Boolean {
+        val answerListImmutable: List<MutableState<Answer>> = answersList
+        var result =true
+        Log.w("here", answerListImmutable.toString())
+        answerListImmutable.forEach() { answer -> if(answer.value.answers.isEmpty()) return false}
+        val hasMatchingId = currentSurvey?.questions!!.forEach() { question ->
+
+            var answer = answerListImmutable.find { object2 -> question.id == object2.value.questionId && object2.value.answers.isNotEmpty()}
+            //TODO Return false if answer i null. Need to implement answer to INFO() in surveyView
+        }
+        Log.w("here", hasMatchingId.toString())
+
+        viewModelScope.launch(Dispatchers.IO){
+            saveAnswersToDB(answerListImmutable)
+        }
+        navigateToEventDetails()
+        return true
     }
 }
 
