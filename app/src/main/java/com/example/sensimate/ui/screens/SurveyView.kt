@@ -25,6 +25,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.sensimate.model.Answer
 import com.example.sensimate.model.Question
 import com.example.sensimate.viewmodel.MainViewModel
 
@@ -33,7 +34,6 @@ import com.example.sensimate.viewmodel.MainViewModel
 //      type to render the appropriat composable
 
 //totalquestion skal defineres i Survey.kt
-var currentQuestion = 1
 
 
 
@@ -53,6 +53,14 @@ fun RenderSurvey(viewModel: MainViewModel) {
     ) {
         if (!viewModel.loading.value) {
             var survey = viewModel.currentSurvey
+            var question = survey?.questions!![viewModel.surveyPageCounter.value]
+            var answer = viewModel.answersList.find {it.value.questionId == question.id }
+            Log.w("LOOK HERE", answer?.value!!.questionId)
+            if (answer == null) {
+                answer = remember { mutableStateOf( Answer()) }
+                answer.value.questionId = question.id
+            }
+
             Column() {
                 Row(modifier = Modifier.fillMaxHeight(0.07F)) {
                         SurveyTopBar((viewModel.surveyPageCounter.value+1).toFloat().div(survey!!.questions!!.size))
@@ -60,7 +68,7 @@ fun RenderSurvey(viewModel: MainViewModel) {
                 }
                 Row(modifier = Modifier.fillMaxHeight(0.8f)) {
                     Column() {
-                        Questiontype(question = survey?.questions!![viewModel.surveyPageCounter.value])
+                        Questiontype(question = question, answer=answer.value)
                     }
                 }
                 Row(modifier = Modifier.fillMaxHeight(1F)) {
@@ -77,15 +85,16 @@ fun RenderSurvey(viewModel: MainViewModel) {
 }
 
 @Composable
-fun Questiontype(question: Question){
+fun Questiontype(question: Question, answer: Answer){
     Row(modifier = Modifier.fillMaxHeight(0.3f)) {
         Questionbox(Question = question)
     }
+    Log.w("LOOK HERE", "${question.id}    ${answer.questionId}")
     Row(modifier = Modifier.fillMaxHeight(1f)) {
         when (question.type) {
             1 -> RenderInfo(question)
-            2 -> RenderBulletPointQuestion(question)
-            3 -> RenderBulletPointQuestion(question)
+            2 -> RenderBulletPointQuestion(question, answer)
+            3 -> RenderBulletPointQuestion(question,answer)
             else -> {
                 InvalidQuestionType()
             }
@@ -117,7 +126,7 @@ fun InvalidQuestionType() {
 fun default(){
     var newquestion: Question = Question(
         surveyId=null,
-        id = null,
+        id = "null",
         title = "hej hvad hedder du",
         type =null,
         answers =null)
@@ -225,11 +234,16 @@ fun RenderMultipleChoiceQuestion(Question: Question) {
 }
 
 @Composable
-fun RenderBulletPointQuestion(Question: Question) {
+fun RenderBulletPointQuestion(Question: Question, answer: Answer) {
     //TODO: Create composable that can render a BulletPoints choice question
     val radioOptions = Question.answers
     val (selectedOption, onOptionSelected) = remember { mutableStateOf("") }
-
+    Log.w("LOOK HERE", answer.answers.toString())
+    if(answer.answers.isNotEmpty()){
+        onOptionSelected(answer.answers[0])
+    }else{
+        onOptionSelected("")
+    }
     Column(){
     radioOptions?.forEach { text ->
         Row(
@@ -239,13 +253,23 @@ fun RenderBulletPointQuestion(Question: Question) {
                     selected = (text == selectedOption),
                     onClick = {
                         onOptionSelected(text)
+                        if (answer.answers.isEmpty()) {
+                            answer.answers.add(text)
+                        } else {
+                            answer.answers[0] = text
+                        }
                     }
                 )
                 .padding(horizontal = 16.dp), verticalAlignment = Alignment.CenterVertically
         ) {
             RadioButton(
                 selected = (text == selectedOption),
-                onClick = { onOptionSelected(text) },
+                onClick = { onOptionSelected(text)
+                    if(answer.answers.isEmpty()){
+                        answer.answers.add(text)
+                    }else{
+                        answer.answers[0] = text
+                    }},
                 colors = RadioButtonDefaults.colors(
                     selectedColor = Color.Magenta,
                     unselectedColor = Color.DarkGray,

@@ -2,12 +2,14 @@ package com.example.sensimate.viewmodel
 
 import android.util.Log
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
 import com.example.sensimate.R
+import com.example.sensimate.model.Answer
 import com.example.sensimate.model.Event
 import com.example.sensimate.model.Survey
 import com.example.sensimate.model.constructSurvey
@@ -35,7 +37,7 @@ class MainViewModel : ViewModel() {
     var navController: NavController? = null
     var currentViewedEvent: Event? = null
     var currentSurvey: Survey? = null
-    var answersList: MutableList<MutableList<String>> = mutableListOf()
+    var answersList: MutableList<MutableState<Answer>> = mutableListOf()
     var currentQuestionIndex: Int = 0
     val eventList = listOf(
         Event(id = 1,
