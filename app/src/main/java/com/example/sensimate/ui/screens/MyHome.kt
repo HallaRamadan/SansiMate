@@ -14,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -160,16 +161,12 @@ fun CardTitle(title: String){
     Box(modifier = Modifier
         .width(370.dp)
         .fillMaxHeight(0.15F)
-<<<<<<< HEAD
         .border(
             brush = Brush.horizontalGradient(listOf(MaterialTheme.colors.secondaryVariant, MaterialTheme.colors.error)),
             width = 3.dp,
-            shape = RoundedCornerShape(20.dp)
-        ),
-=======
-        .border(BorderStroke(1.dp, Color.Gray), RoundedCornerShape(20.dp))
-        .background(Color.White, RoundedCornerShape(20.dp)),
->>>>>>> 73e9a3c46a3b2b5bddcff469d69891c40bbaece7
+            shape = RoundedCornerShape(20.dp)),
+
+
         contentAlignment = Alignment.Center) {
         Text(text = title)
     }
