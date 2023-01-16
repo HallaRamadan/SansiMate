@@ -2,6 +2,7 @@ package com.example.sensimate.ui.screens
 
 import android.util.Log
 import android.view.WindowManager
+import android.widget.Scroller
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -9,10 +10,7 @@ import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -22,6 +20,7 @@ import androidx.compose.ui.graphics.Color.Companion.Red
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -279,18 +278,19 @@ Column(
 
 
 */
-/*
+@Preview
 @Composable
-fun LongAnswer(Question: Question){
-    ScrollableRow(
-        children = {
-            TextField(
-                modifier = Modifier.fillMaxWidth().padding(16.dp),
-                maxLines = null,
-                onValueChange = { /* handle value change */ },
-                value = /* current value */
-            )
-        }
+fun LongAnswer() {
+    var text by remember { mutableStateOf(TextFieldValue("")) }
+    OutlinedTextField( modifier = Modifier
+        .width(400.dp)
+        .height(250.dp),
+
+        value = text,
+        onValueChange = {
+            text = it
+        },
+        label = { Text(text = "skriv her") },
+        shape = RoundedCornerShape(20.dp)
     )
 }
-*/
