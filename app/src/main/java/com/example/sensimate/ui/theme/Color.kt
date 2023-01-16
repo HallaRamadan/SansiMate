@@ -20,3 +20,6 @@ val OrangeLight = Color(0xFFED7069)
 val PurpleLight = Color(0xFF9F6CF1)
 val WhiteDark = Color(0xFFF9FAFB)
 val BlackDark = Color(0xFF000000)
+
+val color1 = Color(0xFF642B73)
+val color2 = Color(0xFFC6426E)

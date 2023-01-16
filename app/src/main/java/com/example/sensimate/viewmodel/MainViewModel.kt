@@ -23,6 +23,7 @@ import com.example.sensimate.navigation.Screen
 
 
 class MainViewModel : ViewModel() {
+    var role = mutableStateOf("")
     var navController: NavController? = null
     var currentViewedEvent: Event? = null
     var currentSurvey: Survey? = null
@@ -225,6 +226,7 @@ class MainViewModel : ViewModel() {
             Log.w("viewModel", "NavController is null")
         }
     }
+
 }
 
 
