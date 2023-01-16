@@ -24,8 +24,10 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.sensimate.model.Answer
 import com.example.sensimate.model.Question
 import com.example.sensimate.viewmodel.MainViewModel
+import kotlinx.coroutines.processNextEventInCurrentThread
 
 //TODO: This function Should take in a Survay Object, and render the question based on the question Type
 //      Use forEach on Survay Objects question array, and then use a switch cases that uses the question
@@ -85,6 +87,7 @@ fun Questiontype(question: Question){
             1 -> RenderInfo(question)
             2 -> RenderBulletPointQuestion(question)
             3 -> LongAnswer(question)
+            4 -> RenderMultipleChoiceQuestion(question)
             else -> {
                 InvalidQuestionType()
             }
@@ -218,9 +221,51 @@ fun SurveyBottomBar(pageCount: MutableState<Int>, maxPageCount: Int) {
     }
 }*/
 
+
+//TODO: Create composable that can render a multiple choice question
+
 @Composable
 fun RenderMultipleChoiceQuestion(Question: Question) {
-    //TODO: Create composable that can render a multiple choice question
+    val radioOptions = Question.answers
+    val selectedOption = remember { mutableListOf("") }
+
+
+    Column(){
+        radioOptions?.forEach { text ->
+            Row(
+                Modifier
+                    .fillMaxWidth()
+                    .selectable(
+                        selected = (selectedOption.contains(text)),
+                        onClick = {
+                            selectedOption.add(text)
+                        }
+                    )
+                    .padding(horizontal = 16.dp), verticalAlignment = Alignment.CenterVertically
+            ) {
+                RadioButton(
+                    selected = (selectedOption.contains(text)),
+                    onClick = {
+                        if (text in selectedOption) {
+                            selectedOption.drop(selectedOption.indexOf(text))
+                        } else {
+                            selectedOption.add(text)
+                        }
+                    },
+                    colors = RadioButtonDefaults.colors(
+                        selectedColor = Color.Magenta,
+                        unselectedColor = Color.DarkGray,
+                        disabledColor = Color.LightGray
+                    ),
+                )
+                Text(
+                    text = text,
+                    style = MaterialTheme.typography.body1.merge(),
+                    modifier = Modifier.padding(start = 20.dp)
+                )
+            }
+        }
+    }
 }
 
 @Composable
