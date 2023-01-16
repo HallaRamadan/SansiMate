@@ -278,6 +278,9 @@ Column(
 
 
 */
+
+//width og height er sat til bestemte værdier, dog kan man scrolle i OutlinedTextField
+//så hvis en person gerne vil give et endnu længere svar der fylder mere end boxen kan man blot scrolle
 @Composable
 fun LongAnswer(Question: Question) {
     var text by remember { mutableStateOf(TextFieldValue("")) }
