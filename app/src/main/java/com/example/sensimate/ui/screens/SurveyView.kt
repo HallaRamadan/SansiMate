@@ -279,5 +279,18 @@ Column(
 
 
 */
-
-
+/*
+@Composable
+fun LongAnswer(Question: Question){
+    ScrollableRow(
+        children = {
+            TextField(
+                modifier = Modifier.fillMaxWidth().padding(16.dp),
+                maxLines = null,
+                onValueChange = { /* handle value change */ },
+                value = /* current value */
+            )
+        }
+    )
+}
+*/
