@@ -84,7 +84,7 @@ fun Questiontype(question: Question){
         when (question.type) {
             1 -> RenderInfo(question)
             2 -> RenderBulletPointQuestion(question)
-            3 -> RenderBulletPointQuestion(question)
+            3 -> LongAnswer(question)
             else -> {
                 InvalidQuestionType()
             }
@@ -278,9 +278,8 @@ Column(
 
 
 */
-@Preview
 @Composable
-fun LongAnswer() {
+fun LongAnswer(Question: Question) {
     var text by remember { mutableStateOf(TextFieldValue("")) }
     OutlinedTextField( modifier = Modifier
         .width(400.dp)
