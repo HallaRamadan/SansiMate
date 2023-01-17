@@ -22,7 +22,7 @@ class Question (
     title: String?=null,
     type: Int?=null,
     answers: MutableList<String>?=null,
-    var selectedAnswer: String? = null
+
 
 ) {
 

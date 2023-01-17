@@ -232,12 +232,13 @@ fun RenderMultipleChoiceQuestion(Question: Question) {
 
 @Composable
 fun MultipleChoiceQuestion(question: Question) {
+    var selectedAnswer by remember { mutableStateOf("") }
     Column {
         question.title?.let { Text(text = it) }
         for (answer in question.answers!!) {
             RadioButton(
-                selected = answer == question.selectedAnswer,
-                onClick = { question.selectedAnswer = answer }
+                selected = answer == selectedAnswer,
+                onClick = { selectedAnswer = answer }
             )
             Text(text = answer)
         }
@@ -248,7 +249,7 @@ fun MultipleChoiceQuestion(question: Question) {
 @Composable
 fun MultipleChoiceQuestionPreview() {
 
-    MultipleChoiceQuestion(Question("4","3","Countries",4,mutableListOf("India", "China", "USA", "Russia"), "3"))
+    MultipleChoiceQuestion(Question("4","3","Countries",4,mutableListOf("India", "China", "USA", "Russia")))
 }
 
 @Composable
