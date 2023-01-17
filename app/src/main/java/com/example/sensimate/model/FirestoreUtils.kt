@@ -68,14 +68,17 @@ suspend fun RetrieveAndParseQuestionsJson(surveyID: String):MutableList<Question
     //      Returns an Array of JSON Strings
     val docRef = FirestoreDatabase.firestore.collection("questions").whereEqualTo("surveyId", surveyID)
     val questionList: MutableList<Question> = mutableListOf()
-    val task = docRef.get()
-    val documents = Tasks.await(task)
-    if(documents != null) {
-        for (document in documents) {
-            questionList.add(document.toObject())
+
+    docRef
+            if(documents != null) {
+                for (document in documents) {
+                    questionList.add(document.toObject())
+                }
+            }else{
+                Log.d("FirestoreUtils", "RetrieveAndParseQuestionsJson: documents null")
+            }
         }
-    }else{
-        Log.d("FirestoreUtils", "RetrieveAndParseQuestionsJson: documents null")
-    }
+        .addOnFailureListener { exception ->
+            Log.w("FirestoreUtils", "Error getting documents: ", exception)
     return questionList
 }
