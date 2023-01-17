@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.sp
 import com.example.sensimate.R
 import com.example.sensimate.model.Event
 import com.example.sensimate.ui.components.Card
-<<<<<<< HEAD:app/src/main/java/com/example/sensimate/ui/screens/Discover_em.kt
+
 import com.example.sensimate.ui.components.Background
 
 /*
@@ -169,11 +169,6 @@ fun Foodstuff_toAll(event:Event) {
 
 <<<<<<< HEAD:app/src/main/java/com/example/sensimate/ui/screens/Discover_em.kt
  */
-=======
-
-
-
->>>>>>> 73e9a3c46a3b2b5bddcff469d69891c40bbaece7:app/src/main/java/com/example/sensimate/ui/screens_employee/Discover_em.kt
 package com.example.sensimate.ui.screens_employee
 
 import androidx.compose.foundation.*
