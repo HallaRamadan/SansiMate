@@ -8,9 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
 import com.example.sensimate.R
-import com.example.sensimate.model.Event
-import com.example.sensimate.model.Survey
-import com.example.sensimate.model.constructSurvey
+import com.example.sensimate.model.*
 //import com.example.sensimate.model.constructSurvey
 import com.example.sensimate.navigation.Screen
 import kotlinx.coroutines.CoroutineScope
@@ -37,8 +35,11 @@ class MainViewModel : ViewModel() {
     var currentSurvey: Survey? = null
     var answersList: MutableList<MutableList<String>> = mutableListOf()
     var currentQuestionIndex: Int = 0
-    val eventList = listOf(
-        Event(id = 1,
+
+    var eventlist = listOf<Event>()
+
+
+      /* Event(id = 1
             surveyId = "upx7JFmXZmA6Gvo6Qyyz",
             title = "Beer from GoldStar",
             date = "12/01/2023",
@@ -211,8 +212,8 @@ class MainViewModel : ViewModel() {
             image = R.drawable.cider, street = "FakeStreet 123",
             town = "Fake",
             postcode = 123,
-            country = "Denmark"),
-        )
+            country = "Denmark"), */
+
 
 
 
@@ -237,6 +238,14 @@ class MainViewModel : ViewModel() {
             navController!!.navigate(Screen.EventDetails.route)
         }else{
             Log.w("viewModel", "NavController is null")
+        }
+    }
+    fun populateEventList() {
+        viewModelScope.launch(Dispatchers.IO) {
+            loading.value = true
+            val LS = RetrieveEvents()
+            eventlist = LS
+            loading.value = false
         }
     }
 }

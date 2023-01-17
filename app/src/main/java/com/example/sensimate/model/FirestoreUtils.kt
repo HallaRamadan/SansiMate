@@ -51,31 +51,64 @@ object FirestoreDatabase {
 // FirebaseDatabase.deleteValue("users/John")
 
 
-suspend fun RetrieveAndParseSurveyJson(surveyID: String):Survey? {
+fun RetrieveAndParseSurveyJson(surveyID: String):Survey? {
 
     //TODO: Connects to the firestore, and retrives a survay based on ID
     //      Returns a JSON Strings
     val docRef = FirestoreDatabase.firestore.collection("surveys").document(surveyID)
     var surveyObject: Survey? = null
 
-    val task = docRef.get()
-    val document = Tasks.await(task)
-    return document.toObject<Survey>()
+    docRef.get()
+        .addOnSuccessListener { document ->
+            if (document != null) {
+                surveyObject = document.toObject<Survey>()
+            } else {
+                Log.d("FirestoreUtils", "No such document")
+            }
+        }
+        .addOnFailureListener { exception ->
+            Log.w("FirestoreUtils", "Error getting documents: ", exception)
+        }
+    return surveyObject
 }
 
-suspend fun RetrieveAndParseQuestionsJson(surveyID: String):MutableList<Question> {
+fun RetrieveAndParseQuestionsJson(surveyID: String):MutableList<Question> {
     //TODO: Connects to the firestore, and retrives questions based on ID
     //      Returns an Array of JSON Strings
     val docRef = FirestoreDatabase.firestore.collection("questions").whereEqualTo("surveyId", surveyID)
     val questionList: MutableList<Question> = mutableListOf()
-    val task = docRef.get()
-    val documents = Tasks.await(task)
-    if(documents != null) {
-        for (document in documents) {
-            questionList.add(document.toObject())
+
+    docRef
+        .get()
+        .addOnSuccessListener { documents ->
+            if(documents != null) {
+                for (document in documents) {
+                    questionList.add(document.toObject())
+                }
+            }else{
+                Log.d("FirestoreUtils", "RetrieveAndParseQuestionsJson: documents null")
+            }
         }
-    }else{
-        Log.d("FirestoreUtils", "RetrieveAndParseQuestionsJson: documents null")
-    }
+        .addOnFailureListener { exception ->
+            Log.w("FirestoreUtils", "Error getting documents: ", exception)
+        }
     return questionList
+}
+
+fun getrest(): List<Event>{
+    val db = FirestoreDatabase.firestore
+    var eventList = mutableListOf<Event>()
+    val docRef = db.collection("events").get()
+    val documents = Tasks.await(docRef)
+
+        for (document in documents) {
+            val event= document.toObject<Event> ()
+            eventList.add(event)
+        }
+
+    val immutableEventList: List<Event> = eventList
+    return immutableEventList
+
+
+
 }

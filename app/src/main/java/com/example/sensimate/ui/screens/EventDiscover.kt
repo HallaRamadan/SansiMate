@@ -26,16 +26,21 @@ import com.example.sensimate.viewmodel.MainViewModel
 /* -------- Composable that to display Discover screen  -------*/
 
 @Composable
-fun Discover(navController: NavController, viewModel: MainViewModel){
-    val eventList = viewModel.eventList
+fun Discover(navController: NavController, viewModel: MainViewModel) {
+    viewModel.populateEventList()
     Background {
-        for (event: Event in eventList) {
-            Foodstuff(event, viewModel)
+        if (!viewModel.loading.value) {
+
+            val eventList = viewModel.eventlist
+            for (event: Event in eventList) {
+                Foodstuff(event, viewModel)
+            }
+        } else {
+            Text(text = "loading")
         }
     }
+
 }
-
-
 
 
 @Composable
@@ -44,7 +49,9 @@ fun Foodstuff(event:Event, viewModel: MainViewModel) {
     Card(modifier = Modifier
         .padding(0.dp)
         .height(150.dp)
-        .clickable(onClick = { viewModel.currentViewedEvent = event; viewModel.navigateToEventDetails() }),
+        .clickable(onClick = {
+            viewModel.currentViewedEvent = event; viewModel.navigateToEventDetails()
+        }),
         alignment = Alignment.CenterStart) {
 
             
@@ -58,7 +65,7 @@ fun Foodstuff(event:Event, viewModel: MainViewModel) {
                     .fillMaxHeight(1F)
                     .fillMaxWidth(0.3F)
                     .fillMaxSize()) {
-                    Image(painterResource(event.image), contentDescription ="content description", contentScale = ContentScale.Fit, modifier = Modifier.fillMaxSize())
+                    //Image(painterResource(event.image), contentDescription ="content description", contentScale = ContentScale.Fit, modifier = Modifier.fillMaxSize())
                 }
 
 
