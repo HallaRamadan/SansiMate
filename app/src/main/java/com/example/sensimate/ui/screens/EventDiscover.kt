@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
+import coil.compose.rememberAsyncImagePainter
 import com.example.sensimate.R
 import com.example.sensimate.navigation.Screen
 import com.example.sensimate.model.Event
@@ -58,7 +59,7 @@ fun Foodstuff(event:Event, viewModel: MainViewModel) {
                     .fillMaxHeight(1F)
                     .fillMaxWidth(0.3F)
                     .fillMaxSize()) {
-                    Image(painterResource(event.image), contentDescription ="content description", contentScale = ContentScale.Fit, modifier = Modifier.fillMaxSize())
+                    Image(rememberAsyncImagePainter(event.image), contentDescription ="content description", contentScale = ContentScale.Fit, modifier = Modifier.fillMaxSize())
                 }
 
 
