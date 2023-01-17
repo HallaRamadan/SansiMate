@@ -328,6 +328,13 @@ class MainViewModel : ViewModel() {
             Log.w("viewModel", "NavController is null")
         }
     }
+    fun navigateToDiscover(){
+        if(navController != null){
+            navController!!.navigate(Screen.Discover.route)
+        }else{
+            Log.w("viewModel", "NavController is null")
+        }
+    }
 }
 
 

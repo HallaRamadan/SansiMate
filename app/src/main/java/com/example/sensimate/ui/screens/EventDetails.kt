@@ -29,7 +29,7 @@ fun EventDetails(viewModel: MainViewModel) {
         Image(
             painter = painterResource(R.drawable.backbuttonsensimate),
             contentDescription = "Back button",
-            modifier = Modifier.clickable(onClick = { viewModel.getEventSurvey();viewModel.navigateToSurvey() })
+            modifier = Modifier.clickable(onClick = { viewModel.navigateToDiscover() })
         )
         Card(
             modifier = Modifier
