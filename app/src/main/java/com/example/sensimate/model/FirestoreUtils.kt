@@ -82,3 +82,21 @@ suspend fun RetrieveAndParseQuestionsJson(surveyID: String):MutableList<Question
             Log.w("FirestoreUtils", "Error getting documents: ", exception)
     return questionList
 }
+
+fun getrest(): List<Event>{
+    val db = FirestoreDatabase.firestore
+    var eventList = mutableListOf<Event>()
+    val docRef = db.collection("events").get()
+    val documents = Tasks.await(docRef)
+
+    for (document in documents) {
+        val event= document.toObject<Event> ()
+        eventList.add(event)
+    }
+
+    val immutableEventList: List<Event> = eventList
+    return immutableEventList
+
+
+
+}
