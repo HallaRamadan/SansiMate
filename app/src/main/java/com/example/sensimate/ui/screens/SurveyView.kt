@@ -1,7 +1,6 @@
 package com.example.sensimate.ui.screens
 
-import android.util.Log
-import android.view.WindowManager
+
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.selection.selectable
@@ -16,7 +15,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Black
-import androidx.compose.ui.graphics.Color.Companion.Blue
 import androidx.compose.ui.graphics.Color.Companion.Red
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.platform.LocalConfiguration
@@ -28,7 +26,6 @@ import androidx.compose.ui.unit.sp
 import com.example.sensimate.R
 import com.example.sensimate.model.Question
 import com.example.sensimate.viewmodel.MainViewModel
-import java.nio.file.Files.size
 
 //TODO: This function Should take in a Survay Object, and render the question based on the question Type
 //      Use forEach on Survay Objects question array, and then use a switch cases that uses the question
@@ -71,7 +68,7 @@ fun RenderSurvey(viewModel: MainViewModel) {
 
         } else {
             CircularProgressIndicator(modifier = Modifier
-                    .align(Alignment.Center)
+                .align(Alignment.Center)
                     .size(80.dp)
 
 
