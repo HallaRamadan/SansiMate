@@ -21,7 +21,9 @@ class Question (
     id: String?= null,
     title: String?=null,
     type: Int?=null,
-    answers: MutableList<String>?=null
+    answers: MutableList<String>?=null,
+    var selectedAnswer: String? = null
+
 ) {
 
     val order: Int = -1

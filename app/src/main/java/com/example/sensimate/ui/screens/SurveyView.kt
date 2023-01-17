@@ -1,5 +1,6 @@
 package com.example.sensimate.ui.screens
 
+import android.annotation.SuppressLint
 import android.util.Log
 import android.view.WindowManager
 import androidx.compose.foundation.background
@@ -9,10 +10,7 @@ import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -95,7 +93,7 @@ fun Questiontype(question: Question){
             2 -> RenderBulletPointQuestion(question)
             3 -> RenderBulletPointQuestion(question)
             else -> {
-                InvalidQuestionType()
+           //     InvalidQuestionType()
             }
         }
     }
@@ -106,7 +104,7 @@ fun Questionbox(Question: Question){
     Question.title?.let { questionscreen(text = it) }
 }
 
-@Preview
+/*@Preview
 @Composable
 fun InvalidQuestionType() {
     Row(modifier = Modifier
@@ -118,9 +116,9 @@ fun InvalidQuestionType() {
             Text("Invalid Question Type", style = TextStyle(color = Color.White), fontSize = 30.sp)
         }
     }
-}
+}*/
 
-@Preview
+/*@Preview
 @Composable
 fun default(){
     var newquestion: Question = Question(
@@ -130,7 +128,7 @@ fun default(){
         type =null,
         answers =null)
     SurveyTopBar(progress =0.6f)
-}
+}*/
 
 
 
@@ -230,6 +228,27 @@ fun SurveyBottomBar(pageCount: MutableState<Int>, maxPageCount: Int) {
 @Composable
 fun RenderMultipleChoiceQuestion(Question: Question) {
     //TODO: Create composable that can render a multiple choice question
+}
+
+@Composable
+fun MultipleChoiceQuestion(question: Question) {
+    Column {
+        question.title?.let { Text(text = it) }
+        for (answer in question.answers!!) {
+            RadioButton(
+                selected = answer == question.selectedAnswer,
+                onClick = { question.selectedAnswer = answer }
+            )
+            Text(text = answer)
+        }
+    }
+}
+
+@Preview
+@Composable
+fun MultipleChoiceQuestionPreview() {
+
+    MultipleChoiceQuestion(Question("4","3","Countries",4,mutableListOf("India", "China", "USA", "Russia"), "3"))
 }
 
 @Composable
