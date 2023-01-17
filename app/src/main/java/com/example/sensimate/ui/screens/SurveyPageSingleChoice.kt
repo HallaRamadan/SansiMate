@@ -19,16 +19,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Black
 
-
-/*
-Image(
-            painter = painterResource(R.drawable.exitbutton),
-            contentDescription = "Back button",
-            modifier = Modifier.clickable(onClick = { viewModel.getEventSurvey();viewModel.navigateToSurvey() })
-        )
-
- */
-
 @Composable
 fun SurveyPageSingleChoice(){
 frame {

@@ -2,12 +2,10 @@ package com.example.sensimate.ui.screens
 
 import android.util.Log
 import android.view.WindowManager
-import androidx.compose.foundation.background
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -22,10 +20,12 @@ import androidx.compose.ui.graphics.Color.Companion.Blue
 import androidx.compose.ui.graphics.Color.Companion.Red
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.sensimate.R
 import com.example.sensimate.model.Question
 import com.example.sensimate.viewmodel.MainViewModel
 import java.nio.file.Files.size
@@ -57,8 +57,7 @@ fun RenderSurvey(viewModel: MainViewModel) {
             var survey = viewModel.currentSurvey
             Column() {
                 Row(modifier = Modifier.fillMaxHeight(0.07F)) {
-                        SurveyTopBar((viewModel.surveyPageCounter.value+1).toFloat().div(survey!!.questions!!.size))
-
+                        SurveyTopBar((viewModel.surveyPageCounter.value+1).toFloat().div(survey!!.questions!!.size), navigationCallback = viewModel::navigateToEventDetails)
                 }
                 Row(modifier = Modifier.fillMaxHeight(0.8f)) {
                     Column() {
@@ -120,7 +119,7 @@ fun InvalidQuestionType() {
     }
 }
 
-@Preview
+/*@Preview
 @Composable
 fun default(){
     var newquestion: Question = Question(
@@ -132,11 +131,19 @@ fun default(){
     SurveyTopBar(progress =0.6f)
 }
 
+ */
+
 
 
 //TODO: Create composable that can render a multiple choice question
 @Composable
-fun SurveyTopBar(progress: Float) {
+fun SurveyTopBar(progress: Float, navigationCallback: () -> Unit) {
+    Image(
+        painter = painterResource(R.drawable.exitbutton),
+        contentDescription = "Exit button",
+        modifier = Modifier.clickable(onClick = { navigationCallback() })
+        .size(40.dp),
+    )
     frame {
         Column {
             Row(
