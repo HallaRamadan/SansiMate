@@ -13,6 +13,9 @@ class Event(
     street:String,
     town:String,
     postcode: Int,
+    availability: String,
+    allergens: String,
+    allergensIndhold: String,
     country:String){
     var id = id
     var surveyId = surveyId
@@ -23,6 +26,9 @@ class Event(
     var town = town
     var postcode = postcode
     var country = country
+    var availability = availability
+    var allergens = allergens
+    var allergensIndhold = allergensIndhold
 
     @Override
     override fun toString(): String {

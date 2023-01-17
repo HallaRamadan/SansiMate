@@ -24,6 +24,7 @@ import com.example.sensimate.viewmodel.MainViewModel
 
 @Composable
 fun EventDetails(viewModel: MainViewModel) {
+    val currentEvent = viewModel.currentViewedEvent
     Background {
         Image(
             painter = painterResource(R.drawable.backbuttonsensimate),
@@ -43,12 +44,11 @@ fun EventDetails(viewModel: MainViewModel) {
             ) {
                 Row(modifier = Modifier.fillMaxHeight(1F)) {
                     Column {
-                        Text(text = "\n Beer from GoldStar", color = Color.White, fontSize = 20.sp, softWrap = true)
-                        Text(text = " 06/11/21", color = Color.White, fontSize = 18.sp)
-                        Text(text = " 20 places left\n", color = Color.White, fontSize = 18.sp)
-                        Text(text = " Allergens", color = Color.White, fontSize = 20.sp, softWrap = true)
-                        Text(text = " N/A", color = Color.White, fontSize = 18.sp, softWrap = true)
-
+                        Text(text = "\n ${currentEvent?.title}", color = Color.White, fontSize = 20.sp, softWrap = true)
+                        Text(text = " ${currentEvent?.date}", color = Color.White, fontSize = 18.sp)
+                        Text(text = " ${currentEvent?.availability}\n", color = Color.White, fontSize = 18.sp)
+                        Text(text = " ${currentEvent?.allergens}", color = Color.White, fontSize = 20.sp, softWrap = true)
+                        Text(text = " ${currentEvent?.allergensIndhold}", color = Color.White, fontSize = 18.sp, softWrap = true)
                         Image(
                             painterResource(R.drawable.mapdiscover), "ContentDescription",
                             contentScale = ContentScale.Fit,
