@@ -172,7 +172,7 @@ fun SurveyTopBar(progress: Float, navigationCallback: () -> Unit) {
 @Composable
 fun SurveyBottomBar(pageCount: MutableState<Int>, maxPageCount: Int){
     val mainButtonColor = ButtonDefaults.buttonColors(
-        backgroundColor = Color.Black,
+        backgroundColor = MaterialTheme.colors.surface,
         contentColor = MaterialTheme.colors.surface)
     Column(modifier = Modifier
         .fillMaxWidth()
