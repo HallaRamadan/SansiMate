@@ -2,6 +2,7 @@ package com.example.sensimate.viewmodel
 
 import android.util.Log
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.lifecycle.ViewModel
@@ -10,6 +11,7 @@ import androidx.navigation.NavController
 import com.example.sensimate.R
 import com.example.sensimate.model.*
 //import com.example.sensimate.model.constructSurvey
+import com.example.sensimate.model.*
 import com.example.sensimate.navigation.Screen
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -33,7 +35,8 @@ class MainViewModel : ViewModel() {
     var navController: NavController? = null
     var currentViewedEvent: Event? = null
     var currentSurvey: Survey? = null
-    var answersList: MutableList<MutableList<String>> = mutableListOf()
+    var answersList: MutableList<MutableState<Answer>> = mutableListOf()
+    var currentAnswer = mutableStateOf(Answer())
     var currentQuestionIndex: Int = 0
 
     var eventlist = listOf<Event>()
@@ -311,18 +314,20 @@ class MainViewModel : ViewModel() {
             loading.value = false
         }
     }
-    fun navigateToSurvey(){
-        if(navController != null){
+
+    fun navigateToSurvey() {
+        if (navController != null) {
             navController!!.navigate(Screen.Survey.route)
-        }else{
+        } else {
             Log.w("viewModel", "NavController is null")
         }
 
     }
-    fun navigateToEventDetails(){
-        if(navController != null){
+
+    fun navigateToEventDetails() {
+        if (navController != null) {
             navController!!.navigate(Screen.EventDetails.route)
-        }else{
+        } else {
             Log.w("viewModel", "NavController is null")
         }
     }
@@ -340,6 +345,32 @@ class MainViewModel : ViewModel() {
         }else{
             Log.w("viewModel", "NavController is null")
         }
+    }
+
+    fun newCurrentAnswer(questionId: String): MutableState<Answer> {
+        currentAnswer = mutableStateOf(Answer())
+        currentAnswer.value.questionId = questionId
+        answersList.add(currentAnswer)
+        return currentAnswer
+    }
+
+    fun saveAnswers(): Boolean {
+        val answerListImmutable: List<MutableState<Answer>> = answersList
+        var result =true
+        Log.w("here", answerListImmutable.toString())
+        answerListImmutable.forEach() { answer -> if(answer.value.answers.isEmpty()) return false}
+        val hasMatchingId = currentSurvey?.questions!!.forEach() { question ->
+
+            var answer = answerListImmutable.find { object2 -> question.id == object2.value.questionId && object2.value.answers.isNotEmpty()}
+            //TODO Return false if answer i null. Need to implement answer to INFO() in surveyView
+        }
+        Log.w("here", hasMatchingId.toString())
+
+        viewModelScope.launch(Dispatchers.IO){
+            saveAnswersToDB(answerListImmutable)
+        }
+        navigateToEventDetails()
+        return true
     }
 }
 

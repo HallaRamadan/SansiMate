@@ -6,7 +6,8 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
-import java.util.Collections.list
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 
 // object FirestoreSingleton {
@@ -78,6 +79,19 @@ suspend fun RetrieveAndParseQuestionsJson(surveyID: String):MutableList<Question
         Log.d("FirestoreUtils", "RetrieveAndParseQuestionsJson: documents null")
     }
     return questionList
+}
+
+suspend fun ParseAnswerToJsonAndSaveInDB(answer: Answer){
+    val gson = Gson()
+    val json: String = gson.toJson(answer)
+    val jsonMap: Map<String, Any> =
+        Gson().fromJson(json, object : TypeToken<HashMap<String?, Any?>?>() {}.type)
+    val docRef = FirestoreDatabase.firestore.collection("answers").add(jsonMap)
+    Tasks.await(docRef)
+    val dbAnswer = FirestoreDatabase.firestore.collection("answers").document(docRef.result.id)
+    val done = dbAnswer.update("id",docRef.result.id)
+    Tasks.await(done)
+
 }
 
 fun getrest(): List<Event>{
