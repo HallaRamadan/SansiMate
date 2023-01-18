@@ -97,7 +97,7 @@ suspend fun ParseAnswerToJsonAndSaveInDB(answer: Answer){
 fun getrest(): List<Event>{
     val db = FirestoreDatabase.firestore
     var eventList = mutableListOf<Event>()
-    val docRef = db.collection("events").get()
+    val docRef = db.collection("events").whereEqualTo("active", true).get()
     val documents = Tasks.await(docRef)
 
     for (document in documents) {

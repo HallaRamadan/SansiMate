@@ -35,6 +35,7 @@ fun Discover(navController: NavController, viewModel: MainViewModel) {
             for (event: Event in eventList) {
                 Foodstuff(event, viewModel)
             }
+        Spacer(Modifier.height(55.dp))
         } else {
             Box {
                 CircularProgressIndicator(modifier = Modifier
