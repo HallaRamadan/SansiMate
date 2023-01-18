@@ -17,6 +17,7 @@ class Event(){
     var availability = ""
     var allergens = ""
     var allergensIndhold = ""
+    var distance = ""
 
     @Override
     override fun toString(): String {

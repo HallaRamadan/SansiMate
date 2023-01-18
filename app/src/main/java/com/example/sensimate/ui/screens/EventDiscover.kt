@@ -90,7 +90,7 @@ fun Foodstuff(event:Event, viewModel: MainViewModel) {
                         Column(modifier = Modifier
                             .fillMaxWidth(1F)
                             .padding(1.dp), horizontalAlignment = Alignment.End) {
-                            Text(text = "1km", color = Color.White)
+                            Text(text = event.distance, color = Color.White)
                         }
 
                     }
