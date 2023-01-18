@@ -20,11 +20,11 @@ sealed class BottomBarScreen (
         icon = Icons.Default.Home
    )
 
-    object Profile: BottomBarScreen(
-        route = "discover",
-        title = "Profile",
-        icon = Icons.Default.Person
-    )
+//    object Profile: BottomBarScreen(
+//        route = "discover",
+//        title = "Profile",
+//        icon = Icons.Default.Person
+//    )
 
     object Discover: BottomBarScreen(
         route = "discover",
