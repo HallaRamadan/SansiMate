@@ -85,7 +85,7 @@ fun Foodstuff(event:Event, viewModel: MainViewModel) {
                     Row(modifier = Modifier.fillMaxHeight(0.33F)){
                         Column(modifier = Modifier
                             .fillMaxWidth(0.5F)) {
-                            Text(text = "12/12/22", color = Color.White)
+                            Text(text = event.date, color = Color.White)
                         }
                         Column(modifier = Modifier
                             .fillMaxWidth(1F)
@@ -96,7 +96,7 @@ fun Foodstuff(event:Event, viewModel: MainViewModel) {
                     }
                     Spacer(modifier = Modifier.weight(1f))
                     Row(modifier = Modifier.fillMaxHeight(0.50F)){
-                        Text(text = "20 places left", color = Color.LightGray)
+                        Text(text = event.availability, color = Color.LightGray)
                     }
                 }
 
