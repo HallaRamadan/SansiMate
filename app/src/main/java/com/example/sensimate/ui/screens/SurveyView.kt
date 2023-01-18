@@ -274,7 +274,10 @@ fun RenderBulletPointQuestion(Question: Question, answer: Answer) {
     }else{
         ""
     }
-    Column(){
+    Column(modifier = Modifier.padding(17.dp).border(
+        BorderStroke(2.dp, MaterialTheme.colors.onBackground),
+        RoundedCornerShape(20.dp)
+    ), verticalArrangement = Arrangement.Center){
     radioOptions?.forEach { text ->
         Row(
             Modifier

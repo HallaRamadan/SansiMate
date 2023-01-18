@@ -37,7 +37,9 @@ fun Discover(navController: NavController, viewModel: MainViewModel) {
             }
         Spacer(Modifier.height(55.dp))
         } else {
-            Box {
+            Box(contentAlignment = Alignment.Center,
+                modifier = Modifier.fillMaxSize()
+            ) {
                 CircularProgressIndicator(modifier = Modifier
                     .align(Alignment.Center)
                     .size(80.dp)
