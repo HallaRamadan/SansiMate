@@ -232,18 +232,24 @@ fun RenderMultipleChoiceQuestion(Question: Question) {
 
 @Composable
 fun MultipleChoiceQuestion(question: Question) {
-    var selectedAnswer by remember { mutableStateOf("") }
+    var selectedAnswers by remember { mutableStateOf(mutableSetOf<String>()) }
     Column {
         question.title?.let { Text(text = it) }
         for (answer in question.answers!!) {
-            RadioButton(
-                selected = answer == selectedAnswer,
-                onClick = { selectedAnswer = answer }
-            )
-            Text(text = answer)
+            Button(onClick = {
+                if (answer in selectedAnswers) {
+                    selectedAnswers.remove(answer)
+                } else {
+                    selectedAnswers.add(answer)
+                }
+            }) {
+
+                Text(text = answer)
+            }
         }
     }
 }
+
 
 @Preview
 @Composable
