@@ -22,18 +22,19 @@ import com.example.sensimate.ui.components.Background
 import com.example.sensimate.viewmodel.MainViewModel
 
 import androidx.compose.material.*
+import kotlin.reflect.KFunction1
 
 /* -------- Composable that to display Discover screen  -------*/
 
 @Composable
-fun Discover(navController: NavController, viewModel: MainViewModel) {
+fun Discover(viewModel: MainViewModel) {
     viewModel.populateEventList()
     Background {
         if (!viewModel.loading.value) {
 
             val eventList = viewModel.eventlist
             for (event: Event in eventList) {
-                Foodstuff(event, viewModel)
+                Foodstuff(event, viewModel::replaceCurrentViewedEvent, viewModel::navigateToEventDetails)
             }
         Spacer(Modifier.height(55.dp))
         } else {
@@ -55,12 +56,12 @@ fun Discover(navController: NavController, viewModel: MainViewModel) {
 
 @Composable
 
-fun Foodstuff(event:Event, viewModel: MainViewModel) {
+fun Foodstuff(event:Event, setEventCallback:(Event)-> Unit, navigationCallback: () -> Unit) {
     Card(modifier = Modifier
         .padding(0.dp)
         .height(150.dp)
         .clickable(onClick = {
-            viewModel.currentViewedEvent = event; viewModel.navigateToEventDetails()
+            run { setEventCallback(event); navigationCallback(); }
         }),
         alignment = Alignment.CenterStart) {
 

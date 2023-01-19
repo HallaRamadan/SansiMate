@@ -323,6 +323,9 @@ class MainViewModel : ViewModel() {
         }
 
     }
+    fun replaceCurrentViewedEvent(event: Event) {
+        currentViewedEvent = event
+    }
 
     fun navigateToEventDetails() {
         if (navController != null) {
