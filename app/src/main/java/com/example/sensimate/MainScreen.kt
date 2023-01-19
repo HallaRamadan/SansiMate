@@ -2,10 +2,7 @@ package com.example.sensimate
 
 import android.annotation.SuppressLint
 import android.util.Log
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.navigationBarsPadding
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -58,14 +55,14 @@ fun BottomBar(navController: NavHostController) {
 
     val screens = listOf(
         BottomBarScreen.Home,
-        BottomBarScreen.Profile,
+        //BottomBarScreen.Profile,
         BottomBarScreen.Discover,
     )
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
 
 
-    BottomNavigation(backgroundColor = MaterialTheme.colors.background, elevation = 10.dp, contentColor = Color.White) {
+    BottomNavigation(modifier = Modifier.height(55.dp), backgroundColor = MaterialTheme.colors.background, elevation = 10.dp, contentColor = Color.White) {
         screens.forEach { screen ->
             AddItem(screen = screen, currentDestination = currentDestination, navController = navController)
 

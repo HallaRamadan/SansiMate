@@ -28,13 +28,6 @@ import com.example.sensimate.ui.theme.SensiMateTheme
 fun MyEvent(viewModel: ViewModel) {
     SensiMateTheme {
         Background{
-            SearchField(
-                Modifier
-                    .width(370.dp)
-                    .height(60.dp).clip(RoundedCornerShape(120.dp))
-                    .background(Color.White).border(BorderStroke(1.dp, color = Color.Gray), RoundedCornerShape(20.dp))
-                    .alpha(0.8500000238418579f).padding(top = 0.dp)
-            )
             Card {
                 BookedEvent()
             }
@@ -76,8 +69,11 @@ fun BookedEvent(){
         Box(modifier = Modifier
             .width(370.dp)
             .fillMaxHeight(1F)
-            .border(BorderStroke(1.dp, Color.Gray), RoundedCornerShape(20.dp))
-            .background(Color.White, RoundedCornerShape(20.dp)),
+            .border(
+                brush = Brush.horizontalGradient(listOf(MaterialTheme.colors.secondaryVariant, MaterialTheme.colors.error)),
+                width = 3.dp,
+                shape = RoundedCornerShape(18.dp)
+            ).background(MaterialTheme.colors.surface, RoundedCornerShape(20.dp)),
             contentAlignment = Alignment.TopCenter) {
             Row(horizontalArrangement = Arrangement.spacedBy(2.dp), modifier = Modifier.padding(3.dp)){
                 Box(modifier = Modifier.fillMaxHeight().fillMaxWidth(0.33F).border(BorderStroke(1.dp, Color.Gray), RoundedCornerShape(20.dp)), contentAlignment = Alignment.Center){
@@ -100,8 +96,11 @@ fun SavedEvent(){
         Box(modifier = Modifier
             .width(370.dp)
             .fillMaxHeight(1F)
-            .border(BorderStroke(1.dp, Color.Gray), RoundedCornerShape(20.dp))
-            .background(Color.White, RoundedCornerShape(20.dp)),
+            .border(
+                brush = Brush.horizontalGradient(listOf(MaterialTheme.colors.secondaryVariant, MaterialTheme.colors.error)),
+                width = 3.dp,
+                shape = RoundedCornerShape(18.dp)
+            ).background(MaterialTheme.colors.surface, RoundedCornerShape(20.dp)),
             contentAlignment = Alignment.TopCenter) {
             Row(horizontalArrangement = Arrangement.spacedBy(2.dp), modifier = Modifier.padding(3.dp)){
                 Box(modifier = Modifier.fillMaxHeight().fillMaxWidth(0.33F).border(BorderStroke(1.dp, Color.Gray), RoundedCornerShape(20.dp)), contentAlignment = Alignment.Center){
@@ -124,8 +123,11 @@ fun EventHistory(){
         Box(modifier = Modifier
             .width(370.dp)
             .fillMaxHeight(1F)
-            .border(BorderStroke(1.dp, Color.Gray), RoundedCornerShape(20.dp))
-            .background(Color.White, RoundedCornerShape(20.dp)),
+            .border(
+                brush = Brush.horizontalGradient(listOf(MaterialTheme.colors.secondaryVariant, MaterialTheme.colors.error)),
+                width = 3.dp,
+                shape = RoundedCornerShape(18.dp)
+            ).background(MaterialTheme.colors.surface, RoundedCornerShape(20.dp)),
             contentAlignment = Alignment.TopCenter) {
             Row(horizontalArrangement = Arrangement.spacedBy(2.dp), modifier = Modifier.padding(3.dp)){
                 Box(modifier = Modifier.fillMaxHeight().fillMaxWidth(0.33F).border(BorderStroke(1.dp, Color.Gray), RoundedCornerShape(20.dp)), contentAlignment = Alignment.Center){
@@ -168,7 +170,7 @@ fun CardTitle(title: String){
             shape = RoundedCornerShape(20.dp)
         ),
         contentAlignment = Alignment.Center) {
-        Text(text = title)
+        Text(text = title, color = Color.White)
     }
 }
 

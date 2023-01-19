@@ -18,8 +18,8 @@ be stored under the attribute ID in the Question Object.
 
 class Question (
     surveyId: String?=null,
-    id: String?= null,
-    title: String?=null,
+    id: String= "",
+    title: String="",
     type: Int?=null,
     answers: MutableList<String>?=null
 ) {

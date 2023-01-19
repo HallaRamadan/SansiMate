@@ -1,50 +1,68 @@
 package com.example.sensimate.ui.screens
 
-//import java.lang.reflect.Modifier
+
+
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
-import com.example.sensimate.R
-import com.example.sensimate.navigation.Screen
+import coil.compose.rememberAsyncImagePainter
 import com.example.sensimate.model.Event
 import com.example.sensimate.ui.components.Card
 import com.example.sensimate.ui.components.Background
 import com.example.sensimate.viewmodel.MainViewModel
 
+import androidx.compose.material.*
+import kotlin.reflect.KFunction1
 
 /* -------- Composable that to display Discover screen  -------*/
 
 @Composable
-fun Discover(navController: NavController, viewModel: MainViewModel){
-    val eventList = viewModel.eventList
+fun Discover(viewModel: MainViewModel) {
+    viewModel.populateEventList()
     Background {
-        for (event: Event in eventList) {
-            Foodstuff(event, viewModel)
+        if (!viewModel.loading.value) {
+
+            val eventList = viewModel.eventlist
+            for (event: Event in eventList) {
+                Foodstuff(event, viewModel::replaceCurrentViewedEvent, viewModel::navigateToEventDetails)
+            }
+        Spacer(Modifier.height(55.dp))
+        } else {
+            Box(contentAlignment = Alignment.Center,
+                modifier = Modifier.fillMaxSize()
+            ) {
+                CircularProgressIndicator(modifier = Modifier
+                    .align(Alignment.Center)
+                    .size(80.dp)
+
+
+                )
+            }
         }
     }
+
 }
-
-
 
 
 @Composable
 
-fun Foodstuff(event:Event, viewModel: MainViewModel) {
+fun Foodstuff(event:Event, setEventCallback:(Event)-> Unit, navigationCallback: () -> Unit) {
     Card(modifier = Modifier
         .padding(0.dp)
         .height(150.dp)
-        .clickable(onClick = { viewModel.currentViewedEvent = event; viewModel.navigateToEventDetails() }),
+        .clickable(onClick = {
+            run { setEventCallback(event); navigationCallback(); }
+        }),
         alignment = Alignment.CenterStart) {
 
             
@@ -58,7 +76,7 @@ fun Foodstuff(event:Event, viewModel: MainViewModel) {
                     .fillMaxHeight(1F)
                     .fillMaxWidth(0.3F)
                     .fillMaxSize()) {
-                    Image(painterResource(event.image), contentDescription ="content description", contentScale = ContentScale.Fit, modifier = Modifier.fillMaxSize())
+                    Image(rememberAsyncImagePainter(event.image), contentDescription ="content description", contentScale = ContentScale.Fit, modifier = Modifier.fillMaxSize())
                 }
 
 
@@ -71,18 +89,18 @@ fun Foodstuff(event:Event, viewModel: MainViewModel) {
                     Row(modifier = Modifier.fillMaxHeight(0.33F)){
                         Column(modifier = Modifier
                             .fillMaxWidth(0.5F)) {
-                            Text(text = "12/12/22", color = Color.White)
+                            Text(text = event.date, color = Color.White)
                         }
                         Column(modifier = Modifier
                             .fillMaxWidth(1F)
                             .padding(1.dp), horizontalAlignment = Alignment.End) {
-                            Text(text = "1km", color = Color.White)
+                            Text(text = event.distance, color = Color.White)
                         }
 
                     }
                     Spacer(modifier = Modifier.weight(1f))
                     Row(modifier = Modifier.fillMaxHeight(0.50F)){
-                        Text(text = "20 places left", color = Color.LightGray)
+                        Text(text = event.availability, color = Color.LightGray)
                     }
                 }
 

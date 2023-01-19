@@ -1,6 +1,7 @@
 package com.example.sensimate.model
 
 import android.util.Log
+import androidx.compose.runtime.MutableState
 import com.google.android.gms.tasks.Tasks
 
 
@@ -16,4 +17,6 @@ suspend fun constructSurvey(SurveyId: String): Survey? {
     return Survey
 }
 
-
+suspend fun saveAnswersToDB(answers: List<MutableState<Answer>>){
+answers.forEach{ParseAnswerToJsonAndSaveInDB(it.value)}
+}
