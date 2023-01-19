@@ -32,7 +32,7 @@ fun BottomNavGraph(navController: NavHostController, viewModel: MainViewModel) {
             EventDetails(viewModel)
         }
         composable(route = Screen.Discover.route) {
-            Discover(navController, viewModel)
+            Discover(viewModel)
         }
         composable(route = Screen.Survey.route){
             RenderSurvey(viewModel)
